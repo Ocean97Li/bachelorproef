@@ -1,0 +1,86 @@
+%==============================================================================
+% Sjabloon onderzoeksvoorstel bachelorproef
+%==============================================================================
+% Gebaseerd op LaTeX-sjabloon ‘Stylish Article’ (zie voorstel.cls)
+% Auteur: Jens Buysse, Bert Van Vreckem
+
+\documentclass[fleqn,10pt]{voorstel}
+
+%------------------------------------------------------------------------------
+% Metadata over het voorstel
+%------------------------------------------------------------------------------
+
+\JournalInfo{HoGent Bedrijf en Organisatie}
+\Archive{Bachelorproef 2018 - 2019} % Of: Onderzoekstechnieken
+
+%---------- Titel & auteur ----------------------------------------------------
+
+% TODO: geef werktitel van je eigen voorstel op
+\PaperTitle{Een Blockchain-gebasseerd stemsysteem, analyse en praktische gids voor het opzetten hiervan}
+\PaperType{Onderzoeksvoorstel Bachelorproef} % Type document
+
+% TODO: vul je eigen naam in als auteur, geef ook je emailadres mee!
+\Authors{Hu Ocean Li\textsuperscript{1}} % Authors
+\CoPromotor{nog.geen \textsuperscript{2} (nog.geen)}
+\affiliation{\textbf{Contact:}
+  \textsuperscript{1} \href{mailto:hu.li.y1090@student.hogent.be}{hu.li.y1090@student.hogent.be};
+  \textsuperscript{2} \href{mailto:nog.geen}{nog.geen};
+}
+
+%---------- Abstract ----------------------------------------------------------
+
+\Abstract
+{
+	Stemmen is  een cruciaal element in het maken van beslissingen in de moderne samenleving. Het is overal prominent aanwezig: van kleine beslissingen onder enkele personen tot gigantische turvingen zoals nationale verkiezingen. Veiligheid, betrouwbaarheid en privacy staan binnen dit thema steeds centraal. Het stemproces is echter fragiel en bovendien onderworpen aan een groeiende trend van digitalisatie, wat weer nieuwe gevaren met zich meebrengt. De vraag naar een duurzame digitale oplossing dringt zich steeds meer op. Deze scriptie heeft de intentie te onderzoeken of blockchain hiervoor een oplossing kan bieden. Aan de hand van een concrete, kleinschalige implementatie met smart contracts in de etherium-blockchain zal een duidelijk beeld  worden geschetst van de performantie, schaalbaarheid, veiligheid, problemen, beperkingen en de algemene haalbaarheid van zo’n blockchain-systeem. De verwachting is dat dit werkstuk resultaten oplevert die een blockchain-based stemsysteem onderbouwen op vlak van veiligheid, betrouwbaarheid en privacy. Mogelijks zullen er ook resultaten zijn die aantonen dat, omwille van schaalbaarheid, niet iedere usecase in aanmerking komt. In elk geval is de verwachte conclusie op basis van voorafgaande werken voornamelijk positief. Naar de toekomst toe voorziet dit onderzoek een grote waarschijnlijkheid dat blockchain-stemsystemen van significant belang zullen worden.
+}
+
+%---------- Onderzoeksdomein en sleutelwoorden --------------------------------
+% TODO: Sleutelwoorden:
+%
+% Het eerste sleutelwoord beschrijft het onderzoeksdomein. Je kan kiezen uit
+% deze lijst:
+%
+% - Mobiele applicatieontwikkeling
+% - Webapplicatieontwikkeling
+% - Applicatieontwikkeling (andere)
+% - Systeembeheer
+% - Netwerkbeheer
+% - Mainframe
+% - E-business
+% - Databanken en big data
+% - Machineleertechnieken en kunstmatige intelligentie
+% - Andere (specifieer)
+%
+% De andere sleutelwoorden zijn vrij te kiezen
+
+\Keywords{Blockchain. Ethereum --- Decentralised System --- Beveiligd Netwerk --- Democratie --- Stemmen } % Keywords
+\newcommand{\keywordname}{Sleutelwoorden} % Defines the keywords heading name
+
+%---------- Titel, inhoud -----------------------------------------------------
+
+\begin{document}
+
+\flushbottom % Makes all text pages the same height
+\maketitle % Print the title and abstract box
+\tableofcontents % Print the contents section
+\thispagestyle{empty} % Removes page numbering from the first page
+
+%------------------------------------------------------------------------------
+% Hoofdtekst
+%------------------------------------------------------------------------------
+
+% De hoofdtekst van het voorstel zit in een apart bestand, zodat het makkelijk
+% kan opgenomen worden in de bijlagen van de bachelorproef zelf.
+\input{voorstel-inhoud}
+
+%------------------------------------------------------------------------------
+% Referentielijst
+%------------------------------------------------------------------------------
+% TODO: de gerefereerde werken moeten in BibTeX-bestand ``voorstel.bib''
+% voorkomen. Gebruik JabRef om je bibliografie bij te houden en vergeet niet
+% om compatibiliteit met Biber/BibLaTeX aan te zetten (File > Switch to
+% BibLaTeX mode)
+\phantomsection
+\printbibliography[heading=bibintoc]
+
+\end{document}
