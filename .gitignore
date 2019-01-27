@@ -129,3 +129,4 @@ sympy-plots-for-*.tex/
 
 # Vim-LaTeX
 *.latexmain
+.DS_Store
