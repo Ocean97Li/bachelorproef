@@ -13,5 +13,233 @@ Je verwijst bij elke bewering die je doet, vakterm die je introduceert, enz. naa
 Soms wil je de auteur niet expliciet vernoemen, dan gebruik je \texttt{$\backslash${}autocite\{\}}. In de volgende paragraaf een voorbeeld van elk.
 
 \textcite{Knuth1998} schreef een van de standaardwerken over sorteer- en zoekalgoritmen. Experten zijn het erover eens dat cloud computing een interessante opportuniteit vormen, zowel voor gebruikers als voor dienstverleners op vlak van informatietechnologie~\autocite{Creeger2009}.
-
-\lipsum[7-20]
+\newpage
+\section{Blockchain}
+\label{sec:blockchain}
+	\subsection*{Inleiding}
+	In Bitcoin: A Peer-to-Peer Electronic Cash System beschrijft de auteur, onder het pseudoniem Satoshi Nakamoto een monetair systeem dat volledig peer-to-peer is. Satoshi Nakamoto is de oorspronkelijke ontwerper van de bitcoin en richtte de eerste blockchain-database op, tot op vandaag blijf de ware identiteit van deze persoon of entiteit een mysterie. Het paper werd gepubliceerd op 31 oktober 2008 en wordt vandaag gezien als het blockchain white paper omdat de structuur die hier beschreven wordt de basis vormde voor wat men vandaag blockchain noemt.
+	\subsection*{Noodzaak}
+			\subsubsection*{Vertrouwen in de plaat van bewijs}
+			Het paper start met de stelling dat de verkoop van waren en services op het internet zo goed als volledig afhankelijk is van grote financiële instituties die optreden als derde partij voor het verwerken van elektronische transacties. 
+		
+			Hoewel ons huidige betaalmodel naar behoren werkt voor de meeste transacties, kent het volgens de auteur van het paper, toch een inherent zwaktepunt: het is namelijk een systeem gebaseerd op vertrouwen en niet op bewijs.
+			
+			Transacties in het huidige systeem, zo stelt Nakamoto, zijn namelijk niet definitief, een pas uitgevoerde transactie is een veel gevallen nog omkeerbaar. Voor de financiële instellingen die fungeren als derde partij kan het ook niet anders: het is onvermijdelijk dat geschillen zullen optreden over bepaalde transacties. Bijgevolg is het ook onvermijdelijk dat er situaties zullen zijn waarin de instellingen via wie de transacties lopen moet ingrijpen door transacties ongedaan te maken. Omdat transacties in het huidige systeem niet als definitief kunnen beschouwd worden, is er een zekere graad van vertrouwen nodig om een transactie aan te gaan tussen de betrokken partijen.  Het aangaan van een transactie vergt daarom, vooral voor de ontvangende partij, een grotere nood aan vertrouwen. 
+			
+			Men geeft hier het voorbeeld van online-verkopers die zich genoodzaakt zien om hun klanten om meer persoonlijke informatie te vragen dan ze eigenlijk nodig hebben. En ook al worden er meer gegevens gevraagd dan nodig, dan nog is een zeker fraude percentage onvermijdbaar. 
+		
+			Wanneer men de analogie maakt voor gebruik van cash geld dan ziet men dat de bovenstaande problemen in veel mindere mate voorkomen. Bij het gebruik van cash geld gebeurt de transactie immers niet enkel op basis van vertrouwen maar vooral op basis van wederzijdse controle. Als een klant een bepaalt bedrag betaald of wisselgeld ontvangt dan telt deze het geld ter controle. Idem dito de ontvangende kant. Bij cash geld is het minder evident om een transactie ongedaan te maken. 
+			
+			Het paper komt tot de conclusie dat een alternatief elektronisch betalingssysteem nodig is. In zo’n systeem zouden transacties niet mogen gebeuren op basis van vertrouwen maar eerder basis van een wederzijdse controle, net zoals bij het voorbeeld van cashgeld- het geval was. Een controlemechanisme gebaseerd op crypto-grafisch bewijs zou twee partijen in staat kunnen stellen om online transacties rechtstreeks met elkaar aan te gaan, zonder daarbij gebruik te moeten maken van een vertrouwde partij. De noodzaak tot een 3e partij, in de vorm van een financiële instantie zoals een bank, is in een dergelijk systeem volledig geëlimineerd.
+		
+			In het systeem dat Nakamoto voorstelt zijn de transacties beschermt door cryptografie die het computationeel onpraktisch maakt om ze ongedaan te maken. De transacties zijn volledig onomkeerbaar en beschermen hiermee verkopers tegen fraude. Daarbovenop zijn borg-mechanismen, nodig om ook kopers beschermen, volgens de auteur ook makkelijk te implementeren in het systeem.
+			
+			\subsubsection*{Het double-spending probleem}
+			Het paper wijdt veel aandacht aan het oplossen van het dubble-spending probleem. Dit probleem beschrijft het bestaande risico dat bij een digitale vorm van geld of een ander digitaal-middel dezelfde middelen meerdere malen gespendeerd kunnen worden.
+			
+			Een van de fundamentele verschillen tussen contant en elektronisch geld is dat het eerste van een fysieke aard is. Dat betekend dat het geld tastbaar is, men draagt het bij zich, en men geeft het door wanneer men transacties maakt. Daarna is het geld weg. Eenmaal gespendeerd is contant geld op, hetzelfde geld kan elders niet opnieuw aangewend worden. Er is geen bank of andere financiële instantie voor nodig om dit verifiëren. Hoeveel men spendeert en hoeveel vermogen er nog rest is evident. 
+			
+			Bij elektronische vormen van geld is dit alles vele malen complexer. Ter verduidelijking nemen we hier het voorbeeld van een klassieke rekening bij een bank.
+			
+			Het geld op de hedendaagse bankrekening bestaat enkel en alleen als een elektronisch getal, een reeks van digitale cijfers bestaande uit 1’en en 0’en. Zo’n getal op zichzelf is gemakkelijk gewijzigd, men hoeft slechts wat 1’en en 0’en toe te voegen om een veelvoud van het oorspronkelijke te bekomen. Het is de bank die instaat voor de beveiliging van elektronisch geld. Waar de bank van weleer de bewaker was van vermogens in de vorm van kluizen of goudreserves, is de bank van vandaag de digitale bewaker van binaire vermogens.
+			
+			Bij een typische elektronische transactie tussen twee partijen vindt er geen transfer plaats van fysieke objecten, hetgeen er wel plaats vindt is aan de ene kat een verlaging van het elektronische vermogen van de eerste partij en aan de andere kant een verhoging van het vermogen van de tweede partij. 
+		
+			Gezien de enorme complexiteit die de beveiliging digitale systemen met zich meebrengt is het uitvoeren van elektronische transacties binnen het klassieke monetaire systeem altijd de verantwoordelijkheid van een vertrouwde derde partij geweest. Wanneer men een elektronische aankoop doet is het deze derde partij die een centrale autoriteit vormt wat betreft de veiligheid en de geldigheid van de transactie. Het is de vertrouwde derde partij die controleert op dubble-spending, vervolgens een bepaald bedrag in mindering breng van het oorspronkelijke vermogen en dit bedrag tenslotte toevoegt aan de kant van de verkoper. 
+			
+			In de meeste gevallen neemt vertrouwde derde partij de vorm aan van een bank, maar alternatieve instanties die kunnen optreden als vertrouwde derde partij voor transacties. Voorbeelden hiervan zijn: PayPal, TransferWise, Google Pay en Apple Pay.
+		
+			Haalt men deze derde partij echter volledig uit het proces dan dringt de nood voor een compleet nieuwe oplossing voor het dubble-spending probleem zich onmiddellijk op.
+			
+			Double-spending vormt een dusdanig groot probleem dat het de ontwikkeling van elektronisch geld zonder een vertrouwde autoriteit of een centrale server lange tijd onmogelijk maakte. In de volgende paragrafen wordt Nakamoto’s oplossing voor het probleem besproken. 
+			
+			\subsubsection*{Het Byzantijnse Generaalsprobleem}
+			Het double-spending probleem is een probleem dat specifiek is voor digitale valuta. Het Byzantijnse Generaalsprobleem, is een gelijkaardig probleem, alleen is het van toepassing is op een iets bredere context. Het byzantijnse vraagstuk omschrijft eigenlijk achterliggende probleem bij double-spending, namelijk hoe men vertrouwen achterwege laat in een systeem zonder centrale autoriteit.
+			
+			Het probleem luidt als volgt: generaals van Byzantium moeten hun troepen coördineren voor een aanval, en dit op basis van berichten die ze elkaar versturen. De aanval moet met meer dan de helft van het totaal aantal troepen worden uitgevoerd op een exact moment, anders zal ze falen. Het is echter mogelijk dat een of meerdere generaals verraders zijn, die de aanval willen dwarsbomen. De identiteit van deze generaals kan niet achterhaald worden. De probleemstelling is dus hoe de generaals die te goeder trouw zijn toch hun troepen kunnen coördineren tot een aanval, vrij en open met elkaar communicerend, zonder dat een verrader hun plannen kan dwarsbomen door valse berichten te versturen.
+			
+			Het Byzantijnse generaalsprobleem is tot op vandaag erg relevant omdat het van toepassing is op eender welke context waarin communicatie tussen verschillende entiteiten een cruciale rol speelt en er geen absoluut vertrouwen is. Het gebied van gedistribueerde computernetwerken is hier een perfect voorbeeld van.
+			
+	\subsection*{Transacties}
+	Het monetaire systeem dat Nakamoto voorstelt werkt met digitale munten. Deze munten worden gedefinieerd als ketens opgebouwd uit digitale ondertekeningen. Als de eigenaar van zo’n een munt een transactie aangaat wordt de munt doorgegeven aan de volgende eigenaar door ze digitaal te ondertekenen met een hash. Deze hash bestaat uit de hash van de vorige transactie gecombineerd met de publieke sleutel die de volgende eigenaar identificeert. De nieuwe hash wordt aan de keten van ondertekeningen toegevoegd waaruit de munt bestaat. De ontvanger kan dan de ondertekeningen, en daarmee historiek van eigendom van de munt verifiëren. 
+			
+	De historiek van een digitale munt kennen lost het dubble-spending probleem echter niet op. Men kan immers niet controleren of dezelfde munt niet ergens anders werd aangewend. Nakamoto stelt dat er een manier nodig is om voor iedere munt te verifiëren dat de vorige eigenaar geen eerdere transacties met de munt heeft aangegaan. Daartoe beslist men om de chronologisch eerst-voorkomende transactie van een eigenaar met een munt als valabel te beschouwen en alle daaropvolgende transacties van die eigenaar als double-spending. 
+			
+	Om de chronologische orde van een transactie te kunnen bepalen, is er kennis nodig van alle transacties. De enige manier om dit zonder vertrouwde partij te doen is door alle transacties publiek aan te kondigen. Vervolgens is er een mechanisme nodig waarbij alle participanten van het systeem (alle computers binnen het netwerk), hierna nodes genoemd, gezamenlijk kunnen beslissen over de exacte volgorde waarin transacties gebeurden. Nakamoto stelt voor om het probleem op te lossen startend vanuit een timestamp server. 
+			
+	\subsection*{Timestamp Server}
+	Een digital timestamp is een digitaal certificaat dat verzekerd dat een digitaal document op een bepaald ogenblik bestond. Er zijn meerdere, zeer specifieke technieken om betrouwbare digitale timestamps te kunnen produceren. In het algemeen zijn deze technieken onder te verdelen in twee grote categorieën: degene die gebaseerd zijn op een vertrouwde derde partij en degene die gebaseerd zijn op gedistribueerd vertrouwen. (BRON: https://nakamotoinstitute.org/static/docs/secure-timestamping-service.pdf )
+	
+	In dit geval wordt door de auteur er gekozen voor de gedistribueerde techniek. In de volgende paragraaf wordt een methode besproken om niet langer op basis van vertrouwen te werken.
+	
+	Nakamoto stelt voor om een timestamp server te gebruiken om de chronologische ordening van transacties die gebeuren met zijn digitale munt te bepalen.  Concreet werkt deze timestamp server door meerdere transacties die een timestamp moeten krijgen samen te nemen in een blok, er een hash van te berekenen en deze vervolgens openbaar te maken. (insert foto van white paper)
+	
+	De timestamp bewijst het bestaan van de items op dat specifieke moment, gezien deze verwerkt zijn in de hash, en de hash uniek is en alleen maar kon gegenereerd worden uit specifieke combinatie van items. De timestamp bevat verder ook de voorafgaande timestamp in de hash, waardoor een ketting ontstaat. Iedere timestamp versterkt daarbij de voorafgaande, een chronologische historiek van transacties ontstaat.
+	
+	De reden dat men hier van een gedistribueerde techniek spreek is omdat de keten van transactie blokken niet op een centraal punt bestaat. Er bestaat een exemplaar van de database-structuur, met alle informatie erin op iedere node van een peer-to-peer netwerk. 
+	
+	Een peer-to-peer netwerk is een netwerk bestaande uit onderling verbonden computers waarbinnen iedere computer gelijkwaardig is en er dus geen sprake is van centrale autoriteit. 
+	
+	Het is het netwerk in zijn geheel dat wordt gebruikt als timestamp server om bewijs te genereren van de chronologische volgorde van transacties. Iedere node van het netwerk kent de volledige historie van transacties en kan de validiteit van gemaakte transacties bewijzen. Een partij die een frauduleuze transactie probeert te plegen valt snel door de mand gezien ze slechts 1 node in het netwerk representeert. Alle andere nodes leveren immers een bewijs dat afwijkt van dat van de frauduleuze node. Het netwerk accepteert periodiek een aantal transacties tegelijkertijd, deze vormen een zogenaamd blok. Blokken waarover er een consensus van 50% of meer is worden geaccepteerd en in alle nodes aan een interne keten van blokken toegevoegd.
+	
+	Een database systeem, waarbij informatie periodiek in blokken geaccepteerd wordt en in iedere node van een P2P netwerk wordt toegevoegd aan een keten van blokken, noemt men vandaag de dag een blockchain.
+	
+	Een blockchain kan als veilig beschouw worden zolang minstens 50% van de rekenkracht van het netwerk niet gecomprimeerd is, en het merendeel van de bewijzen dus steeds de waarheid representeert. In praktijk betekent dit een systeem dat nagenoeg oncomprimeerbaar is. In het geval van het hedendaagse Bitcoin netwerk spreekt men bijvoorbeeld van een netwerk met rond de 10.000 nodes (LaTex Bron Vermelden). Om succesvol te frauderen zouden aanvallers van het Bitcoin netwerk maar liefst de helft van al deze computers, verspreid over heel de wereld moeten controleren. 
+			
+	\subsection*{Proof-of-Work}
+	Om een gedistribueerde timestamp server op peer-to-peer basis te laten werken is er een extra veiligheidsmechanisme nodig dat het berekenen van hashes opzettelijk moeilijker maakt zodat het langer duurt om een blok toe te voegen. 
+	
+	Het concept, dat door Nakamoto proof-of-work genoemd wordt, is essentieel omdat moderne CPU’s over enorme rekenkracht beschikken. Mits er geen extra veiligheidsmechanisme zou zijn zouden hashes zeer snel berekent kunnen worden. Zodanig snel dat het mogelijk zou zijn voor een enkele aanvaller om een aanpassing te maken in de ketting en voor alle volgende blokken de hashes te opnieuw te berekenen. 
+	
+	Naargelang de ketting groeit en er meer hashes gebaseerd zijn op een voorgaande hash wordt het door proof-of-work steeds moeilijker om gegevens te wijzigen. Immers: een wijziging van gegevens betekent dat de hash ook herrekend moet worden. Dit veroorzaakt corruptie van de hashes van alle daaropvolgende blokken, de enige manier om dit op te lossen is de hashes van iedere blok te herrekenen. 
+	Gezien de gemiddelde proof-of-work echter 10 minuten duurt en er ook om de 10 minuten een nieuwe blok aan de keten wordt toegevoegd is het bijna onmogelijk dat de corruptie niet door andere nodes wordt opgemerkt.
+	
+	Concreet bestaat de proof-of-work eruit dat er moet gezocht worden naar een bepaalde waarde. De waarde moet aan een voorwaarde voldoen: als men de hash functie toepast op de waarde dan moeten de eerste x aantal bits van het resultaat een 0 zijn. 
+	
+	De aard van een hashfunctie laat niet toe om aan reverse-engineering te doen, of anders gezegd men kan niet van een resultaat beginnen dat aan de voorwaarden voldoet om zo de gevraagde waarde te vinden. Proof-of-work kan dus alleen geleverd worden door miljarden waarden te overlopen, er de hash-functie op toe te passen en te controleren of er aan de voorwaarde voldaan is. Het is met andere woorden zeer tijdsconsumerend rekenwerk. De gemiddelde tijd nodig om een hash te vinden is exponentieel in x (het gevraagde aantal start-bits van de hash die 0 zijn).
+	
+	Zoals vermeld wordt het accepteren van nieuwe blokken gedaan op basis van een meerderheids-stem. Een vraag die hier opkomt is wat er precies als stem moet tellen en wat niet. Als de meerderheid bijvoorbeeld bepaald zou worden aan de hand van een zogenaamd one-ip-address-one-vote model dan zou het systeem misbruikt kunnen worden door t node meerdere IP-adressen te laten alloceren. Proof-of-work biedt hier de oplossing. De meerderheidsbeslissing wordt gerepresenteerd door de langste keten, dewelke waarin de langste proof-of-work tijd geïnvesteerd is. Zolang de meerderheid van de CPU-kracht in het netwerk gecontroleerd wordt door oprechte nodes, zal deze ketting sneller groeien dan enige andere ketting. In essentie is het een one-CPU-one-vote model.
+	
+	Om te compenseren voor toenemende hardware-capabiliteit wordt de moeilijkheid van de proof-of-work dynamisch bepaald door een bewegend gemiddelde dat er op gericht is om het aantal blokken dat per uur toegevoegd wordt constant te houden. Als hashes te snel worden gegenereerd, wordt de moeilijkheid simpelweg verhoogd ter compensatie. 
+	\subsection*{Netwerk}
+		\subsubsection*{Verwerking  van transacties}
+		In deze paragraaf wordt een abstracte schets gegeven van de conceptuele werking van Nakamoto’s netwerk:
+		\begin{enumerate}
+		\item Transacties worden gebroadcast naar ieder node in het netwerk
+.
+		\item Binnenkomende transacties worden in een blok gegroepeerd door iedere node.
+		\item Iedere node werkt om de proof-of-work op te lossen
+		\item De node die de proof-of-work als eerste vindt broadcast de blok van transacties zoals gekend door die node naar alle ander nodes.
+		\item Al de andere nodes accepteren dit blok, op voorwaarde dat de bevatte transacties geldig zijn en niet double-spent.
+		\item Nodes bevestigen hun acceptatie door aan de creatie van het volgende blok te beginnen, gebruik makende van de hash van het vorige blok. Nodes die niet accepteren, omdat er een discrepantie is tussen de blok die ze ontvingen en de blok ze zelf opbouwden TO DO 
+		\end{enumerate}
+		\subsubsection*{Langste ketting}
+		Het is steeds de langste ketting die als de correcte wordt beschouwd en verder wordt uitgebreid. Als twee nodes gelijktijdig een verschillend blok broadcasten dan zullen sommige nodes de ene versie eerst ontvangen en andere nodes de andere. Er ontstaat dan een situatie waarin er twee verschillende versies van de keten zijn binnen het netwerk. Deze discrepantie wordt pas weggewerkt wanneer de volgende proof-of-work wordt geleverd en er een weer een langste ketting is. Nodes die op de andere alternatieve keten werkten, schakelen weer over naar de ware keten.
+		\subsubsection*{Fout-tolerantie}
+		Het systeem kent een hoge fout-tolerantie, het kan overweg met vrij veel fouten die zich in een realistisch scenario  kunnen voordoen binnen een netwerk. Zo kan het best zijn dat de broadcast van een nieuwe transactie niet iedere node in het netwerk bereikt. Dit is geen probleem zolang het merendeel van de nodes de transactie wel ontving. Hetzelfde geld voor de broadcasts van blokken, als een node door bepaalde omstandigheden een broadcast van een blok niet ontvangt, zal de node bij de volgende broadcast realiseren dat het dat blok mist en het netwerk verzoeken om dit door te sturen.
+	\subsection*{Mining}
+		\subsubsection*{Nieuwe bitcoins}
+		Gezien er voor de bitcoin geen centrale autoriteit is die het geld maakt of verdeeld is er een alternatieve wijze nodig om de digitale munten te creëren en in circulatie te brengen. Een analogie voor de creatie van nieuwe bitcoins, zo stelt Nakamoto, is het mijnen van een kostbare grondstof zoals goud. Bij de goud-mijnbouw moet er grote hoeveelheden middelen besteed worden om nieuw goud te ontginnen en in circulatie te brengen. Bij bitcoin is de situatie vergelijkbaar. De creatie van iedere bitcoin, hoewel enkel digitaal, vergt een zekere prijs in tijd en in middelen, met name elektriciteit.
+		
+		Conventie in het bitcoin netwerk is dat de eerste transactie van ieder blok een speciale transactie is, die een munt toekent aan de eigenaar van het blok. Het idee hier is om een stimulans te creëren die nodes ertoe aanzet om aan proof-of-work te doen en zo het netwerk te ondersteunen. De periodieke creatie van iedere blok is dus eigenlijk een race tussen duizenden nodes van het netwerk om als eerste de proof-of-work te kunnen leveren en in ruil daarvoor een beloning in bitcoin te ontvangen. 
+		
+		De analogie die Nakamoto maakt tussen bitcoin en mijnbouw, leidde tot de hedendaagse benaming voor dit concept: mining. 
+		
+		\subsubsection*{Transactie}
+		De stimulans om het netwerk te ondersteunen gecreëerd worden met transactie kosten. Nakamoto stelt dat als de output waarde van een transactie minder is dan de input waarde, het verschil een transactie kost is die toegevoegd wordt op de stimulanswaarde van het blok dat de transactie bevat. Hiermee wordt bedoeld dat de nodes van het netwerk niet alleen bitcoin verdienen door het creëren van nieuwe bitcoins maar ook door het verwerken van transacties. Dit is van fundamenteel belang gezien het totaal ‘ontginbare’ bitcoins eindig is. Eenmaal een aantal bitcoins in omloop is zullen er geen nieuwe bitcoins meer gecreëerd kunnen worden en zal de ondersteuning van het netwerk transistioneren naar volledige financiering door middel van transactie kosten, deze zullen volgens Nakamoto op hun beurt stabiliseren en inflatie vrij worden.
+		
+		De stimulans kan ook helpen om nodes eerlijk te houden. Zo zal de potentiele aanvaller van het netwerk ondervinden dat de CPU kracht, nodig om fraude te plegen, veel lucratiever blijkt wanneer aangewend voor eerlijke mining-doeleinden. 
+		
+		https://bitcoinfees.info/
+		
+	\subsection*{Disk Space}
+	\subsubsection*{Merkel Boom}
+	Nakamoto stelt  een manier voor waarop data van oude transacties kan verwijderd worden om opslag ruimte te besparen. Om een dergelijke actie mogelijk te maken, zonder dat de hash corrumpeert, worden transacties binnen ieder blok in een structuur opgeslagen die men een Merkel Boom of ook wel Hash Boom noemt. Zo’n structuur stelt instaat om de onderliggende transactie data te verwijderen maar de hashes te behouden. 
+	\subsubsection*{Wet van Moore}	
+	Nakamoto stelt  dat gezien de Wet van Moore voorspelt dat hardware capaciteiten per jaar veel sneller zullen blijven toenemen dan de opslagruimte nodig om de groeiende keten van blokken in te bewaren, miners zich eigenlijk geen zorgen zouden moeten maken over opslagruimte.
+	\subsection*{Simpelere Verificatie van Betaling}
+	Volgens Nakamoto is het mogelijk om betalingen te verifiëren zonder de hulp van een volledige netwerk-node, die iedere blok ooit gecreëerd kent. Om een transactie te verifiëren moet een gebruiker enkel een kopie hebben van de headers van alle blokken uit de langste keten. Deze kunnen alleen verkregen worden door de netwerk-nodes te bevragen en op een gegeven te beslissen dat men de langste keten gevonden heeft, en vervolgens van deze keten de Merkle tak die de transactie aan het blok linkt te nemen. 
+	
+	Met deze Merkle tak kan de gebruiker wel is waar niet de transactie zelf controleren. Maar er kan aan de hand van de positie van de hash van de transactie wel gecontroleerd worden of de transactie al geaccepteerd is door de node en het netwerk.
+	
+	Op deze manier is verificatie gemakkelijk, zolang eerlijke nodes controle over het netwerk hebben. Nodes kunnen transacties altijd zelf verifiëren, maar de vereenvoudigdea methode kan beetgenomen worden door aanvalleers die meer dan de heflt van het netwerk controlleren. Een mogelijke strategie hiertegen zou zijn om de volledige keten te downloaden wanneer er een ongeldige blok binnenkomt. 
+	\subsection*{Combineren en splitsen van transacties}
+	Opdat er geen aparte transactie voor iedere munt die van eigenaar wisselt zou moeten gemaakt worden, voorziet Nakamoto een systeem waarin transacties gecombineerd en gesplitst kunnen worden. Zo kan men bijvoorbeeld drie Bitcoins in een enkele transactie versturen, maar ook 0.5 Bitcoin als wisselgeld ontvangen.
+	
+	Om dit moglijk te maken wordt er gewerkt met een systeem van inputs en outputs. Een transactie kan een of meerdere inputs hebben en een of twee outputs. De inputs stellen de bron(nen) waar het geld vandaan komt voor, eenderwelke waarde in bitcoin kan hier meegegeven worden. De output stellen de ontvangende kant voor, de eerste output is de waarde voor de ontvanger, de tweede output is optioneel en is voor het eventuele wisselgeld dat de verzender kan ontvangen.
+	\subsection*{Privacy}
+	In het traditionele monetaire systeem ligt alle kennis over transacties bij de financiële instituties. De bank, als vertrouwde derde partij kan gemakkelijk privacy creëren door de toegang tot informatie over een transactie te limiteren tot de betrokken partijen. 
+	
+	In het model dat we vanaf nu de blockchain zullen noemen, is deze methode onmogelijk door de noodzaak tot het publiek aankondigen van transacties over het hele netwerk.  Nakamoto stelt echter dat privacy wel enigszins kan behouden worden door informatie op een ander plaats te beperken. Men stelt voor om de publieke sleutels, die bitcoin-portefeuilles identificeren anoniem te houden, en er dus geen naam aan te koppelen. Op deze manier mag iedereen dan wel kunnen zien welke transacties er plaats vinden, maar door de anonimiteit van zender en ontvanger wordt privacy grotendeels gegarandeerd.
+	
+	Om de privacy nog te verbeteren zou men ook kunnen opteren voor een systeem waarin iedere gebruiker per transactie een nieuwe sleutel krijgt die uniek identificerend is. Voor transacties met meerdere inputs is er echter geen manier om te verbergen dat de inputs van een eigenaar afkomstig zijn.
+	\subsection*{Nakamoto’s Conclusie}
+	In het paper presenteert men een nieuw systeem voor elektronische transacties. Men start vanuit munten die opgemaakt zijn uit digitale ondertekeningen. Vervolgens lost men het double-spending probleem op. Om dit te doen wordt er een peer-to-peer netwerk voorgesteld dat gebruik maakt van zogenaamde proof-of-work om de historiek van gemaakte transacties op te slaan. 
+	
+	De implementatie van dit alles is een aard die het computationeel onpraktisch maakt om het systeem aan te vallen voor frauduleuze doeleinden. Het beslaat immers een robuust netwerk met weinig tot geen complexe structuur, maar waar door anonimiteit de privacy grotendeels gerespecteerd blijft. 
+	
+	Nodes binnen het netwerk werken allemaal tegelijk, doch zonder enige coördinatie of afhankelijkheid. Ze kunnen het netwerk verlaten en zich naar believen weer vervoegen. Nodes die zijn weggeweest moet enkel de volgende proof-of-wok accepteren om weer helemaal mee te zijn met alles wat er gebeurd is. 
+	
+	Er wordt gestemd op basis CPU-kracht: accepteren van blok gebeurt door aan de proof-of-work te beginnen werken, afwijzen van een blok gebeurt door dit te weigeren. Op basis van dit consensus mechanisme kunnen extra regels afhankelijk voor een der welke use-case worden toegevoegd. 
+\section{Ethereum en smart contracts}
+\label{sec:ethereum-en-smart-contracts}
+	\subsection*{Inleiding}
+		In dit tweede deel van de state-of-the-art wordt een beeld geschetst van wat blockchain 2.0 inhoud volgens Swan (2015). Concreet wordt er dieper ingegaan op het aspect Smart Contracts, vervolgens wordt er ook een overzicht gegeven van Ethereum. Dit alles wordt uitgebreid besproken, omdat het van belang zal worden eenmaal we blokchain stemsystemen bespreken.
+	\subsection*{Noodzaak}
+	\subsection*{Wat is zijn smart contracts?}
+		Smart contracts nemen de blockchain-technologie een stap verder. In Swan (2015) worden ze omschreven als gedecentraliseerde contracten die niet langer een autoriteit (zoals een rechtbank) nodig hebben. Het zijn in feite digitale contractprogramma’s die zichzelf kunnen valideren en uitvoeren wanneer aan bepaalden voorwaarden is voldaan. Ook hier bestaat het concept sinds de jaren negentig (Szabo, 1996). Bij het lezen van Nakamoto (2008) is het duidelijk dat er vanaf het prille begin van de bitcoin een visie was om een dergelijke systeem te implementeren. Blockchain-technologie staat immers niet alleen toe om data op te slaan, ook programma’s kunnen in de blockchain worden opgeslagen. Smart contracts vormen de basis van de nieuwe Blockchain 2.0 van vandaag, zowat iedere grote blockchain-speler probeert ze te implementeren.
+	\subsection*{Wat is Ethereum?}
+		Ethereum is een opensourceplatform dat werd opgericht in 2015. Net zoals bitcoin maakt het gebruik van een gedecentraliseerd netwerk, gebaseerd op het oorspronkelijke blockchain- concept. Het valideren van informatie gebeurt ook hier door zogenaamde miners, het verschil met bitcoin is dat de miners worden beloond met de munteenheid ether in plaats van bitcoin. Ethereum kan men niet zien als een zuivere variant op de bitcoin of een andere crypto currency, het is veel meer dan dat. Smart-contracts maken een groot deel uit van het Ethereum ontwerp. Swan (2015) omschrijft Ethereum als een ”Turing-Complete Virtual Machine”, die zowel een platform als een programmeertaal biedt voor het ontwikkelen en publiceren van gedistribueerde applicaties. Turingcompleetheid betekent in deze context dat het over een platform gaat dat het vermogen heeft om eender welke digitale munt, protocol of blockchain te ondersteunen, iets wat bij de Bitcoin blokchain niet het geval is. 
+	\subsection*{Hoe werkt het?}
+		De werking van het Ethereum-netwerk volgt op een hoog conceptueel niveau dezelfde lijnen als de eerder omschreven Bitcoin Blockchain. In tegenstelling tot (relatief) eenvoudige bitcoin-transacties, bevatten de blokken die door het Ethereum netwerk wordt opgeslagen echter iets wat men zou kunnen omschrijven als een toestandsmachine, bestaande uit een lijst van allerhande transacties. Waar de Bitcoin blockchain voornamelijk ontworpen is om fiscale transacties mogelijk te maken, is de Ethereum blockchain meer general-purpose. Om misbruik en spamming van transacties tegen te gaan en spoedige verwerking te stimuleren is er aan iedere transactie een kleine kostprijs verbonden. Deze kostprijs gas genoemd en wordt betaald in ether, de cryptocurrency van Ethereum. 
+		In Ethereum is er sprake van twee soorten accounts: 
+		\begin{itemize}
+			\item Accounts van externe gebruikers, bestaande uit een publieke en private sleutel dewelke de gebruiker in zijn bezit heeft.
+			\item Contract accounts, dit zijn smart-contract dewelke bestaan uit code die enkel wordt uitgevoerd bij interactie met gebruikers.
+		\end{itemize}	
+		Zowel gebruikers als smart-contracts kunnen ether bewaren.
+		Transacties in Ethereum vinden plaats tussen twee gebruikers of tussen een gebruiker en een smart contract. Een transactie tussen een gebruiker en een smart contract kan één of meerdere nieuwe transacties vanuit het contract naar andere gebruikers doen ontstaan. Tenslotte kan een transactie van een gebruiker naar een smart contract ook transacties naar andere smart contracts triggeren, die dan op hun beurt hetzelfde doen en zo complexe kettingreactie creëren. De combinatie van mogelijke transacties en het potentieel dat smart contracts bieden zorgt volgens Wood (2017) voor een systeem waarop in theorie iedere toepassing mogelijk is. 
+\section{Blockchain gebaseerd stemmen}
+\label{sec:blockchain-gebaseerd-stemmen}
+	\subsection*{Inleiding}
+	\subsection*{Noodzaak}
+	\subsection*{Implementaties}
+	\subsection*{Cryptografie en Stemprotocollen}
+		\subsubsection*{Stemprotocollen}
+		Kiayias and Yung stelt voor om stemprotocollen self-tallying te maken. Self-tallying ofwel zelf-tellend wordt hier gedefinieerd als volgt: iedere stemmer moet na het einde van een stemming zelf de stemmen kunnen tellen. Zelf-tellende stem-protocollen nemen de verantwoordelijk voor het tellen van stemmen weg van centrale autoriteiten en veranderen het in een open procedure, die iedere deelnemer of derde partij kan uitvoeren. De centrale tellingsautoriteit is dan niet meer nodig, iedereen kan resultaat van de stemming onafhankelijk bekomen. Men definieert ook twee andere eigenschappen waaraan een elektronisch stem-protocol moet voldoen.  Perfect Ballot Secrecy ofwel volledige stembescherming, wordt gedefinieerd als een eigenschap die de verzekering brengt dat de privacy van de stemmer enkel en alleen kan ondermijnd worden als alle andere stemmers tot dit doeleinde collaborenen. Dispute-freeness ofwel geschil-vrijheid, wordt dan weer gedefinieerd als een eigenschap die garandeert dat dat er geen twijfel kan zijn over de authenticiteit van de stemming. Deze eigenschap bestaat eruit dat iedere participant van de stemming, na afloop het correcte verloop van de procedure kan verifiëren voor zichzelf.
+		
+		Volgens Mcorry et al.  hebben deze zelf-tellende protocols helaas zwaktepunten op het vlak van eerlijkheid. Ze laten immers toe dat de alle personen die gestemd hebben op een bepaald tijdstip, zouden kunnen collaboreren om de tussen-resultaten te berekenen voor datzelfde tijdstip. Verder kan de laatste persoon die zijn of haar stem moet uitbrengen het resultaat van de stemming berekenen voor hij of zij effectief gestemd heeft. Dit leidt volgens Mcorry et al tot adaptive en abortive issues.  Mcorry spreekt van een adaptive issue waar de stemkeuze van de laatste participant mogelijks beïnvloed kan worden door het zien van de stemresultaten voor zelf te stemmen. Er is ook sprake van een abortive issue volgens Mcorry omdat iedere participant de macht heeft om de hele stemming te annuleren. Een enkele participant kan zich immers volledig kunnen onthouden van het stemmen en zo alle andere stemmers verhinderen het resultaat te berekenen. 
+		
+		Kiayias and Yung [24] en Khader et al. stellen dat dit makkelijk te corrigeren valt doormiddel van een extra stemronde. Mcorry stelt echter dat daarvoor de volledige coöperatie van alle participanten nodig is, en dat deze niet meer gegarandeerd is op dit punt. Ook wordt er voorgesteld om de laatste stem steeds een lege stem van de organisator te laten zijn, maar ook hiertegen verzet Mcorry zich, men stelt dat dit in essentie een terugkeer is naar een systeem met centrale autoriteit. 
+		Mcorry et al. stelt een protocol voor, op basis van het werk van Kiayias and Yung en anderen maar combineert als eerste het concept van self-tallying met een blockchain implementatie. Het resulteren protocol wordt het Open Vote Network Protocol.
+		
+		\subsubsection*{Het Open Vote Network Protocol}
+			\paragraph*{Overzicht }
+			Het Open Vote Network Protocol is een gedecentraliseerd protocol, ontworpen op basis van het self-tallying principe. De focus ligt hier op de bescherming van privacy, niet op de schaalbaarheid. Self-tallying gebeurt immers niet op een wijze die bijzonder schaalbaar is, het  Open Vote Network protocol ondersteund dan ook enkel kleine verkiezingen tussen tientallen personen, zaken zoals nationale verkiezingen zijn hiermee niet mogelijk. Om eenvoudigheid te bewaren wordt er ook gewerkt met het eenvoudigst mogelijke stempatroon, namelijk een keuze twee opties, bijvoorbeeld ja/nee.  Mcorry verwijst naar het onderzoek van TO DO voor zogenaamde multi-way verkiezingen ofwel verkiezingen met meerdere keuze-opties.
+			
+			Het stemmen in dit protocol gebeurt in twee fasen, in de eerste fase laten alle kiezers zich registreren, in de tweede fase wordt de effectieve stem uitgebracht. Na afloop van de tweede fase kunnen de stemmen geteld worden.  De self-tallying eigenschap stelt iedere stakeholder die het protocol uitvoert ertoe instaat om zelf de stemmen te tellen. Merk op dat iedereen dit facet van het protocol kan uitvoeren, niet enkel de geregistreerde stemmers.
+			 
+			Het gedecentraliseerde karakter van dit protocol maakt het uiterst geschikt om op een blockchain te implementeren. Mcorry is een van de eersten in de literatuur die deze stap maakt. De reden dat men specifiek voor de Ethereum blokchain kiest, wordt gemotiveerd als volgt.
+			Andere blockhains zoals Bitcoin zouden ook kunnen worden gebruikt als publieke opslagplaats van verkiezingen, maar het verschil is dat het protocol niet op de blockchain kan opgeslagen worden, het moet extern opgeslagen en gehandhaafd worden door de kiezers. Mcrorry stelt dat men via Ethereum gebruik kan maken van een smart-contract om  het protocol af te dwingen, Ethereum kan daarnaast niet alleen als opslag fungeren maar ook als geverifieerd netwerk waarover de participanten communiceren.
+			\paragraph*{Setup }
+			Het OVN-Protocol start vanuit een zogenaamde election administator, deze organisator van de verkiezingen initialiseert het protocol door de een verkiezing aan te maken en de in aanmerking komende kiezers in te stellen, dit gebeurt door de kiezers aan de white-list van het smart-contract toe te voegen. De kiezers worden in dit stadium enkel geïdentificeerd aan de hand van hun Ethereum account. De organisator is meestal degene die  Ethereum verwittigd om over te schakelen op de eerste fase.
+			\paragraph*{FASE 1: Registratie }
+			De administrator stelt het onderwerp van de verkiezing in, als ook de beschikbare opties waarvoor gestemd kan worden. Vervolgens wordt Ethereum opnieuw verwittigd, ditmaal om over te gaan naar het registreren van participanten. Om te registreren voor de verkiezing moeten alle stemmers een stemsleutel berekenen. Deze stemsleutel zal worden gebruikt als identificatie tijdens het registreren van de kiezers. Het berekenen  van de stemsleutel en het verdere verloop kan worden samengevat als volgt: 
+			
+			Alle n kiezers moeten het eens zijn over het paar (G,g) waarbij G een eindige cyclische groep van hoofdorde q voorstelt waar het Diffie-Hellman (DDH) probleem niet van toepassing op is, en g een generator in G. De lijst van in aanmerking komende participanten (P1, P2, … , Pn) wordt vastgelegd en elke participant Pi kiest een unieke random waarde xi ∈R Zq. De waarde xi wordt gebruikt als private stemsleutel voor participant Pi.  Iedere kiezer vormt zijn of haar publieke stemsleutel door gxi te berekenen. Gezien g een generator is van G, valt niet te achterhalen aan de hand van gxi wat de eigenlijke waarde van xi is. Het Ethereum netwerk heeft met andere woorden geen kennis van xi. Om de participant Pi te kunnen identificeren in het netwerk volstaat de publieke sleutel echter niet, er is ook een bewijs van de private sleutel xi nodig. Tot dat doeleinde wordt een Zero Knowledge Proof gebruikt. Met ZKP(xi) levert de participant Pi  het bewijs aan het netwerk dat xi  in gxi gekend is door Pi. Zonder de waarde voor xi effectief bekend te maken, wordt er zo bewezen dat Pi de eigenaar van de publieke sleutel gxi  is.
+			
+			Registratie gebeurt door iedere kiezer Pi te laten broadcasten naar het netwerk. De broadcast bestaat uit gxi en ZKP(xi). Daarnaast wordt er ook een constante waarde in ether uit de portefeuille van de kiezer aan de broadcast toegevoegd. Het gaat hier om de som van de transactie kosten en een waarborg die de kiezer terugkrijgt. De waarborg instellen gebeurt omdat blockchain filosofie dicteert dat het verbinden aan een potentiele kost participanten zal stimuleren om oprecht te handelen, in dit geval geeft men de waarborg terug van zodra ze hun stem uitbrengen. 
+			
+			Nadat een kiezer Pi  gebroadcast heeft naar Ethereum zal het netwerk zijn broadcast verwerken.
+			Het bewijs in de vorm van de ZKP(xi) wordt gecontroleerd, de waarborg wordt opgeslagen en tot slot wordt de  stemsleutel gxi gebruikt om een nieuwe sleutel te berekenen waarmee de kiezer Pi een stem zal kunnen uitbrengen over het ingestelde onderwerp. Deze nieuwe sleutel noemt men de gereconstrueerde sleutel gyi, ofwel Yi en wordt berekend als volgt:
+			
+			Om de gereconstrueerde sleutel  gyi te berekenen van kiezer Pi worden de publieke stemsleutels van alle andere kiezers Pj gebruikt. Het product van de publieke sleutels van al de andere kiezers Pj waar  j <  i wordt gedeeld door het product van alle publieke sleutels van al de andere kiezers waar Pj waar  j >i.
+			\paragraph*{FASE 2: Stemmen}
+			Eenmaal het netwerk signaal ontvangt dat er gestemd kan worden, kunnen de kiezers een beslissing maken en vervolgens hun stem te broadcasten. Deze broadcast bestaat uit twee zaken: de geëncrypteerde stem en een nieuwe Zero Knowledge Proof, die bewijst dat de stem ofwel 0 of 1 is. De encryptie die gebruikt wordt voor de stem vormt het cryptografisch hart van dit protocol. De stem wordt geëncrypteerd volgens het Elgamal-cryptosysteem en wordt in de vorm gxiyigvi  aan het netwerk doorgegeven,  waarbij gxiyi het product is van de publieke stemsleutel en de gereconstrueerde sleutel, vi de eigenlijke stem is in de vorm van een 1 of een 0 en gvi de factor waarmee het product van de sleutels vermenigvuldigt wordt, zijnde ofwel g ofwel 1. 
+			
+			Eenmaal Pi de stem broadcast wordt aan de hand van de ZKP(vi) geverifieerd of de stem in een correct formaat is (0 of 1), is dit het geval dan wordt de Elgamal-geëncrypteerde stem opgeslagen in de Ethereum blockchain en wordt de waarborg aan Pi geretourneerd.
+			
+			Wanneer alle n stemmen ontvangen en geverifieerd zijn krijgt iedereen er toegang toe. De identiteit van de kiezers noch de betekenis is door de encryptie niet meer af te leiden uit een particuliere stem. Alleen het resultaat kan nog bekomen worden uit de nu persistente geëncrypteerde stemmen.
+			
+			Het resultaat van de verkiezing bekomt men door het product van alle geëncrypteerde stemmen te nemen: 
+			
+			IMG
+			
+			De aard van de encryptie is van zodanig dat alle random factoren geëlimineerd worden zodat:
+			
+			IMG
+			Dit resulteert in:
+			
+			IMG
+			
+			Waarbij ∑i vi  het aantal stemmen voor waarde 1 representeert. Het aantal waar-stemmen kan echter niet rechtstreeks worden afgeleid, g wegwerken impliceert een discreet logaritme. Gezien de rechterhelft van de vergelijking echter bekend is en i gelimiteerd is tot het aantal participanten n, is het zeker dat het hier om een relatief kleine waarde gaat. Deze waarde kan daarom gemakkelijk gevonden worden doormiddel van brute-force zoeken. Eenmaal het aantal ja-stemmen gevonden is, is het vinden van nee-stemmen triviaal.
+			
+			Merk op dat het noodzakelijk is dat iedere kiezer die in fase 1 een stemsleutel broadcast ook een geëncrypteerde stem uitstuurt in fase 2. Anders kunnen de resultaten van de stemming niet berekend worden. Er is hier dus nog steeds sprake van een abortive issue.
+			Ook is er het feit dat de laatste kiezer in fase twee, net zoals bij de andere protocollen, potentieel de stemmen kan tellen alvorens zelf te kiezen. Door eerst een 0-stem te simuleren, kan de laatste kiezer het resultaat van de verkiezingen berekenen voordat alle anderen dit kunnen. De laatste kiezer kan vervolgens zijn stem nog veranderen op basis van het resultaat van de verkiezing. In de meeste gevallen is dit geen wenselijke situatie. De oplossingen die voor dit probleem in de literatuur worden voorgesteld zijn echter ook suboptimaal. Mcorry stelt voor om een fase toe te voegen tussen fases 1 en 2. In deze fase wordt de stem van de kiezer opgeslagen voor ze bekend wordt gemaakt aan het netwerk, eenmaal opgeslagen kan de stem niet meer veranderen. De volgende fase bestaat er dan uit dat de stem bekend wordt gemaakt aan het netwerk.
+		
+	\subsection*{Privacy}
+		Typische elektronisch stem-protocollen beschermen de privacy van stemmers door gebruik te maken van een centrale autoriteit, om veiligheidsredenen is de autoriteit vaak verdeelt over verschillende tellings-autoriteiten. Een voorbeeld hiervan vinden we in Helios. Elektronische stemmen worden hier doormiddel door meerdere tellings-autoriteiten behandeld, in combinatie met cryptografie reduceert men het risico op aantasting van de privacy van gebruikers aanzienlijk. https://www.usenix.org/legacy/event/sec08/tech/full_papers/adida/adida.pd
+		
+		Los van dit gegeven echter, staat het feit dat een dergelijk systeem gebaseerd op het vertrouwen van de stemmers. De mogelijkheid bestaat nog steeds dat alle tellingsautoriteiten van kwade wil zijn. In zo’n situatie zou de privacy van de gebruikers alsnog geschaad zijn.  Bron: Ethereum artikel
+	\subsection*{Fouttolerantie}
+	\subsection*{Schaalbaarheid}
