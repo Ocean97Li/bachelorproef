@@ -1,11 +1,21 @@
 % Encoding: windows-1252
 
-@Article{Nakamoto2008,
-  author       = {Nakamoto,Satoshi},
-  title        = {Bitcoin: A Peer-to-Peer Electronic Cash System},
-  year         = {2008},
-  abstract     = {A purely peer-to-peer version of electronic cash would allow online payments to be sent directly from one party to another without going through a financial institution. Digital signatures provide part of the solution, but the main benefits are lost if a trusted third party is still required to prevent double-spending. We propose a solution to the double-spending problem using a peer-to-peer network. The network timestamps transactions by hashing them into an ongoing chain of hash-based proof-of-work, forming a record that cannot be changed without redoing the proof-of-work. The longest chain not only serves as proof of the sequence of events witnessed, but proof that it came from the largest pool of CPU power. As long as a majority of CPU power is controlled by nodes that are not cooperating to attack the network, they'll generate the longest chain and outpace attackers. The network itself requires minimal structure. Messages are broadcast on a best effort basis, and nodes can leave and rejoin the network at will, accepting the longest proof-of-work chain as proof of what happened while they were gone.},
-  license      = {http://opensource.org/licenses/mit-license.php},
+@Article{Wood2017,
+  author   = {Wood, Gavin},
+  title    = {Ethereum: A Secure Decentralised Generalised Transaction Ledger},
+  year     = {2017},
+  pages    = {13 - 14},
+  abstract = {The blockchain paradigm when coupled with cryptographically-secured transactions has demonstrated its utility through a number of projects, not the least being Bitcoin. Each such project can be seen as a simple application on a decentralised, but singleton, compute resource. We can call this paradigm a transactional singleton machine with shared-state.
+Ethereum implements this paradigm in a generalised manner. Furthermore it provides a plurality of such resources, each with a distinct state and operating code but able to interact through a message-passing framework with others. We discuss its design, implementation issues, the opportunities it provides and the future hurdles we envisage.},
+}
+
+@Article{McCorry2017,
+  author       = {McCorry,Patrick and Shahandashti, Siamak F. and Hao, Feng},
+  title        = {A Smart Contract for Boardroom Voting with Maximum Voter Privacy},
+  journal      = {FC 2017},
+  journaltitle = {Financial Cryptography and Data Security},
+  year         = {2017},
+  abstract     = {We present the first implementation of a decentralised and self-tallying internet voting protocol with maximum voter privacy using the Blockchain. The Open Vote Network is suitable for boardroom elec- tions and is written as a smart contract for Ethereum. Unlike previously proposed Blockchain e-voting protocols, this is the first implementation that does not rely on any trusted authority to compute the tally or to protect the voterís privacy. Instead, the Open Vote Network is a self- tallying protocol, and each voter is in control of the privacy of their own vote such that it can only be breached by a full collusion involving all other voters. The execution of the protocol is enforced using the consen- sus mechanism that also secures the Ethereum blockchain. We tested the implementation on Ethereumís official test network to demonstrate its feasibility. Also, we provide a financial and computational breakdown of its execution cost.},
 }
 
 @Book{Swan2015,
@@ -24,11 +34,11 @@ Author Melanie Swan, Founder of the Institute for Blockchain Studies, explains t
 }
 
 @Article{Maxwell2015,
-  author       = {Maxwell, Deborah and Campbell, Dug and Speed, Chris},
-  title        = {Effing the Ineffable},
-  year         = {2015},
-  date         = {2015-07-01},
-  subtitle     = {Opening up Understandings of the Blockchain},
+  author   = {Maxwell, Deborah and Campbell, Dug and Speed, Chris},
+  title    = {Effing the Ineffable},
+  year     = {2015},
+  date     = {2015-07-01},
+  subtitle = {Opening up Understandings of the Blockchain},
 }
 
 @Article{Kaliyamurthie2013,
@@ -38,6 +48,14 @@ Author Melanie Swan, Founder of the Institute for Blockchain Studies, explains t
   journaltitle = {Indian Journal of Science and Technology},
   year         = {2013},
   date         = {2013-05-01},
+}
+
+@Article{Nakamoto2008,
+  author   = {Nakamoto,Satoshi},
+  title    = {Bitcoin: A Peer-to-Peer Electronic Cash System},
+  year     = {2008},
+  abstract = {A purely peer-to-peer version of electronic cash would allow online payments to be sent directly from one party to another without going through a financial institution. Digital signatures provide part of the solution, but the main benefits are lost if a trusted third party is still required to prevent double-spending. We propose a solution to the double-spending problem using a peer-to-peer network. The network timestamps transactions by hashing them into an ongoing chain of hash-based proof-of-work, forming a record that cannot be changed without redoing the proof-of-work. The longest chain not only serves as proof of the sequence of events witnessed, but proof that it came from the largest pool of CPU power. As long as a majority of CPU power is controlled by nodes that are not cooperating to attack the network, they'll generate the longest chain and outpace attackers. The network itself requires minimal structure. Messages are broadcast on a best effort basis, and nodes can leave and rejoin the network at will, accepting the longest proof-of-work chain as proof of what happened while they were gone.},
+  license  = {http://opensource.org/licenses/mit-license.php},
 }
 
 @Electronic{Dai1998,
@@ -54,22 +72,30 @@ Author Melanie Swan, Founder of the Institute for Blockchain Studies, explains t
   url    = {http://www.fon.hum.uva.nl/rob/Courses/InformationInSpeech/CDROM/Literature/LOTwinterschool2006/szabo.best.vwh.net/smart_contracts_2.html},
 }
 
-@Article{Wood2017,
-  author   = {Wood, Gavin},
-  title    = {Ethereum: A Secure Decentralised Generalised Transaction Ledger},
-  year     = {2017},
-  pages    = {13 - 14},
-  abstract = {The blockchain paradigm when coupled with cryptographically-secured transactions has demonstrated its utility through a number of projects, not the least being Bitcoin. Each such project can be seen as a simple application on a decentralised, but singleton, compute resource. We can call this paradigm a transactional singleton machine with shared-state.
-Ethereum implements this paradigm in a generalised manner. Furthermore it provides a plurality of such resources, each with a distinct state and operating code but able to interact through a message-passing framework with others. We discuss its design, implementation issues, the opportunities it provides and the future hurdles we envisage.},
+@Book{Kiayias2002,
+  author    = {Kiayias, Aggelos and Yung, Moti},
+  title     = {Self-tallying Elections and Perfect Ballot Secrecy},
+  year      = {2002},
+  editor    = {Naccache, David and Paillier, Pascal},
+  publisher = {Springer Berlin Heidelberg},
+  isbn      = {978-3-540-45664-3},
+  pages     = {141 - 158},
+  abstract  = {Strong voter privacy, although an important property of an election scheme, is usually compromised in election protocol design in favor of other (desirable) properties. In this work we introduce a new election paradigm with strong voter privacy as its primary objective. Our paradigm is built around three useful properties of voting schemes we define: (1) Perfect Ballot Secrecy, ensures that knowledge about the partial tally of the ballots of any set of voters is only computable by the coalition of all the remaining voters (this property captures strong voter privacy as understood in real world elections). (2) Self-tallying, suggests that the post-ballot-casting phase is an open procedure that can be performed by any interested (casual) third party. Finally, (3) Dispute-freeness, suggests that disputes between active parties are prevented altogether, which is an important efficient integrity component.},
+  address   = {Berlin, Heidelberg},
+  booktitle = {Public Key Cryptography},
 }
 
-@Article{McCorry2017,
-  author       = {McCorry,Patrick and Shahandashti, Siamak F. and Hao, Feng},
-  title        = {A Smart Contract for Boardroom Voting with Maximum Voter Privacy},
-  journal      = {FC 2017},
-  journaltitle = {Financial Cryptography and Data Security},
-  year         = {2017},
-  abstract     = {We present the first implementation of a decentralised and self-tallying internet voting protocol with maximum voter privacy using the Blockchain. The Open Vote Network is suitable for boardroom elec- tions and is written as a smart contract for Ethereum. Unlike previously proposed Blockchain e-voting protocols, this is the first implementation that does not rely on any trusted authority to compute the tally or to protect the voterís privacy. Instead, the Open Vote Network is a self- tallying protocol, and each voter is in control of the privacy of their own vote such that it can only be breached by a full collusion involving all other voters. The execution of the protocol is enforced using the consen- sus mechanism that also secures the Ethereum blockchain. We tested the implementation on Ethereumís official test network to demonstrate its feasibility. Also, we provide a financial and computational breakdown of its execution cost.},
+@Book{Kiayias2002,
+  author    = {Kiayias, Aggelos and Yung, Moti},
+  title     = {Self-tallying Elections and Perfect Ballot Secrecy},
+  year      = {2002},
+  editor    = {Naccache, David and Paillier, Pascal},
+  publisher = {Springer Berlin Heidelberg},
+  isbn      = {978-3-540-45664-3},
+  pages     = {141 - 158},
+  abstract  = {Strong voter privacy, although an important property of an election scheme, is usually compromised in election protocol design in favor of other (desirable) properties. In this work we introduce a new election paradigm with strong voter privacy as its primary objective. Our paradigm is built around three useful properties of voting schemes we define: (1) Perfect Ballot Secrecy, ensures that knowledge about the partial tally of the ballots of any set of voters is only computable by the coalition of all the remaining voters (this property captures strong voter privacy as understood in real world elections). (2) Self-tallying, suggests that the post-ballot-casting phase is an open procedure that can be performed by any interested (casual) third party. Finally, (3) Dispute-freeness, suggests that disputes between active parties are prevented altogether, which is an important efficient integrity component.},
+  address   = {Berlin, Heidelberg},
+  booktitle = {Public Key Cryptography},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}
