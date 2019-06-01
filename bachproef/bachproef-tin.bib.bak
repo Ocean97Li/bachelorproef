@@ -1,8 +1,9 @@
-% Encoding: windows-1252
+% Encoding: UTF-8
 
 @Article{Wood2017,
   author   = {Wood, Gavin},
   title    = {Ethereum: A Secure Decentralised Generalised Transaction Ledger},
+  journal  = {EIP-150},
   year     = {2017},
   pages    = {13 - 14},
   abstract = {The blockchain paradigm when coupled with cryptographically-secured transactions has demonstrated its utility through a number of projects, not the least being Bitcoin. Each such project can be seen as a simple application on a decentralised, but singleton, compute resource. We can call this paradigm a transactional singleton machine with shared-state.
@@ -15,30 +16,32 @@ Ethereum implements this paradigm in a generalised manner. Furthermore it provid
   journal      = {FC 2017},
   journaltitle = {Financial Cryptography and Data Security},
   year         = {2017},
-  abstract     = {We present the first implementation of a decentralised and self-tallying internet voting protocol with maximum voter privacy using the Blockchain. The Open Vote Network is suitable for boardroom elec- tions and is written as a smart contract for Ethereum. Unlike previously proposed Blockchain e-voting protocols, this is the first implementation that does not rely on any trusted authority to compute the tally or to protect the voterís privacy. Instead, the Open Vote Network is a self- tallying protocol, and each voter is in control of the privacy of their own vote such that it can only be breached by a full collusion involving all other voters. The execution of the protocol is enforced using the consen- sus mechanism that also secures the Ethereum blockchain. We tested the implementation on Ethereumís official test network to demonstrate its feasibility. Also, we provide a financial and computational breakdown of its execution cost.},
+  abstract     = {We present the first implementation of a decentralised and self-tallying internet voting protocol with maximum voter privacy using the Blockchain. The Open Vote Network is suitable for boardroom elec- tions and is written as a smart contract for Ethereum. Unlike previously proposed Blockchain e-voting protocols, this is the first implementation that does not rely on any trusted authority to compute the tally or to protect the voter{\'\i}s privacy. Instead, the Open Vote Network is a self- tallying protocol, and each voter is in control of the privacy of their own vote such that it can only be breached by a full collusion involving all other voters. The execution of the protocol is enforced using the consen- sus mechanism that also secures the Ethereum blockchain. We tested the implementation on Ethereum{\'\i}s official test network to demonstrate its feasibility. Also, we provide a financial and computational breakdown of its execution cost.},
 }
 
 @Book{Swan2015,
-  author    = {Swan, Melanie},
-  title     = {Blockchain},
-  year      = {2015},
-  editor    = {Tim McGovern},
-  subtitle  = {Blue Print For A New Economy},
-  edition   = {1},
-  publisher = {OíReilly Media, Inc.},
-  isbn      = {978-1-491-92049-7},
-  chapter   = {2},
-  pages     = {129},
-  abstract  = {Bitcoin is starting to come into its own as a digital currency, but the blockchain technology behind it could prove to be much more significant. This book takes you beyond the currency (ìBlockchain 1.0î) and smart contracts (ìBlockchain 2.0î) to demonstrate how the blockchain is in position to become the fifth disruptive computing paradigm after mainframes, PCs, the Internet, and mobile/social networking.
-Author Melanie Swan, Founder of the Institute for Blockchain Studies, explains that the blockchain is essentially a public ledger with potential as a worldwide, decentralized record for the registration, inventory, and transfer of all assetsónot just finances, but property and intangible assets such as votes, software, health data, and ideas.},
+  author        = {Swan, Melanie},
+  title         = {Blockchain},
+  year          = {2015},
+  editor        = {Tim McGovern},
+  subtitle      = {Blue Print For A New Economy},
+  edition       = {1},
+  publisher     = {O{\'\i}Reilly Media, Inc.},
+  isbn          = {978-1-491-92049-7},
+  chapter       = {2},
+  pages         = {129},
+  abstract      = {Bitcoin is starting to come into its own as a digital currency, but the blockchain technology behind it could prove to be much more significant. This book takes you beyond the currency (Blockchain 1.0) and smart contracts (Blockchain 2.0) to demonstrate how the blockchain is in position to become the fifth disruptive computing paradigm after mainframes, PCs, the Internet, and mobile/social networking.
+Author Melanie Swan, Founder of the Institute for Blockchain Studies, explains that the blockchain is essentially a public ledger with potential as a worldwide, decentralized record for the registration, inventory, and transfer of all assets{\'o}not just finances, but property and intangible assets such as votes, software, health data, and ideas.},
+  date-modified = {2019-05-28 12:22:37 +0000},
 }
 
-@Article{Maxwell2015,
+@Conference{Maxwell2015,
   author   = {Maxwell, Deborah and Campbell, Dug and Speed, Chris},
   title    = {Effing the Ineffable},
   year     = {2015},
   date     = {2015-07-01},
   subtitle = {Opening up Understandings of the Blockchain},
+  journal  = {British HCI 2015},
 }
 
 @Article{Kaliyamurthie2013,
@@ -59,17 +62,19 @@ Author Melanie Swan, Founder of the Institute for Blockchain Studies, explains t
 }
 
 @Electronic{Dai1998,
-  author = {Dai, W.},
-  title  = {b-money},
-  year   = {1998},
-  url    = {http://www.weidai.com/bmoney.txt},
+  author     = {Dai, W.},
+  title      = {b-money},
+  year       = {1998},
+  url        = {http://www.weidai.com/bmoney.txt},
+  bdsk-url-1 = {http://www.weidai.com/bmoney.txt},
 }
 
 @Electronic{Szabo1996,
-  author = {Szabo, Nick},
-  title  = {Smart Contracts: Building Blocks for Digital Markets},
-  year   = {1996},
-  url    = {http://www.fon.hum.uva.nl/rob/Courses/InformationInSpeech/CDROM/Literature/LOTwinterschool2006/szabo.best.vwh.net/smart_contracts_2.html},
+  author     = {Szabo, Nick},
+  title      = {Smart Contracts: Building Blocks for Digital Markets},
+  year       = {1996},
+  url        = {http://www.fon.hum.uva.nl/rob/Courses/InformationInSpeech/CDROM/Literature/LOTwinterschool2006/szabo.best.vwh.net/smart_contracts_2.html},
+  bdsk-url-1 = {http://www.fon.hum.uva.nl/rob/Courses/InformationInSpeech/CDROM/Literature/LOTwinterschool2006/szabo.best.vwh.net/smart_contracts_2.html},
 }
 
 @Book{Kiayias2002,
@@ -85,17 +90,100 @@ Author Melanie Swan, Founder of the Institute for Blockchain Studies, explains t
   booktitle = {Public Key Cryptography},
 }
 
-@Book{Kiayias2002,
-  author    = {Kiayias, Aggelos and Yung, Moti},
-  title     = {Self-tallying Elections and Perfect Ballot Secrecy},
-  year      = {2002},
-  editor    = {Naccache, David and Paillier, Pascal},
-  publisher = {Springer Berlin Heidelberg},
-  isbn      = {978-3-540-45664-3},
-  pages     = {141 - 158},
-  abstract  = {Strong voter privacy, although an important property of an election scheme, is usually compromised in election protocol design in favor of other (desirable) properties. In this work we introduce a new election paradigm with strong voter privacy as its primary objective. Our paradigm is built around three useful properties of voting schemes we define: (1) Perfect Ballot Secrecy, ensures that knowledge about the partial tally of the ballots of any set of voters is only computable by the coalition of all the remaining voters (this property captures strong voter privacy as understood in real world elections). (2) Self-tallying, suggests that the post-ballot-casting phase is an open procedure that can be performed by any interested (casual) third party. Finally, (3) Dispute-freeness, suggests that disputes between active parties are prevented altogether, which is an important efficient integrity component.},
-  address   = {Berlin, Heidelberg},
-  booktitle = {Public Key Cryptography},
+@Article{Kshetri2018,
+  author   = {Kshetri, Nir and Voas, Jeffrey},
+  title    = {Blockchain-Enabled E-Voting},
+  journal  = {IEEE Software},
+  year     = {2018},
+  volume   = {35},
+  pages    = {95-99},
+  abstract = {Blockchain-enabled e-voting (BEV) could reduce voter fraud and increase voter access. Eligible voters cast a ballot anonymously using a computer or smartphone. BEV uses an encrypted key and tamper-proof personal IDs. This article highlights some BEV implementations and the approach's potential benefits and challenges.},
+}
+
+@Article{Dagher2018,
+  author       = {Dagher,Gaby G. and Marella,Praneeth Babu and Milojkovic,Matea and Mohler,Jordan},
+  title        = {BroncoVote: Secure Voting System using Ethereum's Blockchain},
+  journaltitle = {In Proceedings of the 4th International Conference on Information Systems Security and Privacy},
+  year         = {2018},
+  pages        = {96 - 107},
+  abstract     = {Voting is a fundamental part of democratic systems; it gives individuals in a community the faculty to voice their opinion. In recent years, voter turnout has diminished while concerns regarding integrity, security, and accessibility of current voting systems have escalated. E-voting was introduced to address those concerns; however, it is not cost-effective and still requires full supervision by a central authority. The blockchain is an emerging, decentralized, and distributed technology that promises to enhance different aspects of many indus- tries. Expanding e-voting into blockchain technology could be the solution to alleviate the present concerns in e-voting. In this paper, we propose a blockchain-based voting system, named BroncoVote, that preserves voter privacy and increases accessibility, while keeping the voting system transparent, secure, and cost-effective. BroncoVote implements a university-scaled voting framework that utilizes Ethereum's blockchain and smart contracts to achieve voter administration and auditable voting records. In addition, BroncoVote utilizes a few cryptographic techniques, including homomorphic encryption, to promote voter privacy. Our implementation was deployed on Ethereum's Testnet to demonstrate usability, scalability, and efficiency.},
+}
+
+@TechReport{Norden2015,
+  author      = {Norden,Lawrence and Famighetti,Christopher},
+  title       = {America’s Voting machines at risk},
+  institution = {Brennan Center},
+  year        = {2015},
+  date        = {2015-09-15},
+  pages       = {7 - 39},
+  url         = {https://www.brennancenter.org/publication/americas-voting-machines-risk},
+  abstract    = {In January 2014, the bipartisan Presidential Commission on Election Administration (PCEA) issued a stern warning that should be of grave concern to all Americans: There is an “impending crisis ... from the widespread wearing out of voting machines purchased a decade ago. ... Jurisdictions do not have the money to purchase new machines, and legal and market constraints prevent the development of machines they would want even if they had funds.”4
+This report, nearly two years later, documents in detail the extent of the problem and the steps we must take in the coming years to address it. Over the past 10 months, the Brennan Center surveyed more than 100 specialists familiar with voting technology, including voting machine vendors, independent technology experts, and election officials in all 50 states. In addition, we reviewed scores of public documents to quantify in greater detail the extent of the crisis. We explore the current challenge in three parts: (1) the danger, looking at the age of machines around the country relative to their expected lifespans and the problems that we can expect; (2) the new technologies that can help solve the problem going forward; and (3) recommended solutions to the impending crisis.},
+}
+
+@Electronic{Blenkinsop2018,
+  author     = {Blenkinsop, Connor},
+  title      = {Blockchain's Scaling Problem, Explained},
+  year       = {1998},
+  url        = {https://cointelegraph.com/explained/blockchains-scaling-problem-explained},
+  bdsk-url-1 = {https://cointelegraph.com/explained/blockchains-scaling-problem-explained},
+}
+
+@Article{Adida2008,
+  author       = {Adida, Ben},
+  title        = {Helios: Web-based Open-Audit Voting},
+  journal      = {USENIX Association},
+  journaltitle = {17th USENIX Security Symposium},
+  year         = {2008},
+  url          = {https://www.usenix.org/legacy/events/sec08/tech/full_papers/adida/adida.pdf},
+  abstract     = {Voting with cryptographic auditing, sometimes called open-audit voting, has remained, for the most part, a the- oretical endeavor. In spite of dozens of fascinating pro- tocols and recent ground-breaking advances in the field, there exist only a handful of specialized implementations that few people have experienced directly. As a result, the benefits of cryptographically audited elections have remained elusive.
+We present Helios, the first web-based, open-audit voting system. Helios is publicly accessible today: any- one can create and run an election, and any willing ob- server can audit the entire process. Helios is ideal for on- line software communities, local clubs, student govern- ment, and other environments where trustworthy, secret- ballot elections are required but coercion is not a serious concern. With Helios, we hope to expose many to the power of open-audit elections.},
+}
+
+@Article{Hao2009,
+  author       = {Hao, F. and Ryanand, P.Y.A. and Zielinski, P.},
+  title        = {Anonymous voting by two-round public discussion},
+  journal      = {IET Journals},
+  journaltitle = {IET Information Security},
+  year         = {2009},
+  date         = {2009-04-25},
+}
+
+@Report{Mueller2019,
+  author      = {Mueller, Robert S.},
+  title       = {Report On The Investigation Into Russian Interference In The 2016 Presidential Election},
+  type        = {Investigation Report},
+  institution = {Special Counsel},
+  year        = {2019},
+  titleaddon  = {Pursuant to 28 C.F.R. § 600.8(c)},
+  url         = {https://www.nytimes.com/interactive/2019/04/18/us/politics/mueller-report-document.html},
+}
+
+@Electronic{Maddens2018,
+  author = {Maddens, Bart},
+  editor = {De Tijd},
+  title  = {Weg met de stemcomputer},
+  year   = {2018},
+  date   = {2018-08-28},
+  url    = {https://www.tijd.be/opinie/column/weg-met-de-stemcomputer/10043492.html},
+}
+
+@Electronic{Schellevis2018,
+  author = {Schellevis, Joost},
+  editor = {NOS Nieuws},
+  title  = {Waarom stemmen we in 2030 nog niet elektronisch?},
+  year   = {2018},
+  date   = {2018-07-10},
+  url    = {https://nos.nl/artikel/2240863-waarom-stemmen-we-in-2030-nog-niet-elektronisch.html},
+}
+
+@Article{Osgood2016,
+  author  = {Osgood, Ryan},
+  title   = {The Future of Democracy: Blockchain Voting},
+  journal = {COMP116: Information Security},
+  year    = {2016},
+  date    = {2016-12-14},
+  url     = {http://www.cs.tufts.edu/comp/116/archive/fall2016/rosgood.pdf},
 }
 
 @Comment{jabref-meta: databaseType:biblatex;}
