@@ -3,6 +3,9 @@
 *~
 *.sav
 
+##folders
+node_modules/
+
 ## R
 .RData
 .Rhistory
