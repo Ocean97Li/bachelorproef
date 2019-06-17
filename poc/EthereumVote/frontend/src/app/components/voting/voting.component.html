@@ -1,0 +1,19 @@
+<div class="main">
+  <div class="card">
+    <h1>Does Pineapple go on pizza?</h1>
+    <img src="../assets/art.png" class="center"/>
+    <form [formGroup]="form" (ngSubmit)="vote()">
+        <p>
+          <input id="1" type="radio" formControlName="answer" value="1"/>
+          <label for="1">Yes</label>
+        </p>
+        <p>
+          <input id="2" type="radio" formControlName="answer" value="2"/>
+          <label for="2">No</label>
+        </p>
+        <p class="center">
+          <input type="submit" value="Vote" class="vote-button"/>
+        </p>
+    </form>
+  <div>
+</div>

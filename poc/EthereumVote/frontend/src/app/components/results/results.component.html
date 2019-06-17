@@ -1,0 +1,21 @@
+<div class="main">
+  <div class="card">
+    <h1>Does Pineapple go on pizza?</h1>
+    <img src="../assets/art.png" class="center"/>
+    <form>
+        <h1>Results:</h1>
+        <div class="yes" [ngStyle]="{width: percentage('Yes')}">
+            Yes
+        </div>
+        <div class="info">
+          {{percentage('Yes')}} ({{votes ? votes.get('Yes') : 0}} votes)
+        </div>
+        <div class="no" [ngStyle]="{width: percentage('No')}">
+          No
+        </div>
+        <div class="info">
+          {{percentage('No')}} ({{votes ? votes.get('No'): 0}} votes)
+        </div>
+    </form>
+  <div>
+</div>

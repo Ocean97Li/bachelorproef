@@ -1,8 +1,43 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Rajdhani&display=swap');
+
 html {
     height: 100%;
+    font-family: 'Rajdhani', sans-serif;
     body {
         margin: 0px;
         height: 100%;
     }
+}
+
+.main {
+    height: 100%;
+    background: linear-gradient(to bottom right, #e8f0f1, #3182a9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-family: Montserrat;
+    text-align: center;
+    font-size: 18px;
+    color: #788c8a;
+}
+
+form {
+    margin: 0 50px;
+    display: flex;
+    flex-direction: column;
+    border-top: 2px solid #80808029;
+    .info {
+        margin-top: 5px;
+        margin-bottom: 15px;
+    }
+}
+
+img {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 15px;
 }

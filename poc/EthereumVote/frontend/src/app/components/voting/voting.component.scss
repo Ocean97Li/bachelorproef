@@ -1,0 +1,33 @@
+label {
+    margin-left: 15px;
+}
+
+.card {
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.74);
+    padding: 15px;
+    width: 80%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.center {
+   align-self: center;
+}
+.vote-button {
+    text-transform: uppercase;
+    font-family: monospace;
+    font-size: 15px;
+    padding: 1em;
+    width: 100px;
+    border-radius: 3em;
+    background-color: rgb(28, 79, 138);
+    border-color: rgb(28, 79, 138);
+    outline: none;
+    color: white;
+    &:hover {
+        background-color: rgb(21, 60, 105);
+        border-color: rgb(21, 60, 105);
+    }
+}

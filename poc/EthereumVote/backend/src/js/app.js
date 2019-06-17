@@ -11,6 +11,7 @@ App = {
     if (typeof web3 !== 'undefined') {
       // If a web3 instance is already provided by Meta Mask.
       App.web3Provider = web3.currentProvider;
+      // Necessary for Google Chrome
       ethereum.enable();
       web3 = new Web3(web3.currentProvider);
     } else {
@@ -52,13 +53,15 @@ App = {
     // Load contract data
     App.contracts.Election.deployed().then(function(instance) {
       electionInstance = instance;
+      console.log(instance);
       return electionInstance.candidatesCounter();
     }).then(function(candidatesCounter) {
       var candidatesResults = $("#candidatesResults");
       candidatesResults.empty();
-
+      console.log(candidatesCounter.toNumber())
       for (var i = 1; i <= candidatesCounter; i++) {
         electionInstance.candidates(i).then(function(candidate) {
+          console.log(candidate);
           var id = candidate[0];
           var name = candidate[1];
           var voteCount = candidate[2];

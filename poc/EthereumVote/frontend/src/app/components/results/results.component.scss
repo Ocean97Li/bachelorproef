@@ -1,0 +1,35 @@
+label {
+    margin-left: 15px;
+}
+
+.card {
+    border-radius: 30px;
+    background-color: rgba(255, 255, 255, 0.74);
+    padding: 15px;
+    width: 80%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.center {
+   align-self: center;
+}
+
+.yes {
+    color: white;
+    background-color: #2196F3;
+    padding: 15px;
+    border-radius: 20px 20px 20px 0;
+    background: linear-gradient(to bottom right, #2196F3, rgb(0, 90, 163));
+    min-width: 4%;
+}
+
+.no {
+    color: white;
+    background-color: #f44336d4;
+    padding: 15px;
+    border-radius: 20px 20px 20px 0;
+    background: linear-gradient(to bottom right, #F44336, #f443366e);
+    min-width: 4%;
+}

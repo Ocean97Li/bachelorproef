@@ -10,7 +10,7 @@ contract Election {
     //Fetch the candidates
     mapping(uint => Candidate) public candidates;
     // Store accounts that have voted
-    mapping(address => bool) public voters;
+    mapping(address => bool) private voters;
     // Read candidate
     uint public candidatesCounter;
     // Constructor
@@ -25,12 +25,16 @@ contract Election {
     }
 
     function vote(uint _candidateId) public {
-        if(!voters[msg.sender]) {
+        if(!hasVoted()) {
             // Record voter has voted
             voters[msg.sender] = true;
             // Update candidate vote count
             candidates[_candidateId].votes++;
         }
+    }
+
+    function hasVoted() public view returns (bool ok) {
+        return voters[msg.sender];
     }
 }
   
