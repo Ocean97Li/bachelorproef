@@ -1,6 +1,5 @@
 import { Injectable, OnInit } from '@angular/core';
 import { Subject, Observable, timer } from 'rxjs';
-import { switchMap, takeUntil, catchError, tap } from 'rxjs/operators';
 
 import * as TruffleContract from 'truffle-contract';
 
@@ -57,6 +56,28 @@ export class EthereumConnectorService {
     });
   }
 
+  public getVotingKey() {
+    const that = this;
+    const contract = TruffleContract(tokenAbi);
+    contract.setProvider(that.web3Provider);
+    return new Promise((resolve, reject) => {
+        return contract.deployed().then((instance) => {
+          this.electionInstance = instance;
+          return this.getAccountInfo();
+        }).then(() => {
+          return this.electionInstance.generateRandom({from: this.account});
+        }).then((random) => {
+          console.log(random);
+        }).then(() => {
+          resolve();
+        }).catch((error) => {
+          reject(error);
+        });
+    }).catch((error) => {
+      console.log(error);
+    });
+  }
+
   findEachCandidateVotes() {
     return new Promise((resolve, reject) => {
       const promises = [];
@@ -86,7 +107,8 @@ export class EthereumConnectorService {
   }
 
   vote(candidate: string) {
-    this.notVotedYet().then(() => {
+    this.getVotingKey();
+    this.checkVotedYet().then(() => {
       if (!this.voted) {
         const that = this;
         const contract = TruffleContract(tokenAbi);
@@ -106,16 +128,22 @@ export class EthereumConnectorService {
     });
   }
 
-  public notVotedYet() {
+  public checkVotedYet() {
     const that = this;
     const contract = TruffleContract(tokenAbi);
     contract.setProvider(that.web3Provider);
-    return contract.deployed().then((instance) => {
-      this.electionInstance = instance;
-      return this.electionInstance.hasVoted({from: this.account});
-    }).then((voted) => {
-      this.voted = voted;
-      this.voted$.next(this.voted);
+    return new Promise( (resolve, reject) => {
+      return contract.deployed().then((instance) => {
+        this.electionInstance = instance;
+        return this.electionInstance.hasVoted({from: this.account});
+      }).then((voted) => {
+        this.voted = voted;
+        this.voted$.next(this.voted);
+      }).then(() => {
+        resolve();
+      }).catch(() => {
+        reject();
+      });
     });
   }
 

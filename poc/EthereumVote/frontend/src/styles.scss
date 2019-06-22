@@ -4,6 +4,7 @@
 html {
     height: 100%;
     font-family: 'Rajdhani', sans-serif;
+    background: linear-gradient(to bottom right, #0c0c0c, #3182a9);
     body {
         margin: 0px;
         height: 100%;
@@ -12,7 +13,6 @@ html {
 
 .main {
     height: 100%;
-    background: linear-gradient(to bottom right, #e8f0f1, #3182a9);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,7 +22,7 @@ h1 {
     font-family: Montserrat;
     text-align: center;
     font-size: 18px;
-    color: #788c8a;
+    color: #3a4c54;;
 }
 
 form {

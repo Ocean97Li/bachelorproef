@@ -1,21 +1,37 @@
 <div class="main">
   <div class="card">
     <h1>Does Pineapple go on pizza?</h1>
-    <img src="../assets/art.png" class="center"/>
+    <!-- <img src="../assets/art.png" class="center"/> -->
     <form>
         <h1>Results:</h1>
-        <div class="yes" [ngStyle]="{width: percentage('Yes')}">
-            Yes
-        </div>
-        <div class="info">
-          {{percentage('Yes')}} ({{votes ? votes.get('Yes') : 0}} votes)
-        </div>
-        <div class="no" [ngStyle]="{width: percentage('No')}">
-          No
-        </div>
-        <div class="info">
-          {{percentage('No')}} ({{votes ? votes.get('No'): 0}} votes)
-        </div>
+        {{votes && totalVotes>0}}
+        <ng-container *ngIf="votes && totalVotes>0; else noVotesYet;">
+          <div class="votes">
+            <div class="yes transistion" [ngStyle]="{width: 'calc('+percentage('Yes')+' - 30px)'}">
+              Yes
+            </div>
+            <i class="percentage">
+                {{percentage('Yes')}}
+            </i>
+          </div>
+          <div class="votes">
+            <div class="no transistion" [ngStyle]="{width: 'calc('+percentage('No')+' - 30px)'}">
+              No
+            </div>
+            <i class="percentage">
+                {{percentage('No')}}
+            </i>
+          </div>
+          <div class="center">{{totalVotes}} votes</div>
+        </ng-container>
+        <ng-template #noVotesYet>
+          <ng-container *ngIf="votes; else fetchingVotes">
+              <p class="center"> No votes yet.</p>
+          </ng-container>
+          <ng-template #fetchingVotes>
+              <p class="center">Fetching votes...</p>
+          </ng-template>
+        </ng-template>
     </form>
   <div>
 </div>

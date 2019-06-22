@@ -9,12 +9,13 @@ import { EthereumConnectorService } from 'src/services/ethereum-connector.servic
 export class ResultsComponent implements OnInit {
 
   @Input() votes: Map<string, number>;
+  totalVotes = 0;
 
   percentage(voteId): string {
     if (this.votes) {
       const votes = this.votes.get(voteId);
-      const totalVotes = Array.from(this.votes.values()).reduce((sum, current) => sum + current);
-      return totalVotes !== 0 ? `${Math.round((votes / totalVotes) * 100)}%` : '...';
+      this.totalVotes = Array.from(this.votes.values()).reduce((sum, current) => sum + current);
+      return this.totalVotes !== 0 ? `${Math.round((votes / this.totalVotes) * 100)}%` : '...';
     }
   }
 

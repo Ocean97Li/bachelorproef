@@ -16,20 +16,36 @@ label {
    align-self: center;
 }
 
-.yes {
-    color: white;
-    background-color: #2196F3;
-    padding: 15px;
-    border-radius: 20px 20px 20px 0;
-    background: linear-gradient(to bottom right, #2196F3, rgb(0, 90, 163));
-    min-width: 4%;
+.votes {
+    display: flex;
+    margin-bottom: 15px;
+
+    .transistion {
+        transition: width 1s ease-in;
+    }
+
+    .percentage {
+        padding: 15px;
+        font-style: normal;
+    }
+    
+    .yes {
+        color: white;
+        background-color: #2196F3;
+        padding: 15px;
+        border-radius: 20px 20px 20px 0;
+        background: linear-gradient(to bottom right, #2196F3, rgb(0, 90, 163));
+        min-width: 4%;
+    }
+    
+    .no {
+        color: white;
+        background-color: #f44336d4;
+        padding: 15px;
+        border-radius: 20px 20px 20px 0;
+        background: linear-gradient(to bottom right, #F44336, #f443366e);
+        min-width: 4%;
+    }
+
 }
 
-.no {
-    color: white;
-    background-color: #f44336d4;
-    padding: 15px;
-    border-radius: 20px 20px 20px 0;
-    background: linear-gradient(to bottom right, #F44336, #f443366e);
-    min-width: 4%;
-}

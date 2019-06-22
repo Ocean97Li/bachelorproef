@@ -8,10 +8,12 @@ import { EthereumConnectorService } from 'src/services/ethereum-connector.servic
   templateUrl: './voting.component.html',
   styleUrls: ['./voting.component.scss']
 })
-export class VotingComponent {
+export class VotingComponent implements OnInit {
   form = new FormGroup({
     answer : new FormControl('')
   }, [Validators.required]);
+
+  voted = false;
 
   constructor(
     private router: Router,
@@ -23,8 +25,24 @@ export class VotingComponent {
   }
 
   public vote() {
-    console.log(1);
-    this.connector.vote(this.form.get('answer').value);
-    this.toResults();
+    this.connector.checkVotedYet().then( () => {
+      if (!this.voted) {
+        this.connector.vote(this.form.get('answer').value);
+        this.toResults();
+      } else {
+        window.alert('It seems that you have already voted.');
+        this.toResults();
+      }
+    });
+  }
+
+  public key() {
+    this.connector.getVotingKey();
+  }
+
+  ngOnInit(): void {
+    this.connector.voted$.subscribe((voted: boolean) => {
+      this.voted = voted;
+    });
   }
 }
