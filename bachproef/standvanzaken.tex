@@ -1,20 +1,20 @@
 \chapter{Stand van zaken}
 \label{ch:stand-van-zaken}
+In dit hoofdstuk wordt een literatuur studie gevoerd naar blockchain gebaseerde stemsystemen en hun potentieel. Daar dit een vrij complex onderwerp is, wordt dit hoofdstuk onderverdeeld in drie logische segmenten.
 
-% Tip: Begin elk hoofdstuk met een paragraaf inleiding die beschrijft hoe
-% dit hoofdstuk past binnen het geheel van de bachelorproef. Geef in het
-% bijzonder aan wat de link is met het vorige en volgende hoofdstuk.
+ Deel 1 vormt een inleiding tot de blockchain technologie: Door het bespreken van fundamentele concepten en filosofie van maakt de  lezer kennis  met de
+ blockchain als technologie. Dit alles wordt gedaan aan de hand \textcite{Nakamoto2008}, de grondlegger van blockchain als technologie.  De concepten die aan bod komen zijn al wat gedateerd, toch zijn ze -op een conceptueel niveau- noodzakelijk voor ieder die deze technologie wenst aan te wenden.
 
-% Pas na deze inleidende paragraaf komt de eerste sectiehoofding.
+In deel 2 worden het Ethereum platform en smart-contracts besproken. Waar deel 1 over de Bitcoin-blockchain handelt, bespreekt deel 2  Ethereum. De lezer krijgt op die manier een inleiding in wat momenteel 's werelds populairste blockchain-netwerk is. De focus ligt echter niet op Ethereum omdat het één van de grootste of de populairste onder de blockchains is, maar omdat het één van de meest vooruitstrevende is, vooral op het vlak van \textit{smart-contracts}. Het begrijpen van de werking en het potentieel van deze `contracten' zal ontzettend van pas komen tijdens de implementatie van een blockchain gebaseerd stemsysteem, in het volgende hoofdstuk.
 
-TO DO
+In deel 3 wordt tot slot blockchain gebaseerd stemmen besproken. Na algemene kennis over blockchain concepten en specifieke kennis over de werking van Ethereum en smart-contracts, krijgt de lezer nu ook een inzicht in de mogelijkheden van de technologie. Dit finale deel van de literatuurstudie behandelt blockchain gebaseerd stemmen volledig: van noodzaak tot verschillende implementaties, tot de achterliggende cryptografie die nodig is om zelf een implementatie te schrijven. In dit deel komen ook de voor- en nadelen van blockchain gebaseerd stemmen aan bod.
 
 \newpage
 \section{Blockchain}
 	\subsection*{Inleiding}
 	In het eerste deel van dit hoofdstuk wordt de blockchain-technologie in haar basisvorm besproken. We beginnen met het introduceren  van  de verschillende concepten en principes waarop blockchain gebouwd is.  We doen dit door het bespreken van hetgeen \textcite{Swan2015} blockchain 1.0 noemt, ofwel de Bitcoin blockchain. In het paper Bitcoin: A Peer-to-Peer Electronic Cash System beschrijft de auteur, onder het pseudoniem Satoshi Nakamoto een monetair systeem dat niet verbonden is aan een bank of  andere financiële institutie. Satoshi Nakamoto is de oorspronkelijke ontwerper van de Bitcoin en richtte de eerste blockchain-database op. Tot op vandaag blijft de ware identiteit van deze persoon (of entiteit) een mysterie. Het paper werd gepubliceerd op 31 oktober 2008 en wordt vandaag gezien als het blockchain white paper,  de structuur die in \textcite{Nakamoto2008} beschreven wordt vormde de basis voor het wat men vandaag blockchain noemt.
 	\subsection{Noodzaak}
-			\subsubsection{Vertrouwen in de plaat van bewijs}
+			\subsubsection{Vertrouwen in de plaats van bewijs}
 			\textcite{Nakamoto2008} start met de vaststelling dat het verkopen van waren en diensten op het internet zo goed als volledig afhankelijk is van grote financiële instituties die optreden als derde partij voor het verwerken van elektronische transacties. 
 		
 			Hoewel ons huidige betaalmodel naar behoren werkt voor de meeste transacties, kent het volgens de auteur van het paper, toch een inherent zwaktepunt: het is namelijk een systeem gebaseerd op vertrouwen en niet op bewijs.
@@ -60,7 +60,7 @@ TO DO
 		
 			Double-spending vormt een dusdanig groot probleem dat het de ontwikkeling van elektronisch geld zonder een vertrouwde autoriteit of een centrale server lange tijd onmogelijk werd geacht. In de volgende secties wordt de oplossing van \textcite{Nakamoto2008} voor het probleem besproken. 
 			
-			\subsubsection{Het Byzantijnse Generaalsprobleem}
+			\subsubsection{Het Byzantijnse generaalsprobleem}
 			Het double-spending probleem is een probleem dat specifiek is voor digitale valuta. Het Byzantijnse Generaalsprobleem, is een gelijkaardig probleem, alleen is het van toepassing op een iets bredere context. Het byzantijnse vraagstuk omschrijft eigenlijk het achterliggende probleem bij double-spending: de vraag hoe men vertrouwen achterwege laat in een systeem zonder centrale autoriteit.
 			
 			Het probleem luidt als volgt: generaals van Byzantium moeten hun troepen coördineren voor een aanval, en dit op basis van berichten die ze elkaar versturen. De aanval moet met meer dan de helft van het totaal aantal troepen worden uitgevoerd op een exact moment, anders zal ze falen. Het is echter mogelijk dat een of meerdere generaals verraders zijn, die de aanval willen dwarsbomen. De identiteit van deze generaals kan niet achterhaald worden. De probleemstelling is dus hoe de generaals die te goeder trouw zijn toch hun troepen kunnen coördineren tot een aanval, vrij en open met elkaar communicerend, zonder dat een verrader hun plannen kan dwarsbomen door valse berichten te versturen. Het Byzantijnse Generaals probleem wordt geillustreerd door figuur \ref{fig:byzantium}
@@ -80,7 +80,7 @@ TO DO
 			
 	Om de chronologische orde van een transactie te kunnen bepalen, is er kennis nodig van alle transacties. De enige manier om dit zonder vertrouwde partij te doen is door alle transacties publiek aan te kondigen. Vervolgens is er een mechanisme nodig waarbij alle participanten van het systeem (alle computers binnen het netwerk), hierna nodes genoemd, gezamenlijk kunnen beslissen over de exacte volgorde waarin transacties gebeurden. \textcite{Nakamoto2008} stelt voor om het probleem op te lossen startend vanuit een timestamp server. 
 			
-	\subsection{Timestamp Server}
+	\subsection{Timestamp server}
 	Een digital timestamp is een digitaal certificaat dat verzekerd dat een digitaal document op een bepaald ogenblik bestond. Er zijn meerdere, zeer specifieke technieken om betrouwbare digitale timestamps te kunnen produceren. In het algemeen zijn deze technieken onder te verdelen in twee grote categorieën: degene die gebaseerd zijn op een vertrouwde derde partij en degene die gebaseerd zijn op gedistribueerd vertrouwen. (BRON: https://nakamotoinstitute.org/static/docs/secure-timestamping-service.pdf )
 	
 	In dit geval wordt door de auteur er door \textcite{Nakamoto2008} gekozen voor de gedistribueerde techniek. In de volgende subsectie wordt een methode besproken om niet langer op basis van vertrouwen te werken.
@@ -99,7 +99,7 @@ TO DO
 	
 	Een blockchain kan als veilig beschouw worden zolang minstens 50\% van de rekenkracht van het netwerk niet gecomprimeerd is, en het merendeel van de bewijzen dus steeds de waarheid representeert. In praktijk betekent dit een systeem dat nagenoeg oncomprimeerbaar is. In het geval van het hedendaagse Bitcoin netwerk spreekt men bijvoorbeeld van een netwerk met rond de 10.000 nodes (LaTex Bron Vermelden). Om succesvol te frauderen zouden aanvallers van het Bitcoin netwerk maar liefst de helft van al deze computers, verspreid over heel de wereld moeten controleren. 
 			
-	\subsection{Proof-of-Work}
+	\subsection{Proof-of-work}
 	\label{subsec:pow}
 	Om een gedistribueerde timestamp server op peer-to-peer basis te laten werken is er een extra veiligheidsmechanisme nodig dat het berekenen van hashes opzettelijk moeilijker maakt zodat het langer duurt om een blok toe te voegen. 
 	
@@ -145,7 +145,7 @@ TO DO
 		
 		
 		
-	\subsection{Disk Space}
+	\subsection{Disk space}
 		\subsubsection{Hash-boom}
 		\textcite{Nakamoto2008} stelt  een manier voor waarop data van oude transacties kan verwijderd worden om opslag ruimte te besparen. Om een dergelijke actie mogelijk te maken, zonder dat de hash corrumpeert, worden transacties binnen ieder blok in een structuur opgeslagen die men een hash-boom noemt. Zo’n structuur stelt instaat om de onderliggende transactie data te verwijderen maar de hashes te behouden.
 		
@@ -157,7 +157,7 @@ TO DO
 			\label{fig:moore}
 		\end{figure}
 		
-		\subsection{Simpelere Verificatie van Betaling}
+		\subsection{Simpelere verificatie van betaling}
 		Volgens \textcite{Nakamoto2008} is het mogelijk om betalingen te verifiëren zonder de hulp van een volledige netwerk-node, die iedere blok ooit gecreëerd kent. Om een transactie te verifiëren moet een gebruiker enkel een kopie hebben van de headers van alle blokken uit de langste keten. Deze kunnen alleen verkregen worden door de netwerk-nodes te bevragen en op een gegeven te beslissen dat men de langste keten gevonden heeft, en vervolgens van deze keten de tak van de hash-boom die de transactie aan het blok linkt te nemen.
 	
 		Met deze hash-tak kan de gebruiker wel is waar niet de transactie zelf controleren, maar er kan aan de hand van de positie van de hash van de transactie wel gecontroleerd worden of de transactie al geaccepteerd is door de node en het netwerk.
@@ -173,32 +173,33 @@ TO DO
 	In het model dat we vanaf nu de blockchain zullen noemen, is deze methode onmogelijk door de noodzaak tot het publiek aankondigen van transacties over het hele netwerk.  \textcite{Nakamoto2008} stelt echter dat privacy wel enigszins kan behouden worden door informatie op een ander plaats te beperken. Men stelt voor om de publieke sleutels, die bitcoin-portefeuilles identificeren anoniem te houden, en er dus geen naam aan te koppelen. Op deze manier mag iedereen dan wel kunnen zien welke transacties er plaats vinden, maar door de anonimiteit van zender en ontvanger wordt privacy grotendeels gegarandeerd.
 	
 	Om de privacy nog te verbeteren zou men ook kunnen opteren voor een systeem waarin iedere gebruiker per transactie een nieuwe sleutel krijgt die uniek identificerend is. Voor transacties met meerdere inputs is er echter geen manier om te verbergen dat de inputs van een eigenaar afkomstig zijn.
-	\subsection{Nakamoto’s Conclusie}
+	\subsection{Nakamoto’s conclusie}
 	In het paper presenteert men een nieuw systeem voor elektronische transacties. Men start vanuit munten die opgemaakt zijn uit digitale ondertekeningen. Vervolgens lost men het double-spending probleem op. Om dit te doen wordt er een peer-to-peer netwerk voorgesteld dat gebruik maakt van zogenaamde proof-of-work om de historiek van gemaakte transacties op te slaan. 
 	
 	De implementatie van dit alles is een aard die het computationeel onpraktisch maakt om het systeem aan te vallen voor frauduleuze doeleinden. Het beslaat immers een robuust netwerk met weinig tot geen complexe structuur, maar waar door anonimiteit de privacy grotendeels gerespecteerd blijft. 
 	
 	Nodes binnen het netwerk werken allemaal tegelijk, doch zonder enige coördinatie of afhankelijkheid. Ze kunnen het netwerk verlaten en zich naar believen weer vervoegen. Nodes die zijn weggeweest moet enkel de volgende proof-of-wok accepteren om weer helemaal mee te zijn met alles wat er gebeurd is. 
 	
-	Er wordt gestemd op basis CPU-kracht: accepteren van blok gebeurt door aan de proof-of-work te beginnen werken, afwijzen van een blok gebeurt door dit te weigeren. Op basis van dit consensus mechanisme kunnen extra regels afhankelijk voor een der welke usecase worden toegevoegd ~\autocite{Nakamoto2008}. 
+	Er wordt gestemd op basis CPU-kracht: accepteren van blok gebeurt door aan de proof-of-work te beginnen werken, afwijzen van een blok gebeurt door dit te weigeren. Op basis van dit consensus mechanisme kunnen extra regels afhankelijk voor een der welke use-case worden toegevoegd ~\autocite{Nakamoto2008}. 
 	\newpage
 \section{Ethereum en smart contracts}
 \label{sec:ethereum-en-smart-contracts}
 	\subsection*{Inleiding}
-		In het tweede deel van dit hoofdstuk wordt een beeld geschetst van wat \textcite{Swan2015} blockchain 2.0 noemt, ofwel 'Blockchain voorbij Bitcoin'. De concepten die in het vorige hoofdstuk werden besproken vormen de basis van de blockchain technologie. De Bitcoin blockchain staat intussen echter al weer een stuk verder en de Bitcoin is ook bijlange na niet meer de enige cryptomunt. De Bitcoin blockchain is dus bijlange niet meer de enige blockchain. Concreet wordt er in dit hoofdstuk dieper ingegaan op het concept  smart contracts, vervolgens wordt er ook een overzicht gegeven van Ethereum. Dit alles wordt uitgebreid besproken omdat het van belang zal worden eenmaal we blokchain stemsystemen (zie \ref{sec:blockchain-gebaseerd-stemmen}) bespreken.
+		In het tweede deel van dit hoofdstuk wordt een beeld geschetst van wat \textcite{Swan2015} blockchain 2.0 noemt, ofwel 'Blockchain voorbij Bitcoin'. De concepten die in het vorige hoofdstuk werden besproken vormen de basis van de blockchain technologie. De Bitcoin blockchain staat intussen echter al weer een stuk verder en de Bitcoin is ook bijlange na niet meer de enige cryptomunt. De Bitcoin blockchain is nu dus ook verre van de enige blockchain. Concreet wordt er in dit hoofdstuk dieper ingegaan op het concept  smart contracts, vervolgens wordt er ook een overzicht gegeven van Ethereum. Dit alles wordt uitgebreid besproken omdat het van belang zal worden eenmaal we blokchain stemsystemen (zie \ref{sec:blockchain-gebaseerd-stemmen}) bespreken. \autocite{Buterin2014}
 	\subsection{Noodzaak}
 		\subsubsection{Wat  zijn smart contracts?}
 			Smart contracts zijn een concept dat de blockchain-technologie een stap verder neemt. In \textcite{Swan2015} worden ze omschreven als gedecentraliseerde contracten die niet langer een autoriteit (zoals een rechtbank) nodig hebben. Het zijn in feite digitale contractprogramma’s die zichzelf kunnen valideren en uitvoeren wanneer aan bepaalden voorwaarden is voldaan. Ook hier bestaat het concept sinds de jaren negentig ~\autocite{Szabo1996}. Bij het lezen van \textcite{Nakamoto2008} is het duidelijk dat er vanaf het prille begin van de bitcoin een visie was om een dergelijke systeem te implementeren. Blockchain-technologie staat immers niet alleen toe om data op te slaan, ook programma’s kunnen in de blockchain worden opgeslagen. Smart contracts vormen de basis van de nieuwe Blockchain 2.0 van vandaag, zowat iedere grote blockchain-speler probeert ze te implementeren~\autocite{Swan2015}.
 		\subsubsection{Wat is Ethereum?}
-			Ethereum (figuur \ref{fig:ethereum}) is een opensource-platform dat werd opgericht in 2015. Net zoals bitcoin maakt het gebruik van een gedecentraliseerd netwerk, gebaseerd op het oorspronkelijke blockchain- concept. Het valideren van informatie gebeurt ook hier door zogenaamde miners, het verschil met bitcoin is dat de miners worden beloond met de munteenheid ether in plaats van bitcoin. Ethereum kan men niet zien als een zuivere variant op de bitcoin of een andere vorm van cryptogeld, het is veel meer dan dat. Om te beginnen maken smart contracts  een groot deel uit van het Ethereum ontwerp . \textcite{Swan2015} omschrijft Ethereum als een ”Turing-Complete Virtual Machine”, die zowel een platform als een programmeertaal biedt voor het ontwikkelen en publiceren van gedistribueerde applicaties. Turingcompleetheid betekent in deze context dat het over een platform gaat dat het vermogen heeft om eender welke digitale munt, protocol of blockchain te ondersteunen, iets wat bij de Bitcoin blockchain niet het geval is \autocite{Swan2015}. Ethereum is momenteel (1 april 2019) de tweede grootste cryptomunt na de Bitcoin\footnote{zie https://coinmarketcap.com/all/views/all/}. 
+			Ethereum (figuur \ref{fig:ethereum}) is een opensource-platform dat werd opgericht in 2015. Net zoals bitcoin maakt het gebruik van een gedecentraliseerd netwerk, gebaseerd op het oorspronkelijke blockchain- concept. Het valideren van informatie gebeurt ook hier door zogenaamde miners, het verschil met bitcoin is dat de miners worden beloond met de munteenheid ether in plaats van bitcoin. Ethereum kan men niet zien als een zuivere variant op de bitcoin of een andere vorm van cryptogeld, het is veel meer dan dat. Om te beginnen maken smart contracts  een groot deel uit van het Ethereum ontwerp. \textcite{Swan2015} omschrijft Ethereum als een ”Turing-Cmplete Virtual Machine”, die zowel een platform als een programmeertaal genaamd \textit{Solidity} biedt voor het ontwikkelen en publiceren van gedistribueerde applicaties. Turingcompleetheid betekent in deze context dat het over een platform gaat dat het vermogen heeft om eender welke digitale munt, protocol of blockchain te ondersteunen, iets wat bij de Bitcoin blockchain niet het geval is \autocite{Swan2015}. Ethereum is momenteel (1 april 2019) de tweede grootste cryptomunt na de Bitcoin\footnote{zie https://coinmarketcap.com/all/views/all/}. 
 			
 			\begin{figure}
-				\includegraphics[width=\linewidth]{img/ethereum.png}
+				\centering
+				\includegraphics[width=\linewidth/2]{img/ethereum.png}
 				\caption{Het Ethereum logo}
 				\label{fig:ethereum}
 			\end{figure}
 			
-			Ethereum is ontworpen met de volgende filosofie in gedachten (Ethereum Wiki)\footnote{zie https://github.com/ethereum/wiki/wiki/White-Paper\#ethereum}:
+			Ethereum is ontworpen met de volgende filosofie in gedachten ~\autocite{Buterin2014}\footnote{zie https://github.com/ethereum/wiki/wiki/White-Paper\#ethereum}:
 			\begin{itemize}
 				\setlength\itemsep{1em}
 				\item \textbf{Simpliciteit}: 
@@ -212,31 +213,52 @@ TO DO
 				Tot slot zou Ethereum niet mogen aansturen op een bepaalde vorm van gebruik. De regulerende mechanismen in het protocol moeten op zodanig wijze ontwikkelt zijn dat ze alleen schade zelf tegenhouden en niet specifieke ongewenste applicaties. Het voorbeeld van een oneindige lus wordt hier gegeven. Een applicatie die zo'n lus bevat is  ongewenst omdat ze middelen van het netwerk in beslag zal nemen en zo de verwerking van informatie zal vertragen. Toch wordt een degelijke applicatie niet verboden door Ethereum. Het regulerende mechanisme dat een transactiekost per computationele stap garandeert zorgt er immers voor dat een oneindige lus uitvoeren bijzonder nadelig wordt.
 			\end{itemize}
 	\subsection{Werking van Ethereum}
-		De werking van het Ethereum-netwerk volgt op een hoog conceptueel niveau dezelfde lijnen als de eerder omschreven Bitcoin Blockchain~\autocite{Wood2017}. In dit segment wordt daarom vooral de foucs gelegd op de verschillen met Bitcoin. 
-		
-		In tegenstelling tot de (relatief) eenvoudige bitcoin-transacties, bevatten de blokken die door het Ethereum netwerk wordt opgeslagen iets wat men zou kunnen omschrijven als een toestandsmachine, bestaande uit een lijst van allerhande transacties. Waar de Bitcoin blockchain voornamelijk ontworpen is om fiscale transacties mogelijk te maken, is de Ethereum blockchain meer general-purpose~\autocite{McCorry2017}. Om misbruik en spamming van transacties tegen te gaan en spoedige verwerking te stimuleren is er aan iedere transactie een kleine kostprijs verbonden. Transactie en uitvoerings kosten worden \textit{gas} genoemd en betaald in ether, het cryptogeld van Ethereum. De naam gas is toepasselijk omdat men ether omschrijft als de brandstof waarop het Ethereum netwerk draait (Ethereum Wiki)\footnote{zie https://github.com/ethereum/wiki/wiki/White-Paper\#messages-and-transactions}.
-		
+		De werking van het Ethereum-netwerk volgt op een conceptueel niveau dezelfde lijnen als de eerder omschreven Bitcoin Blockchain~\autocite{Wood2017}. In dit segment wordt daarom vooral de foucs gelegd op de verschillen met Bitcoin. 
+		\subsubsection{Algemene verschillen tussen Bitcoin en Ethereum}
+			In tegenstelling tot de (relatief) eenvoudige bitcoin-transacties, bevatten de blokken die door het Ethereum netwerk wordt opgeslagen iets wat men zou kunnen omschrijven als een toestandsmachine, bestaande uit een lijst van allerhande transacties. Waar de Bitcoin blockchain in hoofdzaak ontworpen is om fiscale transacties mogelijk te maken, is de Ethereum blockchain veel meer general-purpose~\autocite{McCorry2017}. Om misbruik en spamming tegen te gaan en spoedige verwerking van transacties door nodes te stimuleren is er aan iedere transactie een kleine kostprijs verbonden. Transactie- en uitvoerings kosten worden \textit{gas} genoemd en betaald in ether, het cryptogeld van Ethereum. De naam gas is toepasselijk omdat men ether omschrijft als de brandstof waarop het Ethereum netwerk draait ~\autocite{Buterin2014}\footnote{zie https://github.com/ethereum/wiki/wiki/White-Paper\#messages-and-transactions}.
+		\subsubsection{Ethereum accounts}
 		Binnen Ethereum is er sprake van twee soorten accounts: 
 		\begin{itemize}
-			\item Accounts van externe gebruikers, bestaande uit een publieke en private sleutel, dewelke een gebruiker in zijn bezit heeft.
-			\item Contract accounts, smart-contract dewelke bestaan uit code die enkel wordt uitgevoerd bij interactie met gebruikers.
+			\item \textbf{Accounts} van externe gebruikers, bestaande uit een publieke en private sleutel, dewelke een gebruiker in zijn bezit heeft.
+			\item \textbf{Contract accounts}, smart-contract dewelke bestaan uit code die enkel wordt uitgevoerd bij interactie met gebruikers.
 		\end{itemize}	
-		Zowel gebruikers als smart-contracts kunnen ether bewaren ~\autocite{McCorry2017}. 
-		
-		Naast beide accounttypes zijn ook transacties van significant belang voor de werking van Ethereum. De Ethereum blockchain kan gezien worden als een geordende transactie-staat machine~\autocite{McCorry2017}. Net als bij Bitcoin zijn het  de transacties die  de core van het systeem vormen. Ethereum's transacties worden in een blockchain structuur opgeslagen, wat de volledige historiek van transacties oplevert, die  op haar beurt de huidige staat van het netwerk weergeeft.
-		
-		Een Ethereum-transactie bestaat uit de volgende velden (Ethereum Wiki):
+		Zowel gebruikers als smart-contracts kunnen ether bewaren. ~\autocite{McCorry2017}
+		\subsubsection{Ethereum transacties}
+			Naast beide accounttypes zijn ook transacties van significant belang voor de werking van Ethereum. De Ethereum blockchain kan gezien worden als een geordende transactie-staat machine~\autocite{McCorry2017}. Net als bij Bitcoin zijn het  de transacties die  de core van het systeem vormen. Ethereum's transacties worden in een blockchain structuur opgeslagen, er is een immutable historiek van transacties oplevert, die de huidige staat van het netwerk weergeeft. ~\autocite{Buterin2014}
+
+		Een Ethereum-transactie bestaat uit de volgende velden ~\autocite{Buterin2014}:
 		\begin{itemize}
 			\item \textbf{From}: De ondertekening van het account dat de transactie autoriseert, dit kan alleen een gebruiker zijn.
 			\item \textbf{To}: De ontvanger van de transactie, dit kan zowel een gebruiker als een contract zijn. 
-			\item \textbf{Data}: Een optioneel veld. Hier  kan code meegegeven worden, ofwel voor de creatie van een smart contract, ofwel voor het uitvoeren van een smart contract.Er kan ook andere data worden meegegeven worden.
-			\item \textbf{Gas Price}: Bedrag in ether dat de kost voorstelt die de verzender betaald per computationele stap.
-			\item \textbf{Start Gas}: Het maximum aantal computationele stappen die mag worden uitgevoerd door de transactie.
+			\item \textbf{Data}: Een optioneel veld. Hier kan code meegegeven worden, voor de creatie of voor het uitvoeren van een functie op een smart contract. 
+			\item \textbf{Gas Price}: De kost in ether die de verzender betaald per computationele stap.
+			\item \textbf{Start Gas}: Het maximum aantal computationele stappen die mag worden uitgevoerd.
 			\item \textbf{Amount}: Bedrag in ether dat wordt overgemaakt van zender naar ontvanger.
 		\end{itemize}	
-		Transacties in Ethereum vinden plaats tussen twee gebruikers of tussen een gebruiker en een smart contract. Een transactie tussen een gebruiker en een smart contract kan één of meerdere nieuwe transacties vanuit het contract naar andere gebruikers doen ontstaan. Tenslotte kan een transactie van een gebruiker naar een smart contract ook transacties naar andere smart contracts triggeren, die dan op hun beurt hetzelfde doen en zo complexe kettingreactie creëren. De combinatie van mogelijke transacties en het potentieel dat smart contracts bieden zorgt voor een systeem waarop in theorie iedere toepassing mogelijk is~\autocite{Wood2017}. 
+		\subsubsection{Transacties tussen accounts}
+		Transacties in Ethereum vinden plaats tussen twee gebruikers of tussen een gebruiker en een smart contract. Een transactie tussen een gebruiker en een smart contract kan één of meerdere nieuwe transacties vanuit het contract naar andere gebruikers doen ontstaan. ~\autocite{Buterin2014}
+		
+		Tenslotte kan een transactie van een gebruiker naar een smart contract ook transacties naar andere smart contracts triggeren, die dan op hun beurt hetzelfde doen en zo complexe kettingreactie creëren. ~\autocite{Buterin2014}
+		
+		De combinatie van mogelijke transacties en het potentieel dat smart contracts bieden, zorgt voor een systeem waarop in theorie iedere toepassing mogelijk is. ~\autocite{Wood2017}
+		\subsubsection{Proof-of-stake}
+			Een ander belangrijk aspect waarin Ethereum sterk verschilt met de Bitcoin-blockchain is de manier waarop transacties verwerkt worden. Ethereum transacties worden anders verwerkt, in de zin dat het netwerk\footnote{sinds 30/06/2019} een compleet andere mining-methode gebruikt. Sinds de Ethereum 2.0 update, is men namelijk overschakelt van proof-of-work mining naar een algoritme dat \textit{proof-of-stake forging} geheten wordt. Het is een alternatieve manier om aan `mining' te doen, die enkele significante voordelen biedt ten opzichte van proof-of-work. 
+		
+		De hoofdredenen om af te stappen van de klassieke mining-methode zijn:
+		\begin{itemize}
+			\item \textbf{Het netwerk is niet efficiënt}, miners zijn in directe competitie met elkaar, alle miners proberen gelijktijdig hetzelfde probleem op te lossen.
+			\item \textbf{Het algoritme is niet efficiënt}, proof-of-work mining vergt dat nodes langdurig moeten zoeken op brute-force wijze. 
+			\item \textbf{Het vergt enorm veel energie}, omwille van de eerder genoemde gebreken.
+		\end{itemize}
+		 Proof-of-stake vormt een grote  verbetering op deze vlakken. Het centrale idee bij proof-stake is dat alle nodes stakeholders die er belang bij hebben dat de transacties correct verlopen. Net zoals de miners worden de \textit{forgers} van proof-of-stake beloond voor hun werk via transactie kosten. Het grote verschil is echter dat forgers geen complex probleem moeten oplossen. Ze hoeven ook niet als eerste te slagen in iets om transacties te mogen verwerken. Iedere forger zet een zelf-bepaalde monetaire waarde in als stake, de verhouding van deze waarde ten opzichte van de totale waarde aan stakes binnen het netwerk bepaalt het aandeel van de transacties dat door de forger verwerkt mag worden.
 	\subsection{Conclusie}
-		 Ethereum is een platform dat blockchain-technologie beschikbaar en toegankelijk maakt voor gewone ontwikkelaars. Een van Ethereums hoofddoelen is dan ook om multi-purpose te zijn: het is bedoelt als een platform waarop iedere mogelijke blockchain toepassing op geïmplementeerd kan worden. In deze sectie bespraken uitgebreid de filosofie waar Ethereum rond ontworpen is, in het algemeen kan men stellen dat de focus vooral ligt op de functionaliteit en gebruiksvriendelijkheid naar ontwikkelaars toe. Voorbeelden hiervan zijn de keuzes op het vlak van modulariteit en agiliteit. Men probeert duidelijk ook een omgeving te creëren waarin er zoveel mogelijk vrijheid is op vlak van het type van implementatie, geen enkele applicatie wordt geweerd op basis van haar functie. Alleen applicaties de voor schade aan het netwerk zelf zorgen worden niet toegelaten, dit om de werking van het volledige blockchain intact te houden. 
+		 Ethereum is een platform dat blockchain-technologie beschikbaar en toegankelijk maakt voor gewone ontwikkelaars. Een van Ethereums hoofddoelen is dan ook om multi-purpose te zijn: het is bedoelt als een platform waarop iedere mogelijke blockchain toepassing op geïmplementeerd kan worden. ~\autocite{Buterin2014}
+		 
+		 In deze sectie bespraken we de filosofie waar Ethereum rond ontworpen is, in het algemeen kan men stellen dat de focus vooral ligt op de functionaliteit en gebruiksvriendelijkheid naar ontwikkelaars toe. Voorbeelden hiervan zijn de keuzes op het vlak van modulariteit en agiliteit. ~\autocite{Buterin2014}
+		 
+		 Men probeert met Ethereum duidelijk een omgeving te creëren waarin er zoveel mogelijk vrijheid is op vlak van het type van implementatie, geen enkele applicatie wordt geweerd op basis van haar functie. Alleen applicaties de voor schade aan het netwerk zelf zorgen worden niet toegelaten, om de werking van het volledige blockchain intact te houden. ~\autocite{Buterin2014}
+		 
+		 Tenslotte bespraken we ook enkele nadelen aan de werking van huidige proof-of-work systemen en hoe  Ethereum daar een oplossing voor biedt. Ethereum's overstap van een proof-of-work systeem naar een proof-of-stake systeem is een significante beslissing die het blockchain-netwerk efficiënter dan ooit kan maken op het vlak van verwerkingscapaciteit en energie consumptie. Het vergroot de kansen dat blockchain  als technologie ooit een industriestandaard kan worden. 
 		
 		\newpage
 \section{Blockchain gebaseerd stemmen}
@@ -271,8 +293,8 @@ TO DO
 			\subsubsection{Blockchain gebaseerd stemmen}
 			Het is duidelijk dat er goede argumenten voor en tegen zowel papier als elektronisch stemmen kunnen gevoerd worden. Een blockchain gebaseerd stemsysteem zou volgens proponenten van de technologie een nieuwe manier kunnen vormen om elektronische stemmen te realiseren. Het zou veel van de huidige nadelen en problemen van elektronisch stemmen kunnen elimineren  en tegelijk ook de bestaande voordelen ten opzichte van stemmen op papier behouden. De gedistribueerde aard van blockchain zou er bovendien voor kunnen zorgen dat verkiezingen transparanter, veiliger en correcter dan ooit worden. 
 			 
-	\subsection{Bestaande Implementaties}
-			\subsubsection{Concrete Toepassingen}
+	\subsection{Bestaande implementaties}
+			\subsubsection{Concrete toepassingen}
 			Tot op heden zijn operationele toepassingen van blockchain stemsystemen nog relatief zeldzaam.  Er dient wel  een onderscheid gemaakt te worden tussen de verschillende soorten toepassingen. Men kan  blockchain technologie immers op diverse wijzen inzetten in de context van verkiezingen. In veel gevallen wordt een blockchain enkel ter ondersteuning van een groter stemsysteem gebruikt. Dit kan bijvoorbeeld zijn door blockchain als  een onveranderlijke opslagplaats te gebruiken voor de resultaten van een verkiezing. Een andere mogelijkheid is om blockchain technologie als verificatie tool te gebruiken. Er zijn echter ook implementaties die volledig blockchain gebaseerd zijn. Voor dit onderzoek zijn deze implementaties natuurlijk het interessantst ~\autocite{Kshetri2018}.
 			
 			In de volgende paragrafen worden 4 recente cases besproken waarin blockhain stemsystemen werden gebruikt ~\autocite{Kshetri2018}:
@@ -283,7 +305,7 @@ TO DO
 				\item Het Active Citizen-programma van de stad Moskou
 			\end{enumerate}
 				
-				\paragraph{Parlements verkiezingen in Sierra Leone}
+				\paragraph{Parlementsverkiezingen in Sierra Leone}
 				In maart 2018 werd in Sierra Leone blockchain technologie gebruikt om een kleine deelset van de resultaten van de nationale verkiezingen te controleren. Het systeem werd opgezet door het Zwitsers bedrijf Agora, dat aanwezig was als een internationale observator van de verkiezingen. Agora creëerde veel oproer door miscommunicaties de wereld in te sturen die  deden lijken dat de hele verkiezing op hun blockchain systeem was gebeurd. In feite deed Agora's implementatie enkel het tellen en bewaren van resultaten op basis van een blockchain. Bovendien werd slechts een fractie van de populatie geobserveerd, de manier waarop dit gebeurde was daarbovenop ook erg foutgevoelig. Men verzamelde, onafhankelijk van de verkiezingen, via bevraging het stemgedrag van ruim 400,000 kiezers. Tijdens dit verzamelen werd de data live aan een blockchain systeem gevoed. Het resultaat werd op gedistribueerde wijze berekend, ettelijke dagen voordat de klassieke telling afgerond was. De resultaten van Agora's telling kwam echter niet overeen met die van de overheid. Dit voorbeeld, hoewel niet bepaald  inspirerende op vlak van correctheid en fouttolerantie, is toch opmerkelijk omdat het wel aantoont hoe veel sneller en efficiënter blockchain systemen kunnen werken ten opzichte van klassieke manuele tellingen. ~\autocite{Kshetri2018}
 				
 				\paragraph{De jaarlijkse algemene vergadering van het Estse technologiebedrijf LVH Groep}
@@ -308,7 +330,7 @@ TO DO
 				Op het vlak van security is schaalbaarheid dan weer geen probleem. De stads administratie liet het systeem testen door PwC, een internationaal accountants- en belastingadviseursbedrijf. De bevindingen van PwC waren dat er geen reden tot bezorgdheid is voor de veiligheid bij  300.000 of meer kiezers. 
 				
 				Al bij al levert dit voorbeeld toch een sterke case op voor de blockchain gebaseerd stemmen op grote schaal. Het toont aan dat men met voldoende middelen blockchain stemprotocollen kan ontwikkelen die qua scope de klassieke board-room voting systemen uit de literatuur vele malen overtreffen. 
-			\subsubsection{Online Diensten}
+			\subsubsection{Online diensten}
 				\paragraph{The Blockchain Voting Machine }
 					Een van de grootste argumenten tegen blockchain gebaseerd stemmen is dat het een verhoogd risico met zich meebrengt, de bestaat  dat de nodes overgenomen worden of al overgenomen zijn. Voor een systeem dat werkt over het internet zou het gevaar van een nog grotere orde zijn. The Blockchain Voting Machine is hier heel simpele antwoord op: men stelt voor om te werken met elektronische stemmachines zoals die vandaag al bestaan,   de machines zijn echter niet aan het internet verbonden alleen aan een privaat blockchain netwerk. 
 				\paragraph{FollowMyVote}
@@ -318,8 +340,8 @@ TO DO
 				\paragraph{Agora}
 					Agora is een Zwitsers bedrijf dat een platform ontwikkeld heeft voor blockchain gebaseerde stemsystemen. Agora heeft een eigen custom blockchain infrastructuur opgezet en bouwt middel tot grote verkiezingstoepassing op maat voor haar klanten. Agora geldt momenteel als een van de grootste spelers in de sector.
 					
-	\subsection{Cryptografie en Stemprotocollen}
-		\subsubsection{Verschillende Protocollen}
+	\subsection{Cryptografie en stemprotocollen}
+		\subsubsection{Verschillende protocollen}
 		\textcite{Kiayias2002} stelt voor om stemprotocollen self-tallying te maken. Self-tallying ofwel zelf-tellend wordt hier gedefinieerd als volgt: iedere kiezer moet na het einde van een stemming zelf de stemmen kunnen tellen. Zelf-tellende stem-protocollen nemen de verantwoordelijk voor het tellen van stemmen weg van centrale autoriteiten en veranderen het in een open procedure, die iedere deelnemer of derde partij kan uitvoeren. De centrale tellingsautoriteit is dan niet meer nodig, iedereen kan resultaat van de stemming onafhankelijk bekomen. Men definieert ook twee andere eigenschappen waaraan een elektronisch stem-protocol moet voldoen.  Perfect Ballot Secrecy ofwel volledige stembescherming, wordt gedefinieerd als een eigenschap die de verzekering brengt dat de privacy van de stemmer enkel en alleen kan ondermijnd worden als alle andere stemmers tot dit doeleinde collaboreren. Dispute-freeness ofwel geschil-vrijheid, wordt dan weer gedefinieerd als een eigenschap die garandeert dat dat er geen twijfel kan zijn over de authenticiteit van de stemming. Deze eigenschap bestaat eruit dat iedere participant van de stemming, na afloop het correcte verloop van de procedure kan verifiëren voor zichzelf.
 			
 		Volgens \textcite{McCorry2017}  hebben deze zelf-tellende protocols zwaktepunten op het vlak van eerlijkheid. Ze laten toe dat de alle personen die gestemd hebben op een bepaald tijdstip, zouden kunnen collaboreren om de tussen-resultaten te berekenen voor datzelfde tijdstip. Verder kan de laatste persoon die zijn of haar stem moet uitbrengen het resultaat van de stemming berekenen voor hij of zij effectief gestemd heeft. Dit leidt volgens \textcite{McCorry2017} tot adaptive en abortive issues.  \textcite{McCorry2017} spreekt van een adaptive issue waar de stemkeuze van de laatste participant mogelijks beïnvloed kan worden door het zien van de stemresultaten voor zelf te stemmen. Er is ook sprake van een abortive issue volgens \textcite{McCorry2017} omdat iedere participant de macht heeft om de hele stemming te annuleren. Een enkele participant kan zich immers volledig kunnen onthouden van het stemmen en zo alle andere stemmers verhinderen het resultaat te berekenen. 
@@ -338,9 +360,9 @@ TO DO
 			Het gedecentraliseerde karakter van dit protocol maakt het uiterst geschikt om op een blockchain te implementeren. \textcite{McCorry2017} is een van de eersten in de literatuur die deze stap maakt. De reden dat men specifiek voor de Ethereum blockchain kiest, wordt gemotiveerd als volgt.
 			
 			Andere blockhains zoals Bitcoin zouden ook kunnen worden gebruikt als publieke opslagplaats van verkiezingen, maar het verschil is dat het protocol niet op de blockchain kan opgeslagen worden, het moet extern dan opgeslagen en gehandhaafd worden door de kiezers. \textcite{McCorry2017} stelt dat men via Ethereum gebruik kan maken van een smart-contract om  het protocol af te dwingen, Ethereum kan daarnaast niet alleen als opslag fungeren maar ook als geverifieerd netwerk waarover de participanten communiceren.
-		\subsubsection*{Fase 0: Setup }
+		\subsubsection*{Fase 0: setup }
 			Het OVN-Protocol start vanuit een zogenaamde \textit{election administator}, deze organisator van de verkiezingen initialiseert het protocol door de een verkiezing aan te maken en de in aanmerking komende kiezers in te stellen, dit gebeurt door de kiezers aan de white-list van het smart-contract toe te voegen. De kiezers worden in dit stadium enkel geïdentificeerd aan de hand van hun Ethereum account. De organisator is meestal degene die  Ethereum verwittigt om over te schakelen op de eerste fase.
-		\subsubsection*{Fase 1: Registratie }
+		\subsubsection*{Fase 1: registratie }
 			De administrator stelt het onderwerp van de verkiezing in, als ook de beschikbare opties waarvoor gestemd kan worden. Vervolgens wordt Ethereum opnieuw verwittigd, ditmaal om over te gaan naar de registratie van de participanten. Om te registreren voor de verkiezing moeten alle stemmers vooraf een stemsleutel berekenen. Deze sleutel zal worden gebruikt als identificatie van de kiezers. Het berekenen  van de stemsleutel en het verdere verloop (samengevat in figuur \ref{fig:ovnp}) gaat als volgt: 
 			
 			Alle \textbf{\textit{n}} kiezers moeten het eens zijn over het paar \textbf{\textit{(G,g)}} waarbij \textbf{\textit{G}} een eindige cyclische groep van hoofdorde \textbf{\textit{q}} voorstelt waar het Diffie-Hellman (DDH) probleem niet van toepassing op is, en \textbf{\textit{g}} een generator in \textbf{\textit{G}}. De lijst van in aanmerking komende kiezers, hier ook participanten \textbf{\textit{(P$_{1}$, P$_{2}$, … , P${n}$)}} genoemd, wordt vastgelegd. Elke participant \textbf{\textit{P$_{i}$}} kiest een unieke random waarde  
@@ -360,7 +382,7 @@ TO DO
 			
 			\eqref{formula1} \textit{Om de gereconstrueerde sleutel g$^{y_{i}}$ te berekenen van kiezer \textbf{P$_{i}$} worden de publieke stemsleutels van alle andere kiezers \textbf{P$_{j}$} gebruikt. Het product van de publieke sleutels van al de andere kiezers \textbf{P$_{j}$} waar j < i wordt gedeeld door het product van alle publieke sleutels van al de andere kiezers waar \textbf{P$_{j}$} waar  j > i.}
 			
-		\subsubsection*{Fase 2: Stemmen}
+		\subsubsection*{Fase 2: stemmen}
 			Eenmaal het netwerk signaal ontvangt dat er gestemd kan worden, kunnen de kiezers een beslissing maken en vervolgens hun stem te broadcasten. Deze broadcast bestaat uit twee zaken: de geëncrypteerde stem en een nieuwe Zero Knowledge Proof, die bewijst dat de stem ofwel 0 of 1 is. De encryptie die gebruikt wordt voor de stem vormt het cryptografische hart van dit protocol. 
 			
 			De stem wordt geëncrypteerd volgens het Elgamal-cryptosysteem en wordt in de vorm  \textbf{\textit{g$^{x_{i}y_{i}}$g$^{v_{i}}$}} aan het netwerk doorgegeven,  waarbij  \textbf{\textit{g$^{x_{i}y_{i}}$}} het product is van de publieke stemsleutel en de gereconstrueerde sleutel, \textbf{\textit{v$_{i}$}} de eigenlijke stem is in de vorm van een 1 of een 0 en \textbf{\textit{g$^{v_{i}}$}} de factor waarmee het product van de sleutels vermenigvuldigt wordt, zijnde ofwel g ofwel 1. 
@@ -412,7 +434,7 @@ TO DO
 		We bespraken verschillende manieren waarop blockchain technologie kan aangewend worden in elektronische stemsystemen. De verschillende wijzes die we bespraken kennen enkele noemenswaardige verschillen op het vlak van privacy. Het Open Vote Network dat voorgesteld wordt door \textcite{McCorry2017} vormt een van de meest robuuste structuren die de privacy van gebruikers garanderen. Volledige anonimiteit, zoals men heeft wanneer men een papieren stem in de stembus werpt, is niet mogelijk op blockchain, maar op basis van cryptografie slaagt \textcite{McCorry2017} er wel in om het vinden van andermans identiteit praktisch onmogelijk te maken. Merk op dat  de term identiteit hier niet persoonlijke gegevens van de gebruiker betekent, wel het Ethereum account van de gebruiker.
 		
 		Ook  de andere systemen die we bespraken, Agora, FollowMyVote, enz. lijken op het eerste zicht relatief goed te scoren op het vlak van privacy. Toch is er bij veel van de besproken voorbeelden een fundamenteel probleem op het vlak van centralisatie, aldus \textcite{McCorry2017}. De meeste voorgestelde oplossingen zijn nog steeds, in variërende mate, afhankelijk van een centrale autoriteit. Men zou het argument kunnen voeren dat bijvoorbeeld een bedrijf zoals FollowMyVote, hoewel hun hele stemproces op de blockchain gebeurd, op een bepaalde manier zelf een centrale autoriteit wordt wanneer men van hun diensten wil gebruik maken. Blockchain gebaseerde stemsystemen waarvan de codebasis  niet open source is, vergen daarboven op een bepaalde manier ook weer het vertrouwen van de gebruiker. Wanneer stemsystemen ook toegang krijgen tot gevoelige informatie zoals elektronische identiteitsgegevens of zelfs biometrische-data voor gezichtsherkenning, zoals het bedrijf TIVI voorstelt, dan speelt dit vertrouwen een rol die zodanig cruciaal is dat er eigenlijk sprake is van een centrale autoriteit.
-	\subsection{Fouttolerantie, Veiligheid en Correctheid}
+	\subsection{Fouttolerantie, veiligheid en correctheid}
 	
 	Naast privacy en transparantie zijn ook fouttolerantie, veiligheid en correctheid van centraal belang in de context van stemprotocollen. Deze drie zaken zijn inherent aan elkaar verbonden, er is zelfs sprake van zekere grote overlapping. We definiëren kort de bovenstaande termen voor we bekijken hoe ze van toepassing zijn op blockchain-gebaseerde stemsystemen. \textit{Fouttolerantie} gaat in de eerste plaats over de robuustheid  van het systeem, het is de mate waarin het systeem bestendig is tegen allerhande fouten die zich kunnen voordoen. Een belangrijke distinctie is dat we het hier enkel over onopzettelijk fouten hebben. De mate waarin opzettelijk fouten en andere malafide acties een impact hebben op het systeem wordt gedefinieerd als de \textit{veiligheid}. Tenslotte definiëren we \textit{correctheid} als de mate waarin het berekende resultaat overeenkomt met de werkelijkheid en dit onder invloed van factoren zoals fouttolerantie en veiligheid.
 	
@@ -424,9 +446,9 @@ TO DO
 	 
 	 Een van de grootste bezorgdheden is dat het online maken van een stemsysteem de veiligheid van verkiezingen kan comprimeren, een online-systeem kan namelijk door om het even welke persoon of instantie worden aangevallen ~\autocite{Norden2015}. Vooral voor verkiezingen op een nationaal of ander electoraal niveau vormt dit een serieus probleem. Recente gebeurtenissen hebben aangetoond dat dergelijke verkiezingen wel degelijk het doelwit van grote georganiseerde instanties of zelfs volledige `vijandige' naties kunnen zijn. Als voorbeeld geven we hier de Amerikaanse presidentsverkiezingen van 2016 waar volgens het \textcite{Mueller2019} onderzoek Russische instanties op verschillende manieren het resultaat zouden hebben beïnvloed.
 	 
-	 In dit licht lijken blockchain gebaseerde stemsystemen zo slecht nog niet, of toch qua fouttolerantie, veiligheid en correctheid. Toch zijn veel experts (zowel van blockchain technologie als van stemsystemen) hier erg sceptisch over. Het is duidelijk dat er nog veel problemen zijn die tot op heden de ingebruikname van een blockchain gebaseerde stemsystemen bemoeilijken. Bij de huidige systemen blijken er echter ook heel wat problemen te zijn, soms zelfs in grotere mate. Er dient hier ook een distinctie gemaakt te worden tussen blockchain-gebaseerd stemmen en online stemmen. Hoewel veel van de huidige blockchain implementaties - waaronder het OVN-protocol- online implementaties zijn, is er geen verder verband tussen beiden. Implementaties zoals The Blockchain Voting Machine tonen aan de dat blockchain gebaseerd stemmen evengoed offline kan gebeuren, zonder een connectie met het internet. Veel problemen die online blockchain gebaseerde implementaties hebben op het vlak van veiligheid zijn eerder aan te wijten aan het online aspect dan aan het blockchain aspect.https://nos.nl/artikel/2240863-waarom-stemmen-we-in-2030-nog-niet-elektronisch.html
+	 In dit licht lijken blockchain gebaseerde stemsystemen zo slecht nog niet, of toch qua fouttolerantie, veiligheid en correctheid. Toch zijn veel experts (zowel van blockchain technologie als van stemsystemen) hier erg sceptisch over. Het is duidelijk dat er nog veel problemen zijn die tot op heden de ingebruikname van een blockchain gebaseerde stemsystemen bemoeilijken. Bij de huidige systemen blijken er echter ook heel wat problemen te zijn, soms zelfs in grotere mate. Er dient hier ook een distinctie gemaakt te worden tussen blockchain-gebaseerd stemmen en online stemmen. Hoewel veel van de huidige blockchain implementaties - waaronder het OVN-protocol- online implementaties zijn, is er geen verder verband tussen beiden. Implementaties zoals The Blockchain Voting Machine tonen aan de dat blockchain gebaseerd stemmen evengoed offline kan gebeuren, zonder een connectie met het internet. Veel problemen die online blockchain gebaseerde implementaties hebben op het vlak van veiligheid zijn eerder aan te wijten aan het online aspect dan aan het blockchain aspect.
 	 
-	\subsection{Schaalbaarheid en Scope}
+	\subsection{Schaalbaarheid en scope}
 	We bespreken de schaalbaarheid en scope van blockchain gebaseerde stemsystemen. Schaalbaarheid en scope kunnen makkelijk als synoniemen gezien worden, maar in deze context hechten we er verschillende betekenissen aan. Schaalbaarheid definiëren we als de mate waarin een het stemsysteem groter kan gemaakt worden, dat wil zeggen de hoeveelheid kiezers het systeem kan ondersteunen. De scope definiëren we de dan weer als de context en het belang van de verkiezing. Bepaalde verkiezingen zijn immers van een groter belang dan andere. Het verschil tussen schaal en scope is in veel gevallen wel subtiel, vaak is er een verband tussen de grote orde van een verkiezing en het belang ervan.
 	
 	De blockchain gebaseerde stemsystemen die we tot nu toe bespraken variëren in grote mate op het vlak van schaalbaarheid en scope. Een belangrijk onderscheid is het verschil tussen de systemen uit de praktijk en die uit de literatuur. Praktijk voorbeelden zoals het  \textit{`Active Citizens Project'} van Moskou ondersteunen tot 220.000 participanten terwijl literatuur voorbeelden zoals het  \textit{`Open Vote Network protocol'} en  \textit{`BroncoVote'} slechts een 30-tal participanten ondersteunen. Een mogelijke verklaring voor dit gegeven is dat de voorbeelden uit literatuur simpelweg niet over de zelfde middelen beschikken als bijvoorbeeld het \textit{`Active Citizens Project'}. Een andere, zeer waarschijnlijke verklaring, die hier ook op aansluit is dat het beschikken over een privaat blockchain netwerk, speciaal ontworpen voor verkiezingen voor een groot verschil op het vlak van schaalbaarheid zorgt.
