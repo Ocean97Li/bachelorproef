@@ -10,39 +10,28 @@ import { EthereumConnectorService } from 'src/services/ethereum-connector.servic
 })
 export class VotingComponent implements OnInit {
   form = new FormGroup({
-    answer : new FormControl('')
+    answer : new FormControl()
   }, [Validators.required]);
 
   voted = false;
+  candidates;
+
 
   constructor(
-    private router: Router,
     private connector: EthereumConnectorService
   ) {}
 
-  private toResults() {
-    this.router.navigate(['results']);
-  }
-
   public vote() {
-    this.connector.checkVotedYet().then( () => {
-      if (!this.voted) {
-        this.connector.vote(this.form.get('answer').value);
-        this.toResults();
-      } else {
-        window.alert('It seems that you have already voted.');
-        this.toResults();
-      }
-    });
-  }
-
-  public key() {
-    this.connector.getVotingKey();
+    this.connector.vote(this.form.get('answer').value);
   }
 
   ngOnInit(): void {
-    this.connector.voted$.subscribe((voted: boolean) => {
-      this.voted = voted;
+    this.connector.getCandidates();
+    this.connector.candidates$.subscribe(candidates => {
+      this.candidates = [];
+      candidates.forEach((name, id) => {
+        this.candidates.push({id, name});
+      });
     });
   }
 }

@@ -1,1 +1,36 @@
-<router-outlet></router-outlet>
+<div class="main">
+    <div id=banner class="banner" *ngIf="showBanner" [ngClass]="{bannerOn: showBanner, bannerOff: !showBanner}">
+    </div>
+    <div class="logo">
+        <img src="../assets/ethereum.png" class="center"/>
+        <h1 class="title">EthereumVote</h1>
+    </div>
+    <div class="content">
+        <router-outlet></router-outlet>
+    </div>
+    <div class="status">
+        <div class="timeline">
+            <div class="state" [ngClass]="{currentState: state==0, completedState: state >= 0}">
+                <i>Login</i>
+            </div>
+            <div class="transistion" [ngClass]="{completedState: state >= 2}">
+                <i [ngClass]="{currentState: state==1}"></i>
+            </div>
+            <div class="state" [ngClass]="{currentState: state==1, completedState: state >= 2}">
+                <i>Vote</i>
+            </div>
+            <div class="transistion" [ngClass]="{completedState: state >= 3}">
+                <i [ngClass]="{currentState: state==2}"></i>
+            </div>
+            <div id=verify class="state" [ngClass]="{currentState: state==2, completedState: state >= 3}">
+                <i>Verify</i>
+            </div>
+            <div class="transistion">
+                <i [ngClass]="{currentState: state==3}"></i>
+            </div>
+            <div class="state" [ngClass]="{currentState: state==3, completedState: state >= 3}">
+                <i>Results</i>
+            </div>
+        </div>
+    </div>
+</div>

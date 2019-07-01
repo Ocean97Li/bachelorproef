@@ -1,0 +1,102 @@
+.main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.title{
+    color: white;
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+
+.logo {
+    flex-direction: column;
+    width: 100%;
+    display: flex;
+    z-index: -1;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.content{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    // margin-bottom: 100px;
+}
+
+.status {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    .timeline {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 500px;
+        width: 80%;
+        .state {
+            background-color: white;
+            border-color: white;
+            min-width: 50px;
+            height: 50px;
+            display: flex;
+            border-radius: 50px;
+            padding: 5px;
+            align-items: center;
+            justify-content: space-evenly;
+
+            i {
+                font-style: normal;
+            }
+        }
+        
+        .transistion .currentState {
+            animation: transitionGrow 1.5s;
+            transform-origin: left;
+            background-color: #303f53 !important;
+            border: 0.1px solid #303f53;
+            z-index: 1;
+            height: 100%;
+            width: 100%;
+        }
+
+        .state.currentState {
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            transition-delay: 1.4s;
+            background-color: #303f53 !important;
+            min-width: 47px;
+            height: 47px;
+            border: 3px solid #FFEB3B;
+            color: white;
+            z-index: 2;
+        }
+
+        .completedState {
+            background-color: #303f53 !important;
+            color: white;
+        }
+
+        .transistion {
+            background-color: white;
+            width: 100%;
+            height: 5px;
+            display: flex;
+        }
+
+        @keyframes transitionGrow{
+            from{
+                transform: scale(0,1);
+        
+            }
+            to{
+                transform: scale(1,1);
+            }
+        }
+    }
+}
