@@ -13,20 +13,22 @@ contract Election {
     
     //Fetch the candidates
     mapping(uint => Candidate) public candidates;
-    // Store accounts that have registered
-    mapping(address => bool) private registeredVoters;
     // Store accounts that have voted
-    mapping(address => bool) private votedVoters;
+    mapping(address => bool) public votedVoters;
+    // Store accounts that have registered
+    mapping(address => bool) public registeredVoters;
+    // Registered voters keys
+     mapping(address => bytes32) public votingKeys;
+     // Key attempts
+     mapping(address => uint) private keyAttempVoters;
+    // Read candidate
+    mapping(address => bool) private strikes;
     // Read candidate
     uint public candidatesCounter;
-    // Read voter
-    // Regristration complete
-    bool public regristrationComplete;
-
-    // Stores the encryption requests value
-    uint public encryptionRequestCounter;
-    // Stores the total encryption value
-    int256 public encryptionValueCounter;
+    
+    bytes32 public check;
+    bytes32 public chack;
+    string public inputKey;
 
     // Constructor
     constructor () public {
@@ -43,52 +45,56 @@ contract Election {
         _;
     }
 
-    function addCadidate(string memory _name) private {
+    modifier honestUser {
+        require(
+            checkForStrikes(msg.sender),
+            "Sender not honest!"
+        );
+        _;
+    }
+
+    function addCadidate(string memory _name) honestUser private {
         candidatesCounter++;
         candidates[candidatesCounter] = Candidate(candidatesCounter,_name,0);
     }
 
-    function vote(uint _candidateId) public {
-        if(!hasVoted()) {
-            // Record voter has voted
-            votedVoters[msg.sender] = true;
-            // Update candidate vote count
-            candidates[_candidateId].votes++;
-        }
-    }
-
-    function hasVoted() public view returns (bool voted) {
-        return votedVoters[msg.sender];
-    }
-
-    function isAdmin() public view returns (bool wasAdmin) {
-        return msg.sender == admin;
-    }
-
-    function registerVoters(address[] memory _voters) public onlyAdmin {
-        if (!regristrationComplete) {
-            for (uint index = 0; index < _voters.length; index++) {
-                registeredVoters[_voters[index]] = true;
+    function vote(uint _candidateId, string memory _key) public payable honestUser {
+        if (!votedVoters[msg.sender] && registeredVoters[msg.sender]) {
+            if(keccak256(abi.encodePacked(_key))==votingKeys[msg.sender]) {
+                // Record voter has voted
+                votedVoters[msg.sender] = true;
+                // Update candidate vote count
+                candidates[_candidateId].votes++;
             }
         }
     }
 
-    function register() public returns (uint registrationRandom) {
-        // generate random value betweeen -6*candidates counter and 6*candidates counter
-        
-        // add the random value to the counter
-        // return the random value
+    function hasRegistered() honestUser public view returns (bool registered) {
+        return registeredVoters[msg.sender]==true;
     }
 
-    // get a 'seemingly random' number
-    // Source: https://ethereum.stackexchange.com/questions/60684/i-want-get-random-number-between-100-999-as-follows#answer-60687
-    function generateRandom(uint trueRandom) public payable returns (uint randomNumber) {
-        uint randomnumber1 = uint(keccak256(abi.encodePacked(now, msg.sender,trueRandom))) % 900;
-        randomnumber1 = randomnumber1 + 100;
-        uint randomnumber2 = uint(keccak256(abi.encodePacked(now, msg.sender,trueRandom))) % 2;
-        randomNumber = (randomnumber % 11) * (randomnumber2 * -1);
-        encryptionValueCounter += randomNumber;
-        return randomNumber;
+    function hasVoted() honestUser public view returns (bool voted) {
+        return votedVoters[msg.sender]==true;
+    }
+
+    function isAdmin() honestUser public view returns (bool wasAdmin) {
+        return msg.sender == admin;
+    }
+
+    function register(bytes32 _key) public payable honestUser {
+        keyAttempVoters[msg.sender] = keyAttempVoters[msg.sender]+1;
+        votingKeys[msg.sender] = _key;
+        registeredVoters[msg.sender] = true;
+    }
+
+    function checkForStrikes(address _sender) private view returns (bool ok) {
+        if(keyAttempVoters[_sender]>1) {
+            return false;
+        }
+        if(strikes[_sender]) {
+            return false;
+        }
+        return true;
     }
 
 }

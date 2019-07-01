@@ -1,8 +1,8 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (global){
-var ethJSABI = require("ethjs-abi");
-var BlockchainUtils = require("truffle-blockchain-utils");
-var Web3 = require("web3");
+var ethJSABI = require("./node_modules/ethjs-abi");
+var BlockchainUtils = require("./node_modules/truffle-blockchain-utils");
+var Web3 = require("./node_modules/web3");
 
 // For browserified version. If browserify gave us an empty version,
 // look for the one provided by the user.
@@ -805,8 +805,8 @@ var contract = (function(module) {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"ethjs-abi":7,"truffle-blockchain-utils":15,"web3":5}],2:[function(require,module,exports){
-var Schema = require("truffle-contract-schema");
-var Contract = require("./contract.js");
+var Schema = require("./node_modules/truffle-contract-schema");
+var Contract = require("./contract.js.js");
 
 var contract = function(options) {
   options = Schema.normalizeOptions(options);
@@ -4428,8 +4428,8 @@ function fromByteArray (uint8) {
 
 'use strict'
 
-var base64 = require('base64-js')
-var ieee754 = require('ieee754')
+var base64 = require('./node_modules/base64-js')
+var ieee754 = require('./node_modules/ieee754')
 
 exports.Buffer = Buffer
 exports.SlowBuffer = SlowBuffer
@@ -6130,7 +6130,7 @@ function isnan (val) {
 
 /* eslint-disable */
 
-var utils = require('./utils/index.js');
+var utils = require('./utils/index.js.js');
 var uint256Coder = utils.uint256Coder;
 var coderBoolean = utils.coderBoolean;
 var coderFixedBytes = utils.coderFixedBytes;
@@ -6264,9 +6264,9 @@ module.exports = {
 (function (Buffer){
 'use strict';
 
-var BN = require('bn.js');
-var numberToBN = require('number-to-bn');
-var keccak256 = require('js-sha3').keccak_256;
+var BN = require('./node_modules/bn.js.js');
+var numberToBN = require('./node_modules/number-to-bn');
+var keccak256 = require('./node_modules/js-sha3').keccak_256;
 
 // from ethereumjs-util
 function stripZeros(aInput) {
@@ -7255,10 +7255,10 @@ module.exports = function isHexPrefixed(str) {
   }
 }(this));
 
-}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+}).call(this,require('./node_modules/_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"_process":13}],12:[function(require,module,exports){
-var BN = require('bn.js');
-var stripHexPrefix = require('strip-hex-prefix');
+var BN = require('./node_modules/bn.js.js');
+var stripHexPrefix = require('./node_modules/strip-hex-prefix');
 
 /**
  * Returns a BN object, converts a number value to a BN
@@ -7479,7 +7479,7 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
 
 },{}],14:[function(require,module,exports){
-var isHexPrefixed = require('is-hex-prefixed');
+var isHexPrefixed = require('./node_modules/is-hex-prefixed');
 
 /**
  * Removes '0x' from a given `String` is present
@@ -7497,7 +7497,7 @@ module.exports = function stripHexPrefix(str) {
 },{"is-hex-prefixed":10}],15:[function(require,module,exports){
 // TODO: remove web3 requirement
 // Call functions directly on the provider.
-var Web3 = require("web3");
+var Web3 = require("./node_modules/web3");
 
 var Blockchain = {
   parse: function(uri) {
@@ -7558,8 +7558,8 @@ var Blockchain = {
 module.exports = Blockchain;
 
 },{"web3":5}],16:[function(require,module,exports){
-var sha3 = require("crypto-js/sha3");
-var schema_version = require("./package.json").version;
+var sha3 = require("./node_modules/crypto-js/sha3");
+var schema_version = require("./package.json.js").version;
 
 var TruffleSchema = {
   // Normalize options passed in to be the exact options required
