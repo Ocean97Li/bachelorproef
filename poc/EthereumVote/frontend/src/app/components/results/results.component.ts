@@ -29,7 +29,6 @@ export class ResultsComponent implements OnInit {
   percentageAnimation(voteId: string, newvotes: Map<string, number>, delay: number): Promise<any> {
     return new Promise( (resolve, reject) => {
       if (this.votes) {
-        console.log('zero set');
         const votes = this.votes.get(voteId);
         const totalVotes = this.totalVotes(this.votes);
         this.displayPercentage[(voteId === 'Yes' ? 0 : 1)] =  Math.round((votes / totalVotes) * 100);
@@ -40,14 +39,11 @@ export class ResultsComponent implements OnInit {
       const newPercentage = Math.round((newVotes / newTotalVotes) * 100);
 
       const diff = newPercentage - this.displayPercentage[(voteId === 'Yes' ? 0 : 1)];
-      console.log(this.displayPercentage);
       const delaying = setTimeout( () => {
         if (diff > 0) {
           const me1 = setInterval(() => {
-            console.log('time');
             const array = [...this.displayPercentage];
             array[(voteId === 'Yes' ? 0 : 1)] += 1;
-            console.log(array[(voteId === 'Yes' ? 0 : 1)]);
             this.displayPercentage = [...array];
             if (this.displayPercentage[(voteId === 'Yes' ? 0 : 1)] === newPercentage) {
               clearInterval(me1);
@@ -56,7 +52,6 @@ export class ResultsComponent implements OnInit {
         }
         if (diff < 0) {
           const me2 = setInterval(() => {
-            console.log('time');
             const array = [...this.displayPercentage];
             array[(voteId === 'Yes' ? 0 : 1)] -= 1;
             this.displayPercentage = [...array];
@@ -65,7 +60,6 @@ export class ResultsComponent implements OnInit {
             }
           }, 1000 / newPercentage);
         }
-        console.log('resolve');
         clearTimeout(delaying);
       }, delay);
       resolve();

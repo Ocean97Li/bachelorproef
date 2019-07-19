@@ -25,10 +25,9 @@ contract Election {
     mapping(address => bool) private strikes;
     // Read candidate
     uint public candidatesCounter;
-    
+
     bytes32 public check;
-    bytes32 public chack;
-    string public inputKey;
+    string public input;
 
     // Constructor
     constructor () public {

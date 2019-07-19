@@ -1,6 +1,5 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { EthereumConnectorService, ElectionState } from 'src/services/ethereum-connector.service';
-import { Candidate } from 'src/models/models';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +17,6 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.connector.start();
     this.connector.state$.subscribe(state => {
-      console.log(state);
       this.state = state;
     });
   }

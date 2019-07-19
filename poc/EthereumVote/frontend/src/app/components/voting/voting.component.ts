@@ -28,10 +28,14 @@ export class VotingComponent implements OnInit {
   ngOnInit(): void {
     this.connector.getCandidates();
     this.connector.candidates$.subscribe(candidates => {
-      this.candidates = [];
+      console.log(candidates);
+      const temp = [];
       candidates.forEach((name, id) => {
-        this.candidates.push({id, name});
+        temp.push({id, name});
       });
+      this.candidates = temp;
+
+      console.log(this.candidates);
     });
   }
 }

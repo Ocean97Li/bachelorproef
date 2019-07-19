@@ -1,6 +1,5 @@
   <div class="card">
-    <h1>Does Pineapple go on pizza?</h1>
-    <!-- <img src="../assets/art.png" class="center"/> -->
+    <h1>Is blockchain voting feasible?</h1>
     <form  *ngIf="candidates" [formGroup]="form" (ngSubmit)="vote()">
         <p *ngFor="let candidate of candidates">
           <input [id]="candidate.id" type="radio" formControlName="answer" [value]="candidate.id"/>

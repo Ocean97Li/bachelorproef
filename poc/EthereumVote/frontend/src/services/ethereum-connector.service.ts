@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { Subject, Observable, timer } from 'rxjs';
 
 import * as TruffleContract from 'truffle-contract';
@@ -32,7 +32,7 @@ export class EthereumConnectorService {
   private votingKey: string;
   private contract: any;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private zone: NgZone) {
     if (typeof window.web3 !== 'undefined') {
       this.web3Provider = window.web3.currentProvider;
     } else {
@@ -49,10 +49,11 @@ export class EthereumConnectorService {
       }
     });
 
-    this.state = ElectionState.notloggedin;
+    this.state =  window.localStorage.getItem('state') || ElectionState.notloggedin;
     this.state$.next(this.state);
 
     this.state$.subscribe( state => {
+      window.localStorage.setItem('state', state);
       let route: string;
       switch (state) {
         case ElectionState.notloggedin:
@@ -67,16 +68,25 @@ export class EthereumConnectorService {
           break;
         case ElectionState.verified:
           route = 'results';
+          this.refreshVotes$.subscribe(() => {
+            this.getVotes();
+          });
           break;
       }
-      this.router.navigateByUrl(`/${route}`);
+      this.zone.run(() => {
+        this.router.navigateByUrl(`/${route}`);
+      });
     });
 
     this.account$.subscribe(account => {
       if (document.hidden && this.state === ElectionState.verified) {
       } else {
-        this.state = ElectionState.notloggedin;
-        this.state$.next(this.state);
+        if (this.account !== account) {
+          console.log(this.account, account);
+          console.log('acount sub called');
+          this.state = ElectionState.notloggedin;
+          this.state$.next(this.state);
+        }
         this.account = account;
       }
     });
@@ -112,18 +122,26 @@ export class EthereumConnectorService {
           console.log(this.account);
           return this.electionInstance.hasRegistered({from: this.account});
         }).then((registered) => {
+          console.log('start 3');
           if (registered) {
+            console.log('stop 1');
             this.state = ElectionState.loggedin;
             this.state$.next(this.state);
             throw Error('already registered');
           }
           console.log('not registered yet');
         }).then(() => {
-          this.votingKey = (Math.floor(Math.random() * 99) + 1).toString();
-          return this.electionInstance.register(window.web3.sha3(this.votingKey), {from: this.account})
+          console.log('start 4');
+          this.votingKey = (Math.floor(Math.random() * 100) + 1).toString();
+          window.localStorage.setItem('votingkey', this.votingKey);
+          const votingHash = window.web3.utils.sha3(this.votingKey);
+          return this.electionInstance.register(votingHash, {from: this.account})
             .then(() => {
+              console.log('start 5');
               this.state = ElectionState.loggedin;
               this.state$.next(this.state);
+            }).catch((error) => {
+              console.log(error);
             });
         }).then(() => {
           resolve();
@@ -185,12 +203,22 @@ export class EthereumConnectorService {
             return this.electionInstance.hasVoted({from: this.account});
         }).then((voted) => {
             if (voted) {
+              window.alert('Something went wrong, vote not cast');
               throw Error('already voted');
             }
             this.state = ElectionState.voted;
             this.state$.next(this.state);
+            if (!this.votingKey) {
+              this.votingKey = window.localStorage.getItem('votingkey');
+            }
+            console.log(this.votingKey);
             return this.electionInstance.vote(candidate, this.votingKey, {from: this.account});
         }).then(() => {
+            return this.electionInstance.hasVoted({from: this.account});
+        }).then((voted) => {
+            if (!voted) {
+              window.alert('Something went wrong, vote not cast');
+            }
             this.state = ElectionState.verified;
             this.state$.next(this.state);
         }).catch((error) => {
@@ -262,15 +290,8 @@ export class EthereumConnectorService {
   }
 
   start(): void {
-    this.state = ElectionState.notloggedin;
-    this.state$.next(this.state);
     this.getCandidates();
-    this.getAccountInfo().then(() => {
-      return this.register();
-    }).catch();
-    this.refreshVotes$.subscribe(() => {
-      this.getVotes().catch();
-    });
+    this.getAccountInfo().catch();
   }
 }
 
