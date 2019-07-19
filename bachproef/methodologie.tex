@@ -45,11 +45,9 @@ Deel 3 beschrijft in het kort de werkwijze en problemen bij de implementatie van
 	
 	Het leek een logische volgende stap om te kijken of  de stemmen die werd doorgeven als parameters niet simpelweg kon worden verborgen door ze te encrypteren. Het probleem was hiermee was dat ook standaard encryptie en decryptie technieken niet werken op de Ethereum blockchain: We kunnen geen enkel geheim bewaren op, of doorsturen naar de blockchain. Stemmen geëncrypteerd verzenden en vervolgens, op het einde van de verkiezing alle stemmen bekend maken door gebruikers hun decryptie sleutel te laten bekend maken (het veelgebruikte commit-reveal pattern) werkt niet in deze specifieke context. Er is immers tot op heden\footnote{Off-chain transacties zouden dit misschien wel mogelijk maken, er is een kans dat deze zullen toegevoegd worden volgens de Ethereum Wiki \autocite{Buterin2014}} geen enkele manier om de decryptie sleutel geheim te houden. Zowel Decryptie sleutels onthouden in een smart-contract als de sleutel versturen via een transactie resulteert dus in hetzelfde: De sleutel is zichtbaar op de blockchain en kan gebruikt worden om op directe wijze het stemgedrag van de kiezer in kwestie af te weten te komen.
 	
-	Indien men ook maar enige vorm van gegarandeerde anonimiteit wilt aanbieden, is er dus geen andere keuze dan gebruik te maken van zeer geavanceerde cryptografische technieken. In dit geval grijpen we hier dus binaar de cryptografische techniek die we reeds bespraken in het vorige hoofdstuk: het OVNP van \textcite{McCorry2017}. 
-		
-	In de praktijk bleek het gebruik maken hiervan moeilijker dan gedacht. 
+	Indien men ook maar enige vorm van gegarandeerde anonimiteit wilt aanbieden, is er dus geen andere keuze dan gebruik te maken van zeer geavanceerde cryptografische technieken. In dit geval grijpen we hier dus binaar de cryptografische techniek die we reeds bespraken in het vorige hoofdstuk: het OVNP van \textcite{McCorry2017}. In de praktijk bleek het gebruik maken hiervan echter moeilijker dan gedacht. 
 	
-	 Het OVNP van \textcite{McCorry2017} mag dan wel volledig open-source als een bibliotheek worden aangeboden, het probleem is dat de codebasis niet meer werd geüpgedate sinds 23 Augustus 2017\footnote{Zie https://github.com/stonecoldpat/anonymousvoting/commits/masters}. Sinds die tijd is de werking van Solidity en het Ethereum netwerk zodanig  veranderd dat de code in deze vorm noch compatibel met, noch performant ten opzichte van huidige Ethereum implementaties is. 
+	 Het OVNP van \textcite{McCorry2017} mag dan wel volledig open-source als een bibliotheek worden aangeboden, het probleem is dat de codebasis niet meer werd geüpgedate sinds 23 augustus 2017\footnote{Zie https://github.com/stonecoldpat/anonymousvoting/commits/masters}. Sinds die tijd is de werking van Solidity en het Ethereum netwerk zodanig  veranderd dat de code in deze vorm noch compatibel met, noch performant ten opzichte van huidige Ethereum implementaties is. 
 	 
 	 In functie van dit onderzoek werd een poging ondernomen om de implementatie de herschrijven, maar dit bleek al gauw buiten de scope van deze scriptie te vallen. Ten gevolge hiervan, voldoet de door deze scriptie gepresenteerde oplossing niet aan wat \textcite{McCorry2017} en \textcite{Kiayias2002} \textit{perfect ballot secrecy} noemen.
 
@@ -58,7 +56,7 @@ Deel 3 beschrijft in het kort de werkwijze en problemen bij de implementatie van
 	Het verloop van de front-end implementatie gebeurde eerst grotendeels op basis van het werk van \textcite{Ranjan2018} en
 	in mindere mate ook het werk van \textcite{McCubin2019}. Deze werken werden alleen gebruikt bij het implementeren van de \textit{EthereumConnectionService.ts}. 
 	
-	Voor de rest van de applicatie werd met de vrijes hand een ontwerp ontwikkeld dat zich ietwat liet inspireren door de visuele stijl van de OVNP implementatie van \textcite{McCorry2017}.
+	Voor de rest van de applicatie werd met de vrijes hand een ontwerp ontwikkeld dat zich enigszins liet inspireren door de visuele stijl van de OVNP implementatie van \textcite{McCorry2017}.
 	\subsection{Ondervonden Problemen}
 	De enigste problemen die opkwamen bij het front-end project waren gerelateerd aan de \textit{web3 node\_module}. 
 	

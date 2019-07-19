@@ -18,7 +18,7 @@
 
 % De naam van je co-promotor. Als je promotor ook je opdrachtgever is en je
 % dus ook inhoudelijk begeleidt (en enkel dan!), mag je dit leeg laten.
-\newcommand{\copromotor}{}
+\newcommand{\copromotor}{Dr. Jurgen Goossens}
 
 % Indien je bachelorproef in opdracht van/in samenwerking met een bedrijf of
 % externe organisatie geschreven is, geef je hier de naam. Zoniet laat je dit
@@ -65,6 +65,17 @@
 	commentstyle=\color{darkgray}\ttfamily,
 	stringstyle=\color{orange}\ttfamily,
 	sensitive=true
+}
+\lstdefinelanguage{HTML5}{
+	language=html,
+	otherkeywords={ >,<, /, [, ],  formControlName, formGroup
+	},  
+	ndkeywords={
+		(ngSubmit),*ngIf, *ngFor
+	},  
+	ndkeywordstyle=\color{ao(english)}\bfseries,
+	morecomment=[s]{<!--}{-->},
+	tag=[s]
 }
 
 \lstset{
@@ -121,27 +132,18 @@
 % https://www.sharelatex.com/learn/Glossaries
 
 %%---------- Kern -------------------------------------------------------------
-
 \input{inleiding}
 \input{standvanzaken}
 \input{methodologie}
-
 % Voeg hier je eigen hoofdstukken toe die de ``corpus'' van je bachelorproef
 % vormen. De structuur en titels hangen af van je eigen onderzoek. Je kan bv.
 % elke fase in je onderzoek in een apart hoofdstuk bespreken.
-
 \input{handleiding}
-%\input{...}
-%...
-
 \input{conclusie}
-
 %%=============================================================================
 %% Bijlagen
 %%=============================================================================
-
 \appendix
-
 %%---------- Onderzoeksvoorstel -----------------------------------------------
 
 \chapter{Onderzoeksvoorstel}

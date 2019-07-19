@@ -6,11 +6,11 @@
 \chapter{Handleiding}
 \label{ch:handleiding}
 
-Dit hoofdstuk beschrijft hoe men het best te werk kan gaan in de opzet van een \textit{eenvoudig, kleinschalig blockchain gebaseerd stemsysteem}. Het doel is om een praktische en complete handleiding te vormen, hoofdzakelijk gericht op ontwikkelaars die niet vertrouwd zijn met het ontwikkelen van Ethereum Dapps, noch met het ontwikkelen van cryptografische stemsystemen. 
+Dit hoofdstuk beschrijft hoe men het best te werk kan gaan in de opzet van een \textit{eenvoudig, kleinschalig blockchain gebaseerd stemsysteem}. Het doel is om een praktische en complete handleiding te vormen, hoofdzakelijk bedoeld voor ontwikkelaars die niet vertrouwd zijn met het ontwikkelen van Ethereum Dapps, noch met het ontwikkelen van cryptografische stemsystemen. 
 
-Gezien de vrij technische aard van deze handleiding wordt er van uit gegaan dat de lezer een algemene voorkennis heeft op het vlak van programmatie en enigszins bekend is met Javascript. Kennis van de taal Solidity wordt niet verondersteld. Tenslotte wordt er veronderstelt dat de lezer over een basis kennis Engels beschikt, daar de volledige code-basis in die taal geschreven is. 
+Gezien de vrij technische aard van deze handleiding wordt er veronderstelt dat de lezer op zijn minst een algemene voorkennis heeft op het vlak van programmeren  en enigszins bekend is met Javascript. Kennis van de taal Solidity wordt niet verondersteld. Tenslotte wordt er veronderstelt dat de lezer over een basis kennis Engels beschikt, daar de volledige code-basis in die taal geschreven is. 
 
-De  verschillende implementatie keuzes die hier wordt gemaakt gebeuren op basis van verschillende concepten en technieken die werden toegelicht in hoofdstuk \ref{ch:stand-van-zaken}. Zo wordt er bijvoorbeeld gekozen voor het Ethereum platform als ontwikkelomgeving op basis van sectie \ref{sec:ethereum-en-smart-contracts} en voor de cryptografie van het zelf-tellende stemprotocol OVNP \autocite{McCorry2017} uit sectie \ref{sec:OVNP}.
+De  verschillende implementatie keuzes die hier wordt gemaakt gebeuren op basis van verschillende concepten en technieken die werden toegelicht in hoofdstuk \ref{ch:stand-van-zaken}. Zo wordt er bijvoorbeeld gekozen voor het Ethereum platform als ontwikkelomgeving op basis van sectie \ref{sec:ethereum-en-smart-contracts} en wordt de veiligheid vergeleken met die van het `state-of-the-art' zelf-tellende stemprotocol OVNP \autocite{McCorry2017} uit sectie \ref{sec:OVNP}.
 
 Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antwoord te bieden op een deel van de onderzoeksvragen van deze scriptie, metname: 
 \begin{itemize}
@@ -112,7 +112,7 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 	We beginnen met het aanmaken van een nieuw smart-contract bestand binnen het template-project. Dit doen we op de locatie \textit{contracts\slash Election.sol}. We overwegen de vereisten voor onze implementatie. Om een simpel stemsysteem te implementeren in een smart-contract hebben we nodig:
 	\begin{itemize}
 		\item een lijst van de `opties' waarop gestemd kan worden
-		\item een lijst van de accounts die gestemd hebben
+		\item een lijst van de accounts die een stem uitgebracht hebben
 		\item per optie het aantal stemmen
 	\end{itemize}
 	Uiteraard zijn er verschillende manieren waarop we dit kunnen aanpakken. In de context van smart-contracts is het echter cruciaal dat we zo weinig mogelijk code schrijven. We baseren ons daarom op de implementatie die wordt gegeven door \textcite{McCubin2019}.\footnote{Zie ook https://github.com/dappuniversity/election}
@@ -485,12 +485,17 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 		\caption{Vote functie aangeroepen weergegeven in Ganache}
 		\label{fig:contracts-ganache3}
 	\end{figure}
-
+	\newpage
 	\section{Front-end applicatie}
-	Eenmaal we de basis we een werkende basis back-end hebben dienen we er natuurlijk ook nog een front-end applicatie voor te ontwikkelen. In deze handleiding zullen we gebruik maken van een Angular, een open source javascript-framework dat de ontwikkelaars instaat stelt om performante \textit{single page applications} te schrijven. We maken gebruik van Angular omdat de structurering  van de code bijzonder regide is in dit framework, waardoor de functionaliteiten mooi opgesplitst zijn en de ontwikkelervaring bijzonder aangenaam.  Het staat de lezer echter vrij om een javascript-framework naar keuze te gebruiken. Het gaat hier  immers niet zo zeer om de ontwikkeling van de front-end applicatie als om het maken van de verbinding tussen het web  en de Ethereum blockchain, zodat we kunnen interageren met ons smart-contract. 
-	
+	Eenmaal we een werkende back-end hebben dienen we er natuurlijk ook nog een front-end applicatie voor te ontwikkelen. In deze handleiding zullen we gebruik maken van een Angular (\ref{fig:angular}), een open source javascript-framework dat ontwikkelaars instaat stelt om performante \textit{single page applications} te schrijven. We verkiezen Angular omdat de structurering van de code bijzonder vast is in dit framework, waardoor de functionaliteiten mooi opgesplitst zijn en de ontwikkelervaring bijzonder aangenaam is.  Het staat de lezer natuurlijk vrij om een javascript-framework naar keuze te gebruiken. Het gaat hier  immers niet zo zeer om de ontwikkeling van de front-end applicatie als om leggen van de verbinding tussen het web en de Ethereum blockchain...
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=\linewidth/3]{img/angular.png}
+		\caption{Het Angular logo}
+		\label{fig:angular}
+	\end{figure}
 	\subsection{Opzet}
-	Zoals gezegd zullen we een Angular project opzetten, lezers die gebruik wensen te maken van een ander Javascript-framework kunnen de komende stappen overslaan, zij hoeven enkel de vernoemde node\_modules te installeren. 
+	Zoals gezegd beginnen we met een Angular project op te zetten, lezers die gebruik wensen te maken van een ander Javascript-framework kunnen de komende stappen overslaan, zij hoeven enkel de vernoemde node\_modules te installeren en de code gegeven in de \textit{ElectionConnectorService} te herschrijven. 
 	
 	We beginnen met het installeren van de Angular cli, deze zal ons toe laten om een Angular project te maken.
 	
@@ -514,30 +519,21 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 
 	\subsection{Mogelijke problemen met Web3}
 	
-	Na installatie van web3.js is het mogelijk dat men problemen ervaart met verschillende node\_modules die niet kunnen gevonden worden. Lezers die problemen ervaren met onder andere de \textit{crypto}, \textit{streams} of \textit{http } modules is het aangeraden om te downgraden naar \textit{web3.js versie 0.20.5}. 
+	Na installatie van web3.js is het mogelijk dat men problemen ervaart met verschillende node\_modules die niet kunnen gevonden worden. Lezers die problemen ervaren met onder andere de \textit{crypto}, \textit{streams} of \textit{http } modules is het aangeraden om een van de volgende oplossingen te proberen:
+	\begin{itemize}
+		\item Patch file voor de node\_modules
+		\item Downgraden naar \textit{web3.js versie 0.20.5}. 
+	\end{itemize}
 	
-	Om web3 te downgraden is het de lezer ook aangeraden om over te schakelen naar de yarn package manager, daar deze automatisch verwante packages zal aanpassen volgens compatibiliteit.
-	Dit spaart heel wat manueel werk uit. 
-	
-	Eenmaal yarn\footnote{Verkrijgbaar via https://yarnpkg.com/lang/en/docs/install} geïnstalleerd is kan het volgende console commando gebruikt worden om van package manager te switchen:
+	In deze handleiding raden we aan om de oplossing met het \textit{patchfile.js}\footnote{Broncode: https://gist.github.com/niespodd/1fa82da6f8c901d1c33d2fcbb762947d} als eerste te proberen:
 	\begin{lstlisting}[numbers=none,language=bash]
-	>yarn
-	\end{lstlisting}
-	Als het commando volledig is, kunnen we yarn gebruiken. We verlagen de huidige web3 versie via het commando:
-	\begin{lstlisting}[numbers=none,language=bash]
-	>yarn add web3@0.20.5
-	\end{lstlisting}
-	Tot slot van rekening voegen we ook \textit{patchfile.js}\footnote{Broncode: https://gist.github.com/niespodd/1fa82da6f8c901d1c33d2fcbb762947d} toe aan het project:
-	\begin{lstlisting}[numbers=none,language=bash]
-	const fs = require(`fs');
-	const f = 
-	`node_modules/@angular-devkit/build-angular/src/angular-cli-files/models/webpack-configs/browser.js';
-	fs.readFile(f, `utf8', function (err,data) {
-		if (err) {
-			return console.log(err);
-		}
-		var result = data.replace(/node: false/g, `node: {crypto: true, stream: true}');
-		fs.writeFile(f, result, `utf8', function (err) {
+	const fs = require("fs");
+	const f = "node_modules/@angular-devkit/build-angular
+	/src/angular-cli-files/models/webpack-configs/browser.js";
+	fs.readFile(f, "utf8", function (err,data) {
+		if (err) return console.log(err);
+		var result = data.replace(/node: false/g, "node: {crypto: true, stream: true}");
+		fs.writeFile(f, result, "utf8", function (err) {
 			if (err) return console.log(err);
 		});
 	});
@@ -545,10 +541,21 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 	Deze code dient na iedere wijzing van de node\_modules te worden uitgevoerd, onder \textit{``scripts''} in de \textit{package.json} voegen we daarom toe:
 	\begin{lstlisting}[numbers=none,language=bash]
 	"scripts": {
-		...
-		"postinstall": "node patch.js"
+	...
+	"postinstall": "node patch.js"
 	},
 	\end{lstlisting}
+	
+	Enkel en alleen als de eerste optie niet werkt raden we aan om web3 te downgraden. Het is de lezer aangeraden om over te schakelen naar yarn package manager ten voordele van npm. Yarn kan beter overweg met het toevoegen, verwijderen en onderhouden van dependencies. Ook voor gebruikers die geen verdere problemen meer ondervinden met web3, kan het daarom waardevol zijn om yarn te installeren. Yarn en npm commando's zijn helemaal gelijk, op de begin keywords na. In de rest deze handleiding wordt er gebruik gemaakt van yarn commando's.
+	
+	Eenmaal yarn\footnote{Verkrijgbaar via https://yarnpkg.com/lang/en/docs/install} geïnstalleerd is kunnen console commando's gebruikt worden web3 te herstellen:
+	\begin{lstlisting}[numbers=none,language=bash]
+	>yarn
+	>yarn remove web3
+	>yarn add web3@0.20.5
+	\end{lstlisting}
+
+	\subsection{Mogelijke problemen met Truffle-Contract}
 	Lezers die problemen ondervinden bij de  installatie van de \textit{truffle-contract} module, installeren het best versie 4.0.20. Bij aanhoudende problemen kan men de nodige \textit{yarn.lock }en \textit{package.json} op de githubpagina\footnote{Zie https://github.com/Ocean97Li/bachelorproef/blob/master/poc/EthereumVote/frontend/yarn.lock} van het project vinden. De meeste problemen met \textit{node\_packages} kunnen opgelost worden door deze twee configuratie bestanden in het lokale project te vervangen door die de bestanden die op github staan, vervolgens dient men nog eens gebruik te maken van het \textit{yarn} commando.
 	
 	\subsection{Algmenene structuur EthereumConnector}
@@ -568,7 +575,7 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 	We overlopen eerste de grote functionaliteiten we wensen te implementeren:
 	\begin{itemize}
 		\item \textbf{vote()}: Een stemfunctie die toelaat om  de gelijknamige functie in het smart contract \textit{Election} aan te spreken, het id van de gewenste kandidaat moet worden mee gegeven als parameter.
-		\item \textbf{register()}: Een stemfunctie die toelaat om  de gelijknamige functie (momenteel nog niet geïmplementeerd) in het smart contract \textit{Election} aan te spreken, ook hier moet het id van de gewenste kandidaat worden mee gegeven als parameter.
+		\item \textbf{register()}: Een stemfunctie die toelaat om  de gelijknamige functie in het smart contract \textit{Election} aan te spreken, ook hier moet het id van de gewenste kandidaat worden mee gegeven als parameter.
 		\item \textbf{getVotes()}: Eenmaal een stem is uitgebracht willen we de resultaten van de verkiezing visualiseren. Hiervoor moeten we het attribuut \textit{candidates} van \textit{Election} retourneren.
 		\item \textbf{checkVotedYet()}: Functie die het \textit{votedVoters} attribuut van \textit{Election} aanspreekt en weergeeft of een kiezer al een stem uitgebracht heeft.
 		\item \textbf{getCandidates()}: Haalt de kandidaten en hun \textit{id}'s op. De namen worden gebruikt om weer te geven, de id's vormen de achterliggende opties waarop men kan stemmen.
@@ -576,7 +583,9 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 		\item \textbf{truffleContract()}: Initieert een interface van \textit{Election} op basis van het gecompileerde smart-contract. Via deze interface kunnen we  interageren met smart-contracts.
 	\end{itemize}
 
-Daarnaast zijn er ook een heel aantal properties om de verschillende zaken bij te houden. Tabel \ref{tab:ethservice} geeft een overzicht van de verschillende attributen die we zullen gebruiken om zaken bij te houden in de connectorService. 
+Daarnaast zijn er ook een heel aantal properties om de verschillende zaken bij te houden. 
+
+Tabel \ref{tab:ethservice} geeft een overzicht van de verschillende attributen die we zullen gebruiken om zaken bij te houden in de connectorService. 
 Merk op dat er voor veel van de private domein attributen (die te maken hebben met stemmen) gelijknamige publieke properties van het type Subject zijn. Externe componenten kunnen de methode \textit{subcribe()} oproepen van deze properties om op de hoogte gehouden te worden van specifieke veranderingen aan de private eigenschappen van de connectorService. Via de Subjects kunnen we de veranderingen doorsturen naar de verschillende properties die hiervan afhankelijk zijn.
 
 	\begin{table}
@@ -603,7 +612,7 @@ Merk op dat er voor veel van de private domein attributen (die te maken hebben m
 	\caption{Attributen en hun type binnen de EthereumConnectorService}
 	\label{tab:ethservice}
 \end{table}
-
+\newpage
 \subsection{Bespreking verschillende methodes}
 	\subsubsection{truffleContract}
 	\lstset{language=JavaScriptSolidity} 
@@ -745,7 +754,6 @@ Merk op dat er voor veel van de private domein attributen (die te maken hebben m
 	\subsubsection{register}
 	\lstset{language=JavaScriptSolidity} 
 	\begin{lstlisting}[numbers=none]
-	
 	public register() {
 		return new Promise((resolve, reject) => {
 			return this.truffleContract.deployed().then((instance) => {
@@ -821,12 +829,19 @@ Merk op dat er voor veel van de private domein attributen (die te maken hebben m
 		});
 	}
 	\end{lstlisting}
-	Wanneer kiezers hun stem uitbrengen zijn er een heleboel zaken die gecontroleerd dienen te worden. Ten eerste wensen we te weten of de kiezer in kwestie 
-	wel voor het eerst stemt. Kiezers die reeds een stem uitbrachten moeten geweerd worden. Vervolgens controleren we met behulp van \textit{getAccountInfo()} de validiteit van het ingelogde account. Kiezers die voor het eerste een stem uitbrengen, wordt gecontroleerd of ze zich vooraf registreerden, niet geregistreerde kiezers worden immers geweerd. Indien een kiezer aan de bovenstaande voorwaarden voldoet kan er een stem uitgebracht worden. Het geheime getal dat gebruikt werd om de stemsleutel te genereren tijdens het registreren wordt nu samen met het id van de gekozen kandidaat, als parameter meegegeven aan de \textit{vote()} functie die wordt aangeroepen op \textit{electionInstance}.
-	\subsection{Veranderingen in de state}
-	Attente lezers merkten waarschijnlijk verschillende malen statements zoals \textit{this.state = ElectionState.voted;} en \textit{this.state\$.next(this.state);} op. Het gaat hier om wijzigingen aan de interne staat die de connector bijhoudt van het lokale stemproces.
+	Wanneer kiezers hun stem uitbrengen zijn er een heleboel zaken die gecontroleerd dienen te worden. 
 	
-	Omdat we hier te maken hebben met een proces dat uit verschillende sequentiële stappen bestaat, willen we steeds goed op de hoogte zijn waar in het proces gebruiker/kiezer zich bevind. Om die reden definiëren we de volgende states:
+	Als eerste controleren we via \textit{checkVoted()} of het huidige account al eens gestemd heeft. Accounts die aan deze stap voldoen krijgen een melding en worden vervolgens direct naar de resultaten pagina gestuurd.
+	
+	Via \textit{getAccountInfo()} wordt vervolgens de validiteit van het ingelogde account (correct ingelogd en geen lege portefeuille) gecontroleerd. accounts die niet aan deze controle voldoen worden geweerd. 
+	
+	Accounts die voor het eerste een stem mogen uitbrengen en over een geldig ingelogd account beschikken worden gecontroleerd op registratie. Niet geregistreerde accounts worden geweerd, geregistreerde accounts worden nu als kiezers gezien.
+	
+	Een kiezer is iemand die aan al de voorwaarden voldoet. Door deze persoon kan een stem uitgebracht worden via \textit{vote()}. Het geheime getal dat gebruikt werd om de stemsleutel te genereren tijdens het registreren (attribuut \textit{votingKey}) wordt nu samen met het id van de gekozen kandidaat als parameter meegegeven aan de \textit{vote()} functie van \textit{electionInstance}.
+	\subsection{Veranderingen in de state}
+	Attente lezers merkten waarschijnlijk verschillende statements zoals \textit{this.state = ElectionState.voted} en \textit{this.state\$.next(this.state)} op doorheen de code. Dit zijn wijzigingen aan de interne staat van de applicatie. We gebruiken \textit{this.state} om de interne staat om de lokale vooruitgang binnen het verkiezingsproces bij te houden, via \textit{this.state\$.next(this.state) verwittigen we alle luisteraars (inclusief de connector zelf) van een gemaakte verandering}
+	
+	De states delen het stemproces op in verschillende sequentiële stappen, we definiëren:
 	\begin{lstlisting}[numbers=none]
 	export enum ElectionState {
 		notloggedin,
@@ -835,32 +850,40 @@ Merk op dat er voor veel van de private domein attributen (die te maken hebben m
 		verified  					 
 	}
 	\end{lstlisting}
-	De states komen overeen met verschillende schermen die we gebruiken binnen de applicatie. De huidige state van de applicatie wordt bewaard in de private \textit{state} property en de publieke variant \textit{state\$: Subject<ElectionState>}. Iedere update van de state kan ontvangen worden door \textit{subscribe()} op te roepen op \textit{state\$}. We kunnen dit doen in externe componenten, maar doen het in de \textit{EthereumConnectorService}. Wanneer we  nu de state veranderen, vind er automatisch een verandering plaats in het scherm dat de gebruiker te zien krijgt.
+	De voornaamste reden waarvoor \textit{state} gebruikt wordt is om de vooruitgang binnen het stemproces visueel weer te geven doorheen de verschillende schermen in de applicatie. Concreet gebruiken we de veranderingen in state om de \textit{component routing} te besturen, bij iedere verandering van \textit{state} wordt de \textit{Angular Router} aangeroepen om naar een nieuw scherm te navigeren.
+	
+	Normaal gezien is het uitvoeren van \textit{routing} iets wat alleen ter hoogte van de componenten gebeurt, maar in dit geval (voor de compleetheid en herbruikbaarheid van de code) lijkt het beter om dit binnen de \textit{EthereumConnectorService} te implementeren. 
+	
+	Zodat de routing probleemloos zou werken buiten een component (zonder irregulier gedrag), dienen we gebruik van een wrapping van de code met \textit{ngZone.run()}.
+	
+	De code die zorgt voor automatische routing bij verandering van state is de volgende:
 	\begin{lstlisting}[numbers=none]
 	this.state$.subscribe( state => {
 		let route: string;
 		switch (state) {
 			case ElectionState.notloggedin:
-			route = 'login';
+			route = "login";
 			this.register(); break;
 			case ElectionState.loggedin:
-			route = 'vote'; break;
+			route = "vote"; break;
 			case ElectionState.voted:
-			route = 'verify'; break;
+			route = "verify"; break;
 			case ElectionState.verified:
-			route = 'results'; break;
+			route = "results"; break;
 		}
 		this.router.navigateByUrl(`/${route}`);
 	});
 	\end{lstlisting}
-	Vervolgens definiëren we de routes in \textit{app.module.ts}:
+	Voor iedere verandering in electionState hebben we een corresponderende route.
+	
+	De routes (`login',`vote',`verify',`results') definiëren en injecteren we in \textit{app.module.ts}:
 	\begin{lstlisting}[numbers=none]
 	const routes: Route[] = [
-		{path: 'vote', component: VotingComponent},
-		{path: 'results', component: ResultsComponent},
-		{path: 'login', component: LoginComponent},
-		{path: 'verify', component: VerifyComponent},
-		{path: '**', component: LoginComponent}
+		{path: "vote", component: VotingComponent},
+		{path: "results", component: ResultsComponent},
+		{path: "login", component: LoginComponent},
+		{path: "verify", component: VerifyComponent},
+		{path: "**", component: LoginComponent}
 	];
 	
 	@NgModule({
@@ -873,14 +896,217 @@ Merk op dat er voor veel van de private domein attributen (die te maken hebben m
 	})
 	\end{lstlisting}
 	\subsection{Componenten}
-	Tot slot geven we een kort overzicht van de verschillende componenten die we gebruiken in deze applicatie. Iedere component komt overeen met een scherm, ofwel een stap in het verkiezingsproces. De volledige implementatie is de te vinden op Github\footnote{https://github.com/Ocean97Li/bachelorproef/tree/master/poc/EthereumVote/frontend/src/app/components}.
+	Tot slot geven we een kort overzicht verschillende componenten die gebruikt worden in deze applicatie. Iedere component komt overeen met één scherm in de DApp en één stap in het verkiezingsproces. 
+	
+	Merk op dat de onderstaande html5 code, specifiek is geschreven binnen de context van het Angular Framework. Gebruikers die een zelf een front-end wensen te ontwikkelen via een ander framework of zonder framework, kunnen zich enkel op deze code baseren, niet letterlijk overnemen. 
+	
+	De volledige implementatie is de te vinden op Github\footnote{https://github.com/Ocean97Li/bachelorproef/tree/master/poc/EthereumVote/frontend/src/app/components}.
+	\newpage
+	\subsubsection{Login}
+	In \textit{app/components/login/login.html}
+	\begin{lstlisting}[frame=single,language=HTML5]
+	<div class="card">
+		<h1>
+			Log into and register your Metamask Account
+		</h1>
+		<div class="metamask">
+			Waiting for login and register...
+		</div>
+	</div>
+	\end{lstlisting}
+	\subsubsection{Voting}
+	In \textit{app/components/voting/voting.html}
+	\lstset{language=HTML5}
+	\begin{lstlisting}[frame=single]
+	 <div class="card">
+		<h1>
+			Is blockchain voting feasible?
+		</h1>
+		<form 
+			*ngIf="candidates" 
+			[formGroup]="form" 
+			(ngSubmit)="vote()">
+			
+			<p *ngFor="let candidate of candidates">
+				<input 
+					[id]="candidate.id" 
+					type="radio" 
+					formControlName="answer" 
+					[value]="candidate.id"/>
+				<label [for]="candidate.id">
+					{{candidate.name}}
+				</label>
+			</p>
+			
+			<p class="center">
+				<button 
+					type="submit" 
+					class="vote-button" 
+					[disabled]="form.get("answer").value==null">
+						Vote
+				</button>
+			</p>
+			
+		</form>
+	<div>
+	\end{lstlisting}
+	\newpage
+	\subsubsection{Verify}
+	In \textit{app/components/verify/verify.html}
+	\lstset{language=HTML5}
+	\begin{lstlisting}[frame=single]
+	<div class="card">
+		<h1>
+			Is blockchain voting feasible?
+		</h1>
+		<div class="verify">
+			Verifying your vote...
+		</div>
+	<div>
+	\end{lstlisting}
+	\subsubsection{Results}
+	In \textit{app/components/results/results.html}
+	\lstset{language=HTML5}
+	\begin{lstlisting}[frame=single]
+	<div class="card">
+		<h1>Is blockchain voting feasible?</h1>
+		<form>
+			<ng-container 
+				*ngIf="votes && totalVotes() > 0; else fetchingVotes;">
+				<h1>Results:</h1>
+			</ng-container>
+			<div class="votes">
+				<div 
+					class="yes transistion" 
+					[ngStyle]="{width: "calc("+percentage("Yes")+" - 30px)"}">
+						Yes
+				</div>
+				<i class="percentage">
+					{{displayPercentage[0]}}%
+				</i>
+			</div>
+			<div class="votes">
+				<div 
+					class="no transistion" 
+					[ngStyle]="{width: "calc("+percentage("No")+" - 30px)"}">
+						No
+				</div>
+				<i class="percentage">
+					{{displayPercentage[1]}}%
+				</i>
+			</div>
+			<div class="center total">
+				{{totalVotes(votes)}} votes
+			</div>
+			<ng-template #fetchingVotes>
+				<p class="center space-bottom">Fetching votes...</p>
+			</ng-template>
+		</form>
+	<div>
+	\end{lstlisting}
+	\newpage
+		\begin{figure}[h!]
+		\centering
+		\includegraphics[width=\linewidth]{img/login.png}
+		\caption{Het `login' scherm}
+		\label{fig:login}
+	\end{figure}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=\linewidth]{img/vote.png}
+		\caption{Het `voting' scherm}
+		\label{fig:vote}
+	\end{figure}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=\linewidth]{img/verify.png}
+		\caption{Het `verify' scherm}
+		\label{fig:verify}
+	\end{figure}
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=\linewidth]{img/results.png}
+		\caption{Het `results' scherm}
+		\label{fig:results}
+	\end{figure}
+	\newpage
+	\section{Eindresultaat}
+	\subsection{Testen van Eindresultaat}
+	Wensen we de werking van de volledige applicatie te testen, dan dienen vooraf de volgende sequentiële stappen te nemen:
+	
+	\begin{enumerate}
+		\item Opstarten van Ganache.
+		\item Het aanmaken van een nieuwe lokale blockchain instantie in Ganache.
+		\item Navigeren naar het backend project in de console.
+		\item Smart contracts deployen via console commando \textit{truffle migrate} (eventueel \textit{- -reset}).
+		\item Angular app opstarten.
+		\item Inloggen op metamask.
+		\item Accounts importeren (Uit geheime sleutels uit Ganache importeren in Metamask).
+		\item Start manueel testen.
+	\end{enumerate}
+	Tenslotte kunnen we de applicatie testen door de volgende stappen te ondernemen.
+	\begin{enumerate}
+		\item Surfen naar de url waar de app op gehost wordt. (localhost:4200/deployed instantie).
+		\item Metamask: connecteren aan de blockchain via ingelogde account goedkeuren.
+		\item Metamask: `Register' transactie goedkeuren.
+		\item DApp: Stem uitbrengen op het stemscherm.
+		\item Metamask: `Vote' transactie goedkeuren.
+		\item DApp: Resultaten verkiezingen bekijken.
+	\end{enumerate}
+	Figuren \ref{fig:screen_login1}, \ref{fig:screen_login2}, \ref{fig:screen_voting1}, \ref{fig:screen_voting2}  en \ref{fig:screen_voting3} geven de verschillende stappen van het stemproces via de EthereumVoting  app weer. Merk op: Alle interacties met de blockchain worden direct geïnitialiseerd door de gebruiker vanuit de browser, maar moeten vervolgens ook nog eens bevestigd worden via de Metamask plugin. De interacties gebeuren dus allemaal via een ingelogde Ethereum Wallet, wat het systeem volledig secuur maakt.
+	\begin{figure}
+		\centering
+		\includegraphics[width=\linewidth/3]{img/screen_login.png}
+		\includegraphics[width=\linewidth/3]{img/screen_metamask1.png}
+		\caption{Inloggen op Metamask }
+		\label{fig:screen_login1}
+	\end{figure}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\linewidth/3]{img/screen_metamask2.png}
+		\includegraphics[width=\linewidth/3]{img/screen_metamask3.png}
+		\caption{Verbinden met het Ethereum netwerk en registreren}
+		\label{fig:screen_login2}
+	\end{figure}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\linewidth/3]{img/screen_metamask4.png}
+		\includegraphics[width=\linewidth/3]{img/screen_voting.png}
+		\caption{Stemmen, na de registratie-transactie voltooid is}
+		\label{fig:screen_voting1}
+	\end{figure}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\linewidth/3]{img/screen_verify.png}
+		\includegraphics[width=\linewidth/3]{img/screen_metamask5.png}
+		\caption{Stemtransactie goedkeuren en controleren}
+		\label{fig:screen_voting2}
+	\end{figure}
+	\begin{figure}
+		\centering
+		\includegraphics[width=\linewidth/3]{img/screen_metamask6.png}
+		\includegraphics[width=\linewidth/3]{img/screen_results.png}
+		\caption{De verkiezingsresultaten, na de stem-transactie voltooid is}
+		\label{fig:screen_voting3}
+	\end{figure}
+
+	Eenmaal de bovenstaande stappen zijn doorlopen is deze handleiding ten einde gekomen: we hebben met succes een werkend \textbf{blockchain gebaseerd stemsysteem} gebouwd op basis van Ethereum smart-contracts. En deze gedeployed op een lokale blockchain. De werking van de smart-contracts hebben we uitvoerig getest, via test files en via de Truffle-console. Vervolgens hebben we onze smart-contracts verbonden aan een webapplicatie gebouwd op het Angular javascript framework. De werking van de volledige DApp hebben we tenslotte in de browser bevestigd! 
+	
+	\subsection{Evaluatie Eindresultaat}
+	Deze handleiding toont aan dat het ontwikkelen van een blockchain gebaseerd stemsystemen eenvoudiger is dan ooit. De vele tools en hulpmiddelen waarvan we vandaag gebruik kunnen maken, zorgen voor  lagen van abstracties en simplificaties die blockchain een ontwikkelomgeving maakt zoals alle andere.
+
+	 Het stemsysteem dat we via deze handleiding bekwamen is simpel en efficiënt. Het project is geschreven volgens de laatste standaarden en kan bijgevolg op alle moderne Ethereum-(test)netwerken draaien. Het is een perfect systeem voor kleinschalige verkiezingsscenario's: zaken zoals burgerinitiatieven, buurtcomités of raden van bestuur. EthereumVote biedt eend drastische vereenvoudiging in de organisatie en gebruiksvriendelijkheid van verkiezingen, organisatoren kunnen met enkele clicks een nieuwere verkiezing opzetten, gebruikers kunnen met nog minder clicks hun stem uitbrengen.
+	 
+	 Voor grotere verkiezingsscenario's zoals gemeentelijke, provinciale of nationale verkiezingen, is EthereumVote minder geschikt. De aard van de blockchain technologie werkt hier in zekere zin tegen ons. Iedere transactie, elke interactie tussen gebruiker en systeem is immers publiek zichtbaar. In veel verkiezingen is volledige anonimiteit echter noodzakelijk. Om volledige anonimiteit op een blockchain te bereiken moet men dus een manier hebben om geheimen te bewaren in een systeem waar alles wat opgeslagen wordt openbaar is. Er zijn systemen -zoals het OVNP (McCorry e.a., 2017)- die er in slagen dit te bereiken. Dergelijke oplossingen leunen echter op complexe cryptografie en zijn bijgevolg zeer inefficiënt en vaak te duur om in de context van een blockchain netwerk te draaien.
+	
+	In plaats van cryptografie aan het project toe te voegen, stellen we met EthereumVote een alternatieve oplossing voor: we encrypteren niet, maar verzekeren dat de accounts die onze kiezers gebruiken strikt anoniem blijven. De identiteit (naam, voornaam, leeftijd of geboortedatum) van de kiezer mag nooit worden gelinkt aan het adres van zijn of haar account. We garanderen dit door zelf de accounts te distribueren vòòr de verkiezing van start gaat. De accounts worden op random wijze toegewezen aan de de in aanmerking komende kiezers. De accounts zijn daarvoor reeds bekend gemaakt aan het smart-contract in de vorm van een \textit{whitelist}: enkel en alleen de accounts die het smart-contract kent mogen aan de verkiezingen deelnemen. 
+	
+	Het uitdelen/verkopen van de accounts is in dit geval wel iets wat een bepaalde vorm van \textit{centrale autoriteit} vergt. De organisator van de verkiezing krijgt in zekere zin ook extra macht, deze persoon of groep van personen kunnen kan via hun account immers bepalen wie er zal deelnemen aan de verkiezing. Deze  twee nadelen zijn echter leefbaar, bovendien worden ze te niet gedaan door de reeds genoemde voordelen die  men met EthereumVote verkrijgt.
 	
 	
-	\subsection{Eindresultaat}
 
 	
-	
-	
+
 	
 	
 	

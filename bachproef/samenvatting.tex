@@ -25,16 +25,23 @@
 % Wie zijn bachelorproef in het Nederlands schrijft, kan dit negeren, de inhoud
 % wordt niet in het document ingevoegd.
 
-\IfLanguageName{english}{%
-\selectlanguage{dutch}
-\chapter*{Samenvatting}
-\lipsum[1-4]
-\selectlanguage{english}
-}{}
+%\IfLanguageName{english}{%
+%\selectlanguage{dutch}
+%\chapter*{Samenvatting}
+%\lipsum[1-4]
+%\selectlanguage{english}
+%}{}
 
 %%---------- Samenvatting -----------------------------------------------------
 % De samenvatting in de hoofdtaal van het document
 
 \chapter*{\IfLanguageName{dutch}{Samenvatting}{Abstract}}
 
-\lipsum[1-4]
+Democratie is een van de bouwstenen van onze moderne samenleving, toch zijn er heel wat problemen met de manier waarop we stemmen. 
+Een van de voornaamste problemen is een gebrek aan \textit{transparantie} en \textit{betrouwbaarheid}. In dit onderzoek werd daarom blockchain-gebaseerd stemmen voorgesteld als mogelijke oplossing. 
+
+Ter verdieping in het onderwerp werd een uitgebreide literatuurstudie gevoerd. De meest vooruitstrevende blockchain-gebaseerde stemsystemen van dit moment bleken het \textit{Open Vote Network Protocol} en Moskou's \textit{Active Citizens Project} te zijn. Beide kunnen een betere veiligheid en betrouwbaarheid bieden dan gecentraliseerde tegenhangers. De aard van blockchain-technologie blijkt echter ook voor problemen te zorgen op het vlak van \textit{schaalbaarheid}. Deze kunnen momenteel niet overkomen worden. Het ontwikkelen van private gespecialiseerde blockchain kan wel enig soelaas bieden. Naar de toekomst lijkt het zelfs mogelijk dat een oplossing hieruit voortvloeit.  
+
+In deze scriptie werd EthereumVote voorgesteld. Deze \textit{decentralized application} bestaat uit een \textit{Ethereum-smartcontract} en een verbonden web-applicatie. De implementatie combineert op succesvolle wijze \textit{veiligheid} met \textit{kost-efficiëntie}. EthereumVote vormt het eindresultaat van een praktische handleiding voor het ontwikkelen van een blockchain gebaseerd-stemsysteem. Deze handleiding toont ook aan dat het ontwikkelen zeer vlot gaat met de juiste tools: \textit{Ganache}, \textit{truffle}, \textit{truffle contracts}, \textit{web3} en \textit{Metamask}.
+
+De bevindingen van de literatuurstudie werden bevestigd tijdens het implementeren van EthereumVote. Kleinschalige blockchain-gebaseerde stemsystemen zijn zeer performant,  grootschalige implementaties zijn dat nog niet. Het grootste probleem hier is schaalbaarheid, het overkomen daarvan lijkt een vooral kwestie van politieke wil en financiële middelen, het is iets dat zeker verder onderzocht dient te worden.
