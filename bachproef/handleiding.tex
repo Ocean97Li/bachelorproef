@@ -1,4 +1,5 @@
 
+
 %%=============================================================================
 %% Handleiding
 %%=============================================================================
@@ -6,13 +7,13 @@
 \chapter{Handleiding}
 \label{ch:handleiding}
 
-Dit hoofdstuk beschrijft hoe men het best te werk kan gaan in de opzet van een \textit{eenvoudig, kleinschalig blockchain gebaseerd stemsysteem}. Het doel is om een praktische en complete handleiding te vormen, hoofdzakelijk bedoeld voor ontwikkelaars die niet vertrouwd zijn met het ontwikkelen van Ethereum Dapps, noch met het ontwikkelen van cryptografische stemsystemen. 
+Dit hoofdstuk beschrijft hoe men het best te werk kan gaan voor het opzetten van een \textit{eenvoudig, kleinschalig blockchain-gebaseerd stemsysteem}. Het doel is om een praktische en complete handleiding te vormen, hoofdzakelijk bedoeld voor ontwikkelaars die niet vertrouwd zijn met het ontwikkelen van Ethereum DApps, noch met het ontwikkelen van cryptografische stemsystemen. 
 
-Gezien de vrij technische aard van deze handleiding wordt er veronderstelt dat de lezer op zijn minst een algemene voorkennis heeft op het vlak van programmeren  en enigszins bekend is met Javascript. Kennis van de taal Solidity wordt niet verondersteld. Tenslotte wordt er veronderstelt dat de lezer over een basis kennis Engels beschikt, daar de volledige code-basis in die taal geschreven is. 
+Gezien de vrij technische aard van deze handleiding, wordt er verondersteld dat de lezer op zijn minst een algemene voorkennis van programmeren heeft en enigszins vertrouwd is met \textit{Javascript}. Kennis van de taal \textit{Solidity} wordt niet verondersteld. Tenslotte wordt verondersteld dat de lezer over een basiskennis Engels beschikt, daar de volledige codebasis in die taal geschreven is. 
 
-De  verschillende implementatie keuzes die hier wordt gemaakt gebeuren op basis van verschillende concepten en technieken die werden toegelicht in hoofdstuk \ref{ch:stand-van-zaken}. Zo wordt er bijvoorbeeld gekozen voor het Ethereum platform als ontwikkelomgeving op basis van sectie \ref{sec:ethereum-en-smart-contracts} en wordt de veiligheid vergeleken met die van het `state-of-the-art' zelf-tellende stemprotocol OVNP \autocite{McCorry2017} uit sectie \ref{sec:OVNP}.
+De  verschillende implementatiekeuzes die hier worden gemaakt, gebeuren op basis van verschillende concepten en technieken die werden toegelicht in hoofdstuk \ref{ch:stand-van-zaken}. Zo wordt er bijvoorbeeld gekozen voor het Ethereum-platform als ontwikkelomgeving op basis van sectie \ref{sec:ethereum-en-smart-contracts} en wordt de veiligheid vergeleken met die van het `state-of-the-art' zelftellende OVNP \autocite{McCorry2017} uit sectie \ref{sec:OVNP}.
 
-Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antwoord te bieden op een deel van de onderzoeksvragen van deze scriptie, metname: 
+Dit hoofdstuk vormt de \textit{proof-of-concept} van deze scriptie, we trachten hier antwoord te bieden op een deel van de onderzoeksvragen van deze scriptie, met name: 
 \begin{itemize}
 	\item \textit{Welke tools heeft men nodig om een blockchain-gebaseerd stemsysteem op te zetten en wat zijn de voor- en nadelen hiervan?}
 	\item \textit{Is een blockchain-gebaseerd stemsysteem opzetten haalbaar in de praktijk?} 
@@ -20,7 +21,7 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 
 \section{Benodigdheden}
 \label{sec:benodigdheden}
-	De volgende zaken dienen geïnstalleerd te worden voor men van start kan gaan met het implementeren van een gedecentraliseerde Ethereum blockchain applicatie:
+	De volgende zaken dienen geïnstalleerd te worden voor men van start kan gaan met het implementeren van een gedecentraliseerde Ethereum-blockchain applicatie:
 	\begin{itemize}
 		\item{Node.js}
 		\item{npm}
@@ -30,17 +31,17 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 	\end{itemize}
 	Daarnaast heeft men ook nodig:
 	\begin{itemize}
-		\item{Een IDE code-editor naar keuze met syntax ondersteuning voor Solidity}
+		\item{Een IDE code-editor naar keuze met syntax-ondersteuning voor Solidity}
 		\item{Google Chrome}
 	\end{itemize}
 	\subsection{Node en npm}
-	Node.js is een populaire Runtime-omgeving waarmee Javascript op ieder platform uitgevoerd kan worden, zonder dat daar een browser voor nodig is. Npm is een pakketbeheerder voor Javascript code. Npm zit standaard in Node.js en is `s werelds grootste softwareregister. Open source-ontwikkelaars wereldwijd gebruiken het om pakketten te delen, veel organisaties gebruiken npm om ook hun privéontwikkeling te beheren (\ref{fig:nodejs}).\footnote{Verkregen en vertaald van https://docs.npmjs.com/about-npm/}
+	Node.js is een populaire runtime-omgeving waarmee Javascript op ieder platform uitgevoerd kan worden, zonder dat daarvoor een browser nodig is. Npm is een pakketbeheerder voor Javascript-code. Npm zit standaard in Node.js en is `s werelds grootste softwareregister. Open source-ontwikkelaars wereldwijd gebruiken het om pakketten te delen, veel organisaties gebruiken npm om ook hun privéontwikkeling te beheren (\ref{fig:nodejs}).\footnote{Verkregen en vertaald van https://docs.npmjs.com/about-npm/}
 	
 	Eenmaal node\footnote{node met npm is verkrijgbaar via https://nodejs.org} en npm\footnote{npm is ook apart verkrijgbaar via https://www.npmjs.com/get-npm} geïnstalleerd zijn, verifieert men de installatie via het console-commando: 
 	\lstset{language=bash}
 	\begin{lstlisting}[numbers=none]
 	> node -v
-	\end{lstlisting}Bij correcte installatie geeft dit de huidige node versie terug, bijvoorbeeld \textit{v10.15.1}. 
+	\end{lstlisting}Bij correcte installatie geeft dit de huidige node-versie terug, bijvoorbeeld \textit{v10.15.1}. 
 	
 	\begin{figure}
 		\includegraphics[width=\linewidth/2]{img/nodejs.png}
@@ -50,17 +51,17 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 	\end{figure}
 	
 	\subsection{Truffle}
-	Truffle is een ontwikkelomgeving, testframework en asset pipline, gericht op het versoepelen van het Ethereum ontwikkelproces. Het bevat ook verschillende code-templates die als basis kunnen worden gebruikt om gedecentraliseerde applicaties te ontwikkelen.
+	Truffle is een ontwikkelomgeving, testframework en asset pipline, gericht op het versoepelen van het Ethereum-ontwikkelproces. Het bevat ook verschillende code-templates die als basis kunnen worden gebruikt om gedecentraliseerde applicaties te ontwikkelen.
 	
-	Truffle kan eenvoudig geïnstalleerd worden via npm (mits dit  voorgeïnstalleerd is) met het console-commando:
+	Truffle kan eenvoudig geïnstalleerd worden via npm (mits dit voorgeïnstalleerd is) met het console-commando:
 	 \lstset{language=bash}
 	\begin{lstlisting}[numbers=none]
 	> npm install truffle
 	\end{lstlisting}
 	\subsection{Ganache}
-	Ganache\footnote{Ganache is verkrijgbaar via https://www.trufflesuite.com/ganache} is een applicatie die ontwikkelaars in staat stelt om een private Ethereum-blockchain op te zetten. We gebruiken deze blockchain gedurende de volledige ontwikkelperiode. Op deze manier kan men kosteloos smart-contracts ontwikkelen en testen, als men direct op de Ethereum hoofdketen ontwikkelt is er  immers aan iedere transactie  een kost verbonden. 
+	Ganache\footnote{Ganache is verkrijgbaar via https://www.trufflesuite.com/ganache} is een applicatie die ontwikkelaars in staat stelt om een private Ethereum-blockchain op te zetten. We gebruiken deze blockchain gedurende de volledige ontwikkelperiode. Op deze manier kan men kosteloos smart contracts ontwikkelen en testen, als men direct op de Ethereum-hoofdketen ontwikkelt, is er immers aan iedere transactie een kost verbonden. 
 	
-	Ganache biedt ons  niet enkel een lokale blockchain, het biedt ons ook 10 Ethereum accounts om te gebruiken tijdens het ontwikkelen. Deze accounts hebben adressen die corresponderen met adressen op de lokale Ethereum-blockchain. Elke account is vooraf geladen met 100 nep-ether.
+	Ganache biedt ons  niet enkel een lokale blockchain, maar ook 10 Ethereum accounts om te gebruiken tijdens het ontwikkelen. Deze accounts hebben adressen die corresponderen met adressen op de lokale Ethereum-blockchain. Elke account is vooraf geladen met 100 nep-ether.
 	
 	Figuur \ref{fig:ganache-blockchain}: Eenmaal Ganache geïnstalleerd is, open we de applicatie. Door het kiezen van de optie \textit{quickstart} zetten we onmiddellijk een lokale blockchain op. 
 	
@@ -72,11 +73,11 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 	
 	
 	\subsection{Metamask}
-	Metamask\footnote{Metamask is verkrijgbaar via https://metamask.io of via https://chrome.google.com/webstore} is een Ethereum wallet plugin voor Google Chrome die gebruikers toelaat om transacties van Ethereum dApps uit te voeren in de browser, zonder zelf een node moeten zijn in het netwerk. Door Metamask te installeren hoeft men met andere woorden de volledige blockchain dus niet meer te downloaden. 
+	Metamask\footnote{Metamask is verkrijgbaar via https://metamask.io of via https://chrome.google.com/webstore} is een Ethereum wallet-plugin voor Google Chrome, die gebruikers in staat stelt om transacties van Ethereum DApps uit te voeren in de browser, zonder zelf een node in het netwerk te moeten zijn. Door Metamask te installeren hoeft men met andere woorden de volledige blockchain dus niet meer te downloaden. 
 	
-	Voor deze implementatie is Metamask van cruciaal belang gezien het verantwoordelijk is voor de verificatie van Ethereum accounts. Daarnaast is het ook een zeer handige tool wanneer we onze implementatie in de browser willen testen, het laat ons toe om zeer snel tussen verschillende accounts te verspringen.
+	Voor deze implementatie is Metamask van cruciaal belang, gezien het verantwoordelijk is voor de verificatie van Ethereum-accounts. Daarnaast is het ook een zeer handige tool wanneer we onze implementatie in de browser willen testen, het staat ons toe zeer snel tussen verschillende accounts te schakelen.
 	
-	Eenmaal de plugin geïnstalleerd is dient men een paswoord te creëren, daarnaast krijgt men ook een fallback sleutel
+	Eenmaal de plugin geïnstalleerd is, dient men een paswoord te creëren, daarnaast ontvangt men ook een fallback-sleutel.
 	
 	\begin{figure}
 		\includegraphics[width=\linewidth]{img/metamask-truffle-ganache.png}
@@ -84,20 +85,20 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 		\label{fig:metamask-truffle-ganache}
 	\end{figure}
 	\newpage
-\section{Implementatie Smart Contracts}
-	Eenmaal al de verschillende tools en plugins uit sectie \ref{sec:benodigdheden} geïnstalleerd zijn kan men aan het ontwikkelen van smart-contracts beginnen. In de volgende subsecties volgt de implementatie van een blockchain gebaseerd stemsysteem op basis van smart-contracts. Het volledige project kan gevonde worden op Github\footnote{Zie: https://github.com/Ocean97Li/bachelorproef/tree/master/poc/EthereumVote/backend} We beginnen met een simpele implementatie die niet self-tallying is. In een latere sectie bespreken we wat er nodig is om een veiliger systeem te bekomen.
+\section{Implementatie smart contracts}
+	Eenmaal alle verschillende tools en plugins uit sectie \ref{sec:benodigdheden} geïnstalleerd zijn, kan men aan het ontwikkelen van smart contracts beginnen. In de volgende subsecties bespreken we de implementatie van een blockchain-gebaseerd stemsysteem op basis van smart contracts. Het volledige project kan worden gevonden op Github\footnote{Zie: https://github.com/Ocean97Li/bachelorproef/tree/master/poc/EthereumVote/backend}. We beginnen met een eenvoudige implementatie die niet \textit{self-tallying} is. In een latere sectie bespreken we wat er nodig is om een veiliger systeem te bekomen.
 	\subsection{Opzet Truffle}
-	Voor we beginnen met het ontwikkelen van onze smart-contracts moeten we eerst een ontwikkelomgeving opzetten. Voor een vlotte start maken we gebruik van één van de template projecten beschikbaar via Truffle. 
+	Voor we beginnen met het ontwikkelen van onze smart contracts, moeten we eerst een ontwikkelomgeving opzetten. Voor een vlotte start maken we gebruik van één van de template-projecten beschikbaar via Truffle. 
 	
-	Na te navigeren naar een gewenste directory, gebruikt men het console commando: 
+	Na het navigeren naar een gewenste directory gebruikt men het console-commando: 
 	 \lstset{language=bash}
 	\begin{lstlisting}[numbers=none]
 	> truffle unbox pet-shop
 	\end{lstlisting}
 	
-	Dit creëert een nieuw project in de huidige directory, we openen het in een code-editor (bijvoorbeeld VS-code). Figuur \ref{fig:truffle-template} toont de structuur van de genereerde Truffle template. Het project bevat momenteel zowel een back-end gedeelte (smart-contract) als een front-end (een javascript project). 
+	Dit creëert een nieuw project in de huidige directory. We openen dit in een code-editor (bijvoorbeeld VS-code). Figuur \ref{fig:truffle-template} toont de structuur van de gegenereerde Truffle-template. Het project bevat momenteel zowel een back-end gedeelte (smart contract) als een front-end (javascript project). 
 	
-	In deze handleiding zullen we  -met het principe van herbruikbaarheid in gedachten- de code opsplitsen in aparte front- en back-end projecten, de folder en inhoud onder \textit{\slash src}, als ook de afbeeldingen \textit{box-img-lg.png} en \textit{box-img-sm.png} mogen dus uit dit project verwijderd worden.
+	In deze handleiding zullen we - met het principe van herbruikbaarheid in gedachten - de code opsplitsen in afzonderlijke front- en back-end projecten. De folder en inhoud onder \textit{\slash src}, alsook de afbeeldingen \textit{box-img-lg.png} en \textit{box-img-sm.png} mogen dus uit dit project verwijderd worden.
 	
 	Het project kan nu als start-template worden gebruikt voor onze implementatie.
 	
@@ -108,16 +109,16 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 		\label{fig:truffle-template}
 	\end{figure}
 	
-	\subsection{Basis implementatie}
-	We beginnen met het aanmaken van een nieuw smart-contract bestand binnen het template-project. Dit doen we op de locatie \textit{contracts\slash Election.sol}. We overwegen de vereisten voor onze implementatie. Om een simpel stemsysteem te implementeren in een smart-contract hebben we nodig:
+	\subsection{Basisimplementatie}
+	We beginnen met het aanmaken van een nieuw smart contract bestand binnen het template-project. Dit doen we op de locatie \textit{contracts\slash Election.sol}. We overwegen de vereisten voor onze implementatie. Om een simpel stemsysteem te implementeren in een smart contract hebben we nodig:
 	\begin{itemize}
 		\item een lijst van de `opties' waarop gestemd kan worden
 		\item een lijst van de accounts die een stem uitgebracht hebben
 		\item per optie het aantal stemmen
 	\end{itemize}
-	Uiteraard zijn er verschillende manieren waarop we dit kunnen aanpakken. In de context van smart-contracts is het echter cruciaal dat we zo weinig mogelijk code schrijven. We baseren ons daarom op de implementatie die wordt gegeven door \textcite{McCubin2019}.\footnote{Zie ook https://github.com/dappuniversity/election}
+	Uiteraard zijn er verschillende manieren waarop we dit kunnen aanpakken. In de context van smart contracts is het echter cruciaal dat we zo weinig mogelijk code schrijven. We baseren ons daarom op de implementatie die wordt gegeven door \textcite{McCubin2019}\footnote{Zie ook https://github.com/dappuniversity/election}.
 	
-	We beginnen met het declareren van de Solidity versie:
+	We beginnen met het declareren van de Solidity-versie:
 
 	\lstset{language=JavaScriptSolidity} 
 	\begin{lstlisting}[numbers=none]
@@ -125,7 +126,7 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 	\end{lstlisting}
 	\lstset{language=JavaScriptSolidity} 
 
-	Vervolgens starten we met het definiëren we van ons smart-contract \textit{Election} :
+	Vervolgens starten we met het definiëren van ons smart contract \textit{Election} :
 	\begin{lstlisting}[numbers=none]	
 	contract Election {
 		constructor () public {
@@ -133,12 +134,12 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 	}
 	\end{lstlisting}
 	
-	Omdat we een lijst van de `opties' willen hebben en ook per optie willen bijhouden hoeveel stemmen er voor zijn, maken we gebruik van een custom type dat we \textit{Candidate} noemen. 
+	Omdat we een lijst van de `opties' willen hebben en ook willen bijhouden per optie hoeveel stemmen er zijn, maken we gebruik van een custom-type dat we \textit{Candidate} noemen. 
 
 	Onze verkiezing hoeft niet per se om het verkiezen van een persoon te gaan, het is echter wel handig om over de opties te denken in termen van`kandidaten'. 
 	Iedere optie is een kandidaat die een id, een `naam' (de optie tekst) en een aantal voorkeursstemmen heeft. 
 	
-	In Solidity definiëren we zo'n custom type in de vorm van een \textit{struct}:
+	In Solidity definiëren we zo'n custom-type in de vorm van een \textit{struct}:
 	
 	\begin{lstlisting}[numbers=none]	
 	struct Candidate {
@@ -159,11 +160,11 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 	uint public candidatesCounter;
 	\end{lstlisting}
 	
-	Het \textit{mapping} keyword in Solidity duidt een hashTable aan, in Solidity is dit de aangeraden verzameling-structuur\footnote{Zie https://ethereum.stackexchange.com/questions/2592/store-data-in-mapping-vs-array\#answer-2597}.  Mappings laten ons toe om key-value searching te doen. In het geval van  \textit{candiates} mappen we de `kandidaten' op basis van hun id's, die zijn numeriek en incrementeel. We houden het aantal kandidaten bij in \textit{candidatesCounter} zodat we niet onnodig in de mapping moeten zoeken, maar exact weten wat de range van id's is.
+	Het \textit{mapping} keyword in Solidity duidt een hashTable aan, in Solidity is dit de aangeraden verzameling-structuur\footnote{Zie https://ethereum.stackexchange.com/questions/2592/store-data-in-mapping-vs-array\#answer-2597}.  Mappings staan ons toe om key-value searching te doen. In het geval van  \textit{candiates} mappen we de `kandidaten' op basis van hun id's, deze zijn numeriek en incrementeel. We houden het aantal kandidaten bij in \textit{candidatesCounter}, zodat we niet onnodig in de mapping moeten zoeken, maar exact weten wat de range van id's is.
 	
-	Bij het attribuut \textit{voters} mappen we de adressen van alle kiezers op een booleaanse-waarde. Wensen we te weten of een kiezer reeds een stem uitgebracht, dan kunnen we dit via het \textit{voters} attribuut eenvoudig verifiëren. 
+	Bij het attribuut \textit{voters} mappen we de adressen van alle kiezers op een booleaanse waarde. Wensen we te weten of een kiezer reeds een stem heeft uitgebracht, dan kunnen we dit via het \textit{voters} attribuut eenvoudig verifiëren. 
 	
-	We voegen een methode toe aan \textit{Election} die ons instaat stelt om  \textit{candiates} toe initialiseren:
+	We voegen een methode toe aan \textit{Election} die ons in staat stelt om \textit{candiates} te initialiseren:
 	
 	\begin{lstlisting}[numbers=none]
 	function addCadidate(string memory _name) private {
@@ -171,9 +172,9 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 		candidates[candidatesCounter] = Candidate(candidatesCounter,_name,0);
 	}
 	\end{lstlisting}
-	Merk op dat parameter in de bovenstaande functie gemarkeerd is met het Solidity \textit{memory} keyword. Dit duidt aan dat deze parameter niet in de blockchain dient opgeslagen te worden, de tegenhanger van dit keyword is \textit{storage}.
+	Merk op dat de parameter in de bovenstaande functie gemarkeerd is met het Solidity \textit{memory} keyword. Dit duidt aan dat deze parameter niet in de blockchain dient opgeslagen te worden. De tegenhanger van dit keyword is \textit{storage}.
 	
-	Voorlopig zullen we onze opties `hardcoden' in de constructor functie, we kiezen voor een implementatie met simpele binaire ja/nee vragen:
+	Voorlopig zullen we onze opties `hardcoden' in de constructor-functie, we kiezen voor een implementatie met eenvoudige binaire ja/neen-vragen:
 	
 	\begin{lstlisting}[numbers=none]
 	constructor () public {
@@ -182,7 +183,7 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 	}
 	\end{lstlisting}
 	
-	Nu we opties hebben toegevoegd waarop gestemd kan worden rest ons enkel nog het implementeren van een stem functie. 
+	Nu we opties hebben toegevoegd waarop gestemd kan worden, rest ons enkel nog het implementeren van een stemfunctie. 
 	
 	Gebruikers mogen niet meermaals een stem uitbrengen, daarom controleren we iedere gebruiker die probeert te stemmen. 
 	
@@ -192,7 +193,7 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 	}
 	\end{lstlisting}
 	
-	Merk ook op dat hier wordt gebruik gemaakt van het Solidity \textit{view} keyword, dit duidt aan dat de betreffende functie geen aanpassingen zal maken aan het contract. 
+	Merk ook op dat hier gebruik wordt gemaakt van het Solidity \textit{view} keyword, dit duidt aan dat de betreffende functie geen aanpassingen zal maken aan het contract. 
 	
 	\begin{lstlisting}[numbers=none]
 	function vote(uint _candidateId) public {
@@ -205,7 +206,7 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 	}
 	\end{lstlisting}
 	
-	We vinden de kandidaat waarvoor de gebruiker stemde op basis van de parameter\textit{\_candidateId}. Door deze waarde in te vullen in de mapping \textit{candidates} krijgen we toegang tot de correcte Candidate struct. We verhogen het \textit{votes} attribuut van deze struct met 1. Op dit punt is de stem uitgebracht, we hebben nu een eenvoudig stemsysteem bekomen!
+	We vinden de kandidaat waarvoor de gebruiker stemde op basis van de parameter\textit{\_candidateId}. Door deze waarde in te vullen in de mapping \textit{candidates}, krijgen we toegang tot de correcte Candidate struct. We verhogen het \textit{votes} attribuut van deze struct met 1. Op dit punt is de stem uitgebracht, we hebben nu een eenvoudig stemsysteem bekomen!
 	
 	De volledige code voor het smart contract \textit{Election.sol} is momenteel:
 	
@@ -256,9 +257,9 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 	
 	
 	\subsection{Migration toevoegen}
-	Nu we een functioneel smartcontract hebben wensen we dit op onze lokale blockchain te deployen. Hiertoe dienen we  eerst een nieuw migration bestand aan het project toe te voegen op de locatie \textit{migrations\slash 2\_deploy\_contracts.js}.  
+	Nu we een functioneel smart contract hebben, wensen we dit op onze lokale blockchain te deployen. Hiertoe dienen we eerst een nieuw migratiebestand aan het project toe te voegen op de locatie \textit{migrations\slash 2\_deploy\_contracts.js}.  
 	
-	Het een nieuwe bestand krijgt de volgende inhoud:
+	Het nieuwe bestand krijgt de volgende inhoud:
 	
 	\begin{lstlisting}[frame=single]
 	// Find smart contract
@@ -270,11 +271,11 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 	};
 	\end{lstlisting}
 	
-	De bovenstaande code zal ervoor zorgen dat Truffle  het `Election' smart contract op de blockchain kan plaatsen wanneer we het project deployen.
+	De bovenstaande code zal ervoor zorgen dat Truffle het `Election' smart contract op de blockchain kan plaatsen wanneer we het project deployen.
 	
-	\subsection{Truffle project linken aan Ganache}
+	\subsection{Truffle-project linken aan Ganache}
 	
-	Om een beter overzicht te krijgen van de `state' van de lokale blockchain kunnen we ons Truffle project in Ganache toevoegen. Dit doen we door binnen Ganche naar de menu-optie `Contracts' te navigeren, vervolgens voor de optie `link truffle  projects'  te kiezen, naar het project te navigeren en daar het bestand \textit{truffle.js} aan te duiden. Tenslotte  kiezen we voor `save and restart'. Als we nu naar de menu-optie `Contracts' gaan krijgen we een overzicht van de contracten en hun status (\ref{fig:contracts-ganache1}).
+	Om een beter overzicht te krijgen van de `state' van de lokale blockchain, kunnen we ons Truffle-project in Ganache toevoegen. Dit doen we door binnen Ganache naar de menu-optie `Contracts' te navigeren, vervolgens voor de optie `link truffle projects'  te kiezen, naar het project te navigeren en daar het bestand \textit{truffle.js} aan te duiden. Tenslotte  kiezen we voor `save and restart'. Als we nu naar de menu-optie `Contracts' gaan, krijgen we een overzicht van de contracten en hun status (\ref{fig:contracts-ganache1}).
 	
 	\begin{figure}
 		\includegraphics[width=\linewidth]{img/contracts-ganache1.png}
@@ -285,19 +286,19 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 	
 	\subsection{Deployen van smart contracts}
 	
-	Eenmaal we een migration file hebben voor onze smart-contracts, kunnen we deze deployen. Als de Ganache blockchain opgestart is en het truffle project eraan gelinkt, navigeren we naar het project in de console om vervolgens het volgende console commando te gebruiken:
+	Eenmaal we een migratiebestand voor onze smart contracts hebben, kunnen we deze deployen. Eenmaal de Ganache-blockchain opgestart is en het truffle-project eraan gelinkt, navigeren we naar het project in de console om vervolgens het volgende commando te gebruiken:
 	
 	\begin{lstlisting}[numbers=none]
 	> truffle migrate
 	\end{lstlisting}
 	
-	Merk op dat indien we nu opnieuw wensen te deployen (in dit geval niet erg omdat we op een lokale blockchain werken) we het volgende commando dienen te gebruiken:
+	Merk op dat, indien we nu opnieuw wensen te deployen (in dit geval niet erg omdat we op een lokale blockchain werken), we het volgende commando dienen te gebruiken:
 	
 	\begin{lstlisting}[numbers=none]
 	> truffle migrate --reset
 	\end{lstlisting}
 	
-	Wanner er geen compilatie fouten aanwezig zijn in de code van de smart contracts kan er met succes deployed worden. In dat geval krijgt men voor ieder van de smart contracts een \textit{transaction receipt}:
+	Wanneer er geen compilatiefouten aanwezig zijn in de code van de smart contracts, kan er met succes gedeployed worden. In dat geval krijgt men voor elk van de smart contracts een \textit{transaction receipt}:
 	\lstset{language=bash}
 	\begin{lstlisting}[numbers=none]
 	 Deploying `Election'
@@ -321,23 +322,23 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 	> Total cost:          0.00839828 ETH
 	\end{lstlisting}
 	
-	Als we de contracts nu in Ganache bekijken zien we dat de status ook daar veranderd is naar deployed. (Zie Figuur \ref{fig:contracts-ganache2})
+	Als we de contracts nu in Ganache bekijken, zien we dat de status ook daar veranderd is naar `deployed'. (Zie Figuur \ref{fig:contracts-ganache2})
 	
 	\begin{figure}
 		\includegraphics[width=\linewidth]{img/contracts-ganache2.png}
-		\caption{Smart contracts deployed weergegeven in Ganache}
+		\caption{Smart contracts `deployed' weergegeven in Ganache}
 		\label{fig:contracts-ganache2}
 	\end{figure}
 	
 	\subsection{Belang van testen}
-	Bij het ontwikkelen van dApps speelt testen een cruciale rol. Eenmaal deployed naar een officieel netwerk kunnen functies die bugs bevatten en onverwacht gedrag vertonen erg kostelijk zijn voor gebruikers. Het is daarom best practice om enkel smart contracts te deployen die functioneel-volledig en getest zijn.  Doordat alles wat in de blockchain wordt bewaard immutable is, betekent het herdeployen van een smart-contract eigenlijk dat het huidige contract wordt vervangen door een nieuwe kopie. Zowel de state als het adres van het oude contract gaan verloren. Dit is brekend voor iedere front-end applicatie die aan de dApp verbonden is. 
+	Bij het ontwikkelen van DApps speelt testen een cruciale rol. Eenmaal gedeployed naar een officieel netwerk, kunnen functies die bugs bevatten en onverwacht gedrag vertonen erg kostelijk zijn voor gebruikers. Het is daarom best practice om enkel smart contracts te deployen die functioneel-volledig en getest zijn.  Doordat alles wat in de blockchain wordt bewaard \textit{immutable} is, betekent het herdeployen van een smart contract eigenlijk dat het huidige contract wordt vervangen door een nieuwe kopie. Zowel de state als het adres van het oude contract gaan verloren. Dit is brekend voor iedere front-end applicatie die aan de DApp verbonden is. 
 	
-	Door smart-contracts grondig te testen kunnen we dergelijke situaties vermijden.
+	Door smart contracts grondig te testen kunnen we dergelijke situaties vermijden.
 	
-	Er zijn verschillende methoden die men kan toepassen om een smart-contract te testen, standaard is om ze te schrijven in Solidity. Voor dit voorbeeld zullen we echter gebruik maken van Javascript. Via Truffle kunnen we met behulp van Javascript de  interacties van gebruikers met onze smart-contracts gemakkelijk simuleren. Truffle bevat immers standaard Mocha\footnote{Apart verkrijgbaar via https://mochajs.org} (testframework) en Chai Assertion Library\footnote{Apart verkrijgbaar via https://www.chaijs.com}. Deze twee tools stellen ons instaat om onze smartcontracts te importeren binnenin Javascript-testen. 
+	Er zijn verschillende methodes die men kan toepassen om een smart contract te testen, de standaard is om ze te schrijven in Solidity. In dit voorbeeld zullen we echter gebruik maken van Javascript. Via Truffle kunnen we met behulp van Javascript de interacties van gebruikers met onze smart contracts gemakkelijk simuleren. Truffle bevat immers standaard Mocha\footnote{Apart verkrijgbaar via https://mochajs.org} (testframework) en Chai Assertion Library\footnote{Apart verkrijgbaar via https://www.chaijs.com}. Deze twee tools stellen ons in staat om smart contracts te importeren binnenin Javascript-testen. 
 	
-	\subsection{Smoke  test}
-	We voegen een nieuw bestand toe op de locatie \textit{test\slash election.js}. We schrijven een smoke test, een test die nagaat of het smart-contract op correcte wijze geïnitialiseerd wordt.
+	\subsection{Smoke test}
+	We voegen een nieuw bestand toe op de locatie \textit{test\slash election.js}. We schrijven een smoke test, een test die nagaat of het smart contract op correcte wijze geïnitialiseerd wordt.
 
 	 \lstset{language=JavaScriptSolidity} 
 	 \begin{lstlisting}
@@ -386,18 +387,18 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 	
 	Concreet testen we hier dat na instantiatie:
 	\begin{itemize}
-		\item Het attribuut \textit{canidatesCounter} = 2 is.
-		\item Het attribuut \textit{candiates[0]} een `kandidaat' is met id = 1, naam = ``Yes'' en aantal stemmen = 0.
-		\item Het attribuut \textit{candiates[1]}  een `kandidaat' is met id = 2, naam = ``No'' en aantal stemmen = 0.
+		\item Het attribuut \textit{candidatesCounter} = 2 is.
+		\item Het attribuut \textit{candidates[0]} een `kandidaat' is met id = 1, naam = ``Yes'' en aantal stemmen = 0.
+		\item Het attribuut \textit{candidates[1]}  een `kandidaat' is met id = 2, naam = ``No'' en aantal stemmen = 0.
 	\end{itemize}
 	\subsection{Testen uitvoeren}
-	Om geschreven testen uit te voeren navigeren we naar de project-directory en gebruiken we het console commando:
+	Om geschreven testen uit te voeren, navigeren we naar de project-directory en gebruiken we het console-commando:
 	
 	\begin{lstlisting}[numbers=none]
 	> truffle test
 	\end{lstlisting}
 	
-	Truffle voert hierop de al de testen binnen de directory \textit{test\slash} uit:
+	Truffle voert hierop alle testen binnen de directory \textit{test\slash} uit:
 	
 	\begin{lstlisting}[numbers=none]
 	> Artifacts written to /var/folders/xq/mnnky8qn6c58pt33xhpz2bhw0000gn/T/test-119519-4744-y0zb1c.1il0l
@@ -417,15 +418,15 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 	De smoke test slaagt.
 	
 	\subsection{Testen in de Truffle console}
-	Uiteraard dienen we  ook testen te schrijven voor de stem-functionaliteit. Gezien dit onderdeel van de code echter nog aan veranderingen onderworpen zal worden is het misschien voordeliger om de huidige werking op een andere manier te verifiëren. In plaats van een test te schrijven, kunnen we via de \textit{Truffle console} de toestand van de lokale blockchain bekijken.
+	Uiteraard dienen we  ook testen te schrijven voor de stemfunctionaliteit. Gezien dit onderdeel van de code echter nog aan veranderingen onderworpen zal worden, is het misschien voordeliger om de huidige werking op een andere manier te verifiëren. In plaats van een test te schrijven, kunnen we via de \textit{Truffle console} de toestand van de lokale blockchain bekijken.
 	
-	In de console navigeren we naar het project, vervolgens gebruiken we het console commando:
+	In de console navigeren we naar het project, vervolgens gebruiken we het console-commando:
 	
 	\begin{lstlisting}[numbers=none]
 	> truffle console
 	\end{lstlisting}
 	
-	Dit opent de Truffle console. 
+	Dit opent de Truffle-console. 
 	Hier geven we het volgende commando in:
 
 	\begin{lstlisting}[numbers=none]
@@ -433,11 +434,11 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 		.then(function(i){app = i})
 	\end{lstlisting}
 	
-	Indien het Election contract deployed is, wordt er een asynchrone callback-functie uitgevoerd.  De functie in kwestie krijgt  een instantie van Election (i) mee als parameter en maakt deze toegankelijk door ze in een variabele op te slaan. Eenmaal de asynchrone code uitgevoerd is, hebben we via \textit{app} toegang tot de attributen en functies van het smart contract Election.
+	Indien het Election contract gedeployed is, wordt er een asynchrone callback-functie uitgevoerd.  De functie in kwestie krijgt  een instantie van Election (i) mee als parameter en maakt deze toegankelijk door ze in een variabele op te slaan. Eenmaal de asynchrone code uitgevoerd is, hebben we via \textit{app} toegang tot de attributen en functies van het smart contract Election.
 	
 	Gezien we de stemfunctionaliteit willen testen, zullen we de stemfunctie \textit{vote()} oproepen.
 	
-	Hiervoor hebben we echter het publieke adres van één van de Ganache accounts nodig. Deze kan men vinden in Ganache zelf, of men kan ze bekomen via het Truffle console commando:
+	Hiervoor hebben we echter het publieke adres van een van de Ganache-accounts nodig. Deze kan men vinden in Ganache zelf, of men kan ze bekomen via het Truffle console-commando:
 	\begin{lstlisting}[numbers=none,language=bash]
 	truffle(development)>web3.eth.getAccounts()
 	[ `0xE03c3692FED9D4f2cBc7c5a30b05Ae9ce7b3b839',
@@ -452,7 +453,7 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 	`0xa12D538888E90A2DA7763Bd8F64595e568c3dFE0' ]
 	\end{lstlisting}
 	
-	We kopiëren een adres naar keuze en vullen dit in als de \textit{from} property van het object dat de 2e parameter vormt. Op deze manier versturen we een transactie vanuit de console, in naam van het geselecteerde adres. De 1e parameter is het id van de `kandidaat' waarvoor we stemmen.
+	We kopiëren een adres naar keuze en vullen dit in als de \textit{from} property van het object dat de tweede parameter vormt. Op deze manier versturen we een transactie vanuit de console, in naam van het geselecteerde adres. De eerste parameter is het id van de `kandidaat' waarvoor we stemmen.
 	\begin{lstlisting}[numbers=none,language=bash]
 	truffle(development)> app.vote(1, 
 		{ from: `0xE03c3692FED9D4f2cBc7c5a30b05Ae9ce7b3b839'}
@@ -460,7 +461,7 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 	\end{lstlisting}
 	
 	Ook hier krijgen we een \textit{transaction receipt}.
-	Om te controleren of er een stem is bijgekomen voor de gekozen optie geven we de volgende Truffle console commando's in:
+	Om te controleren of er een stem is bijgekomen voor de gekozen optie, geven we de volgende Truffle console-commando's in:
 	\begin{lstlisting}[numbers=none]
 	truffle(development)> app.candidates(1)
 	truffle(development)> app.candidates(2)
@@ -477,9 +478,9 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 	Voor de eerste optie (`Yes') zien we dat er onder het attribuut \textit{votes} de waarde <BN: 1> staat. Het aantal stemmen hier is met andere woorden 1.
 	Voor de tweede optie (`No') is dat niet het geval, \textit{votes} heeft de  waarde <BN: 0>. Het aantal stemmen hier dus onveranderd, 0.
 	
-	Dit toont aan dat onze stem-functie wel degelijk werkt! 
+	Dit toont aan dat onze stemfunctie wel degelijk werkt! 
 	
-	Figuur \ref{fig:contracts-ganache3}: Ook in Ganache zien we dat er een  nieuwe transactie heeft plaats gevonden. Merk wel op dat in de huidige implementatie totaal geen garantie biedt op het vlak van anonimiteit (aan de hand van de input van iedere transactie, kunnen we het stemgedrag  van iedere kiezer afleiden). Het enigste wat de anonimiteit van een kiezer enigszins beschermt is de abstracte aard van accounts, de kiezer is alleen bekend via zijn Ethereum adres. 
+	Figuur \ref{fig:contracts-ganache3}: Ook in Ganache zien we dat er een nieuwe transactie heeft plaatsgevonden. Merk wel op dat de huidige implementatie totaal geen garantie biedt op het vlak van anonimiteit (aan de hand van de input van iedere transactie kunnen we het stemgedrag van iedere kiezer afleiden). Het enige wat de anonimiteit van een kiezer enigszins beschermt, is de abstracte aard van de accounts: de kiezer is alleen bekend via zijn Ethereum-adres. 
 	\begin{figure}
 		\includegraphics[width=\linewidth]{img/contracts-ganache3.png}
 		\caption{Vote functie aangeroepen weergegeven in Ganache}
@@ -487,25 +488,25 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 	\end{figure}
 	\newpage
 	\section{Front-end applicatie}
-	Eenmaal we een werkende back-end hebben dienen we er natuurlijk ook nog een front-end applicatie voor te ontwikkelen. In deze handleiding zullen we gebruik maken van een Angular (\ref{fig:angular}), een open source javascript-framework dat ontwikkelaars instaat stelt om performante \textit{single page applications} te schrijven. We verkiezen Angular omdat de structurering van de code bijzonder vast is in dit framework, waardoor de functionaliteiten mooi opgesplitst zijn en de ontwikkelervaring bijzonder aangenaam is.  Het staat de lezer natuurlijk vrij om een javascript-framework naar keuze te gebruiken. Het gaat hier  immers niet zo zeer om de ontwikkeling van de front-end applicatie als om leggen van de verbinding tussen het web en de Ethereum blockchain...
+	Eenmaal we een werkende back-end hebben, dienen we er natuurlijk ook nog een front-end applicatie voor te ontwikkelen. In deze handleiding zullen we gebruik maken van Angular (figuur \ref{fig:angular}), een open source javascript-framework dat ontwikkelaars in staat stelt performante \textit{single page applications} te schrijven. We verkiezen Angular omdat de structurering van de code bijzonder vast is in dit framework, waardoor de functionaliteiten mooi opgesplitst zijn en de ontwikkelervaring bijzonder aangenaam is.  Het staat de lezer natuurlijk vrij om een javascript-framework naar keuze te gebruiken. Het gaat hier immers niet zo zeer om de ontwikkeling van de front-end applicatie als om het leggen van de verbinding tussen het web en de Ethereum-blockchain...
 	\begin{figure}[h!]
 		\centering
 		\includegraphics[width=\linewidth/3]{img/angular.png}
-		\caption{Het Angular logo}
+		\caption{Het Angular logo ~\autocite{Angular2019}}
 		\label{fig:angular}
 	\end{figure}
 	\subsection{Opzet}
-	Zoals gezegd beginnen we met een Angular project op te zetten, lezers die gebruik wensen te maken van een ander Javascript-framework kunnen de komende stappen overslaan, zij hoeven enkel de vernoemde node\_modules te installeren en de code gegeven in de \textit{ElectionConnectorService} te herschrijven. 
+	Zoals gezegd beginnen we met een Angular project op te zetten, lezers die gebruik maken van een ander Javascript-framework kunnen de volgende stappen overslaan, zij hoeven enkel de vernoemde node\_modules te installeren en de code gegeven in de \textit{ElectionConnectorService} te herschrijven. 
 	
-	We beginnen met het installeren van de Angular cli, deze zal ons toe laten om een Angular project te maken.
+	We beginnen met het installeren van de Angular cli, deze zal ons toestaan een Angular project te maken.
 	
-	maken gebruik van het console commando:
+	We maken gebruik van het console-commando:
 	\begin{lstlisting}[numbers=none,language=bash]
 	>npm install -g @angular/cli
 	\end{lstlisting}
 	Dit installeert de Angular cli op een globaal niveau, vanaf nu kunnen we er overal gebruik van maken.
 	
-	We navigeren naar de directory waar we het front-end project willen aanmaken, vervolgens gebruiken we het console commando:
+	We navigeren naar de directory waar we het front-end project willen aanmaken, vervolgens gebruiken we het console-commando:
 	\begin{lstlisting}[numbers=none,language=bash]
 	>ng new EthereumVote
 	\end{lstlisting}
@@ -513,13 +514,13 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 	
 	Nu installeren we de nodige node\_packages:
 	\begin{itemize}
-		\item \textbf{web3.js}: een verzameling javascript libraries  die toelaten om te communiceren met Ethereum-instanties, hetzij via  een HTTP-, WebSocket- of IPC-verbinding. Web3 bevat in feite alles wat men nodig heeft om de front-end van een Dapp te ontwikkelen.
-		\item \textbf{truffle-contract}: maakt een lokale interface van het smart-contract aan waarmee we kunnen interageren in de front-end. Het aanmaken van de instantie gebeurt op basis van het gecompileerde smart-contract in json-formaat.
+		\item \textbf{web3.js}: een verzameling javascript libraries  die het mogelijk maken om te communiceren met Ethereum-instanties, hetzij via  een HTTP-, webSocket- of IPC-verbinding. Web3 bevat in feite alles wat nodig is om de front-end van een DApp te ontwikkelen.
+		\item \textbf{truffle-contract}: maakt een lokale interface van het smart contract aan, waarmee we kunnen interageren in de front-end. Het aanmaken van de instantie gebeurt op basis van het gecompileerde smart contract in json-format.
 	\end{itemize}
 
 	\subsection{Mogelijke problemen met Web3}
 	
-	Na installatie van web3.js is het mogelijk dat men problemen ervaart met verschillende node\_modules die niet kunnen gevonden worden. Lezers die problemen ervaren met onder andere de \textit{crypto}, \textit{streams} of \textit{http } modules is het aangeraden om een van de volgende oplossingen te proberen:
+	Na de installatie van web3.js is het mogelijk dat men problemen ervaart met verschillende node\_modules die niet kunnen gevonden worden. Voor lezers die problemen ervaren met onder andere de \textit{crypto}, \textit{streams} of \textit{http } modules is het aangeraden om een van de volgende oplossingen te proberen:
 	\begin{itemize}
 		\item Patch file voor de node\_modules
 		\item Downgraden naar \textit{web3.js versie 0.20.5}. 
@@ -546,9 +547,9 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 	},
 	\end{lstlisting}
 	
-	Enkel en alleen als de eerste optie niet werkt raden we aan om web3 te downgraden. Het is de lezer aangeraden om over te schakelen naar yarn package manager ten voordele van npm. Yarn kan beter overweg met het toevoegen, verwijderen en onderhouden van dependencies. Ook voor gebruikers die geen verdere problemen meer ondervinden met web3, kan het daarom waardevol zijn om yarn te installeren. Yarn en npm commando's zijn helemaal gelijk, op de begin keywords na. In de rest deze handleiding wordt er gebruik gemaakt van yarn commando's.
+	Enkel en alleen als de eerste optie niet werkt, raden we aan om web3 te downgraden. Het is de lezer aangeraden om over te schakelen naar yarn package manager ten voordele van npm. Yarn kan beter overweg met het toevoegen, verwijderen en onderhouden van dependencies. Ook voor gebruikers die geen verdere problemen meer ondervinden met web3, kan het daarom waardevol zijn om yarn te installeren. Yarn- en npm-commando's zijn helemaal gelijk, op de begin-keywords na. In de rest van deze handleiding wordt er gebruik gemaakt van yarn-commando's.
 	
-	Eenmaal yarn\footnote{Verkrijgbaar via https://yarnpkg.com/lang/en/docs/install} geïnstalleerd is kunnen console commando's gebruikt worden web3 te herstellen:
+	Eenmaal yarn\footnote{Verkrijgbaar via https://yarnpkg.com/lang/en/docs/install} geïnstalleerd is, kunnen console-commando's gebruikt worden om web3 te herstellen:
 	\begin{lstlisting}[numbers=none,language=bash]
 	>yarn
 	>yarn remove web3
@@ -556,37 +557,37 @@ Dit hoofdstuk vormt de proof-of-concept van deze scriptie, we trachten hier antw
 	\end{lstlisting}
 
 	\subsection{Mogelijke problemen met Truffle-Contract}
-	Lezers die problemen ondervinden bij de  installatie van de \textit{truffle-contract} module, installeren het best versie 4.0.20. Bij aanhoudende problemen kan men de nodige \textit{yarn.lock }en \textit{package.json} op de githubpagina\footnote{Zie https://github.com/Ocean97Li/bachelorproef/blob/master/poc/EthereumVote/frontend/yarn.lock} van het project vinden. De meeste problemen met \textit{node\_packages} kunnen opgelost worden door deze twee configuratie bestanden in het lokale project te vervangen door die de bestanden die op github staan, vervolgens dient men nog eens gebruik te maken van het \textit{yarn} commando.
+	Lezers die problemen ondervinden bij de  installatie van de \textit{truffle-contract} module, installeren het best versie v4.0.20. Bij aanhoudende problemen kan men de nodige \textit{yarn.lock }en \textit{package.json} op de Github-pagina\footnote{Zie https://github.com/Ocean97Li/bachelorproef/blob/master/poc/EthereumVote/frontend/yarn.lock} van het project vinden. De meeste problemen met \textit{node\_packages} kunnen opgelost worden door deze twee configuratiebestanden in het lokale project te vervangen door de bestanden die op Github staan. Vervolgens dient men nog eens gebruik te maken van het yarn-commando.
 	
 	\subsection{Algmenene structuur EthereumConnector}
-	Eenmaal de nodige zaken geïnstalleerd zijn kunnen we beginnen met de implementatie van een stemsysteem. Zoals gezegd zal de focus hier voornamelijk liggen op het implementeren van de functionaliteiten in verband met  de verbinding met het Ethereum netwerk. Voor de herbruikbaarheid en performantie worden alle functionaliteiten in een service gebundeld,  zoals gebruikelijk binnen Angular. De code voor de rest van de applicatie (voornamelijk de visuele componenten en verschillende schermen) wordt enkel kort besproken.  Eenmaal de service geïmplementeerd is staat het de lezer natuurlijk vrij om er direct zelf mee aan de slag te gaan en een applicatie rond te ontwikkelen.
+	Eenmaal de nodige zaken geïnstalleerd zijn, kunnen we beginnen met de implementatie van een stemsysteem. Zoals gezegd zal de focus hier voornamelijk liggen op het implementeren van de functionaliteiten in verband met  de Ethereum-netwerkverbinding. Voor de herbruikbaarheid en performantie worden alle functionaliteiten in een service gebundeld,  zoals gebruikelijk binnen Angular. De code voor de rest van de applicatie (voornamelijk de visuele componenten en verschillende schermen) wordt enkel kort besproken.  Eenmaal de service geïmplementeerd is, staat het de lezer natuurlijk vrij om er direct zelf mee aan de slag te gaan en er een applicatie rond te ontwikkelen.
 	
 	 We beginnen met het aanmaken van de \textit{EthereumConnectionService.} 
 	
-	We maken een nieuw bestand aan op de locatie \textit{services/ethereum-connector.service.ts} via de console commando's:
+	We maken een nieuw bestand aan op de locatie \textit{services/ethereum-connector.service.ts} via de console-commando's:
 	\begin{lstlisting}[numbers=none,language=bash]
 	>mkdir services
 	>cd services
 	>ng generate service EthereumConnector
 	\end{lstlisting}
 	
-	Dit geeft ons een service template waarmee we kunnen starten met ontwikkelen.
+	Dit geeft ons een service-template waarmee we kunnen starten met ontwikkelen.
 	
-	We overlopen eerste de grote functionaliteiten we wensen te implementeren:
+	We overlopen eerste de grote functionaliteiten die we wensen te implementeren:
 	\begin{itemize}
-		\item \textbf{vote()}: Een stemfunctie die toelaat om  de gelijknamige functie in het smart contract \textit{Election} aan te spreken, het id van de gewenste kandidaat moet worden mee gegeven als parameter.
-		\item \textbf{register()}: Een stemfunctie die toelaat om  de gelijknamige functie in het smart contract \textit{Election} aan te spreken, ook hier moet het id van de gewenste kandidaat worden mee gegeven als parameter.
-		\item \textbf{getVotes()}: Eenmaal een stem is uitgebracht willen we de resultaten van de verkiezing visualiseren. Hiervoor moeten we het attribuut \textit{candidates} van \textit{Election} retourneren.
-		\item \textbf{checkVotedYet()}: Functie die het \textit{votedVoters} attribuut van \textit{Election} aanspreekt en weergeeft of een kiezer al een stem uitgebracht heeft.
+		\item \textbf{vote()}: Een stemfunctie die toestaat de gelijknamige functie in het smart contract \textit{Election} aan te spreken. Het id van de gewenste kandidaat moet als parameter worden mee gegeven.
+		\item \textbf{register()}: Een stemfunctie die toestaat  de gelijknamige functie in het smart contract \textit{Election} aan te spreken. Ook hier moet het id van de gewenste kandidaat worden mee gegeven als parameter.
+		\item \textbf{getVotes()}: Eenmaal een stem is uitgebracht, willen we de resultaten van de verkiezing visualiseren. Hiervoor moeten we het attribuut \textit{candidates} van \textit{Election} retourneren.
+		\item \textbf{checkVotedYet()}: Functie die het \textit{votedVoters} attribuut van \textit{Election} aanspreekt en weergeeft of een kiezer al dan niet een stem heeft uitgebracht.
 		\item \textbf{getCandidates()}: Haalt de kandidaten en hun \textit{id}'s op. De namen worden gebruikt om weer te geven, de id's vormen de achterliggende opties waarop men kan stemmen.
-		\item \textbf{getAccountInfo()}: Controleert via web3 of er een Ethereum account is ingelogd in de browser en of het account genoeg ether heeft om te registreren en en te stemmen.
-		\item \textbf{truffleContract()}: Initieert een interface van \textit{Election} op basis van het gecompileerde smart-contract. Via deze interface kunnen we  interageren met smart-contracts.
+		\item \textbf{getAccountInfo()}: Controleert via web3 of er een Ethereum-account is ingelogd in de browser en of het account genoeg ether heeft om te registreren en en te stemmen.
+		\item \textbf{truffleContract()}: Initieert een interface van \textit{Election} op basis van het gecompileerde smart contract. Via deze interface kunnen we  interageren met smart contracts.
 	\end{itemize}
 
-Daarnaast zijn er ook een heel aantal properties om de verschillende zaken bij te houden. 
+Daarnaast zijn er ook een heel aantal velden om verschillende zaken bij te houden. 
 
 Tabel \ref{tab:ethservice} geeft een overzicht van de verschillende attributen die we zullen gebruiken om zaken bij te houden in de connectorService. 
-Merk op dat er voor veel van de private domein attributen (die te maken hebben met stemmen) gelijknamige publieke properties van het type Subject zijn. Externe componenten kunnen de methode \textit{subcribe()} oproepen van deze properties om op de hoogte gehouden te worden van specifieke veranderingen aan de private eigenschappen van de connectorService. Via de Subjects kunnen we de veranderingen doorsturen naar de verschillende properties die hiervan afhankelijk zijn.
+Merk op dat er voor veel van de private domeinattributen (die te maken hebben met stemmen) gelijknamige publieke attributen van het type Subject zijn. Externe componenten kunnen de methode \textit{subcribe()} van deze attributen oproepen  om op de hoogte te worden gehouden van specifieke veranderingen aan de private domeinattributen van de connectorService. Via de Subjects kunnen we de veranderingen doorsturen naar de verschillende componenten die hiervan afhankelijk zijn.
 
 	\begin{table}
 		\centering
@@ -630,7 +631,7 @@ Merk op dat er voor veel van de private domein attributen (die te maken hebben m
 		return this.contract;
 	}
 	\end{lstlisting}
-	De getter functie truffleContract() maakt met behulp van de  truffle-contract bibliotheek om een nieuwe interface voor het smart-contract te creëren. De parameter \textit{tokenAbi} geeft het pad naar het gecompileerde \textit{Election.json} smart-contract in de backend. Merk ook op dat deze methode de lazy-loading filosofie volgt: zolang het contract niet wordt aangeroepen, wordt het niet geïnitialiseerd.
+	De getter-functie \textit{truffleContract()} maakt met behulp van de  truffle-contract bibliotheek een nieuwe interface aan om het smart contract te creëren. De parameter \textit{tokenAbi} geeft het pad naar het gecompileerde \textit{Election.json} smart contract in de back-end. Merk ook op dat deze methode de \textit{lazy-loading} filosofie volgt: zolang het contract niet wordt aangeroepen, wordt het ook niet geïnitialiseerd.
 	\subsubsection{getAccountInfo}
 	\lstset{language=JavaScriptSolidity} 
 	\begin{lstlisting}[numbers=none]
@@ -653,7 +654,7 @@ Merk op dat er voor veel van de private domein attributen (die te maken hebben m
 		});
 	}
 	\end{lstlisting}
-	 GetAccountInfo() is de methode die wordt gebruikt vòòr iedere transactie om het Ethereum account op te halen en te controleren. We werken hier (zoals meestal) met een keten van opeenvolgende en geneste Promises. We beginnen bij het begin, met de initialisatie van een nieuwe Promise als retourwaarde. Wanneer men een promise declareert gaat het tussen twee zaken die in de callback functie kunnen gebeuren,  ofwel wordt de methode reject() aangeroepen en stopt de keten van promises daar, ofwel wordt resolve aangeroepen en gaat men verder naar de volgende promise.
+	 \textit{GetAccountInfo()} is de methode die wordt gebruikt voorafgaand aan iedere transactie om het Ethereum-account op te halen en te controleren. We werken hier (zoals meestal) met een ketting van opeenvolgende en geneste \textit{promises}. We beginnen bij het begin: de initialisatie van een nieuwe promise als retourwaarde. Wanneer men een promise declareert, zijn er twee zaken die in de callback-functie kunnen gebeuren:  ofwel wordt de methode \textit{reject()} aangeroepen en stopt de ketting van promises op dat punt, ofwel wordt \textit{resolve()} aangeroepen en gaat men verder naar de volgende promise.
 	\subsubsection{getCandidates}
 	\lstset{language=JavaScriptSolidity} 
 	\begin{lstlisting}[numbers=none]
@@ -691,11 +692,11 @@ Merk op dat er voor veel van de private domein attributen (die te maken hebben m
 			});
 		}
 		\end{lstlisting}
-		Voor we effectief kunnen stemmen moeten we weten wat de opties zijn gekozen kan worden. Tot dat doeleinde dienen de methodes getCandidates en findEachCandidateIds. Ze zorgen dat de mogelijke `kandidaten' waarvoor we kunnen stemmen opgevraagd worden van het smart-contract. 
+		Voor we effectief kunnen stemmen, moeten we weten uit welke opties kan gekozen worden. Tot dat doeleinde dienen de methodes \textit{getCandidates} en \textit{findEachCandidateIds}. Deze zorgen ervoor dat de mogelijke `kandidaten' opgevraagd worden van het smart contract. 
 		
-		De eerste stap is het ophalen van een nieuwe \textit{electionInstance}. Eenmaal dit voltooid is bevragen we het smart-contract voor de \textit{candidatesCounter}. Wanneer vervolgens ook dit getal binnen is, overlopen we iedere kandidaat in \textit{findEachCandidateIds} aan de hand van de textit{candidatesCounter}, we bewaren enkel de eerste twee attributen:  naam en id. Voor iedere kandidaat maken we een asynchrone call naar het smart-contract. Het resultaat van iedere call (per kandidaat) slaan we op in een array van promises.
+		De eerste stap is het ophalen van een nieuwe \textit{electionInstance}. Eenmaal dit voltooid is, bevragen we het smart contract voor de \textit{candidatesCounter}. Wanneer vervolgens ook dit getal binnen is, overlopen we iedere kandidaat in \textit{findEachCandidateIds()} aan de hand van de \textit{candidatesCounter}. We bewaren enkel de eerste twee attributen:  naam en id. Voor iedere kandidaat maken we een asynchrone call naar het smart contract. Het resultaat van iedere call (per kandidaat) slaan we op in een array van promises.
 		
-		Met \textit{Promise.all(promises)} verzekeren we er ons van dat de de promise die in findEachCandidateIds() gemaakt wordt pas de \textit{resove()} uitvoert op het moment dat we een naam en id voor iedere kandidaat hebben.
+		Met \textit{Promise.all(promises)} verzekeren we ons ervan dat de promise die in \textit{findEachCandidateIds()} gemaakt wordt pas de \textit{resove()} uitvoert op het moment dat we een naam en id voor iedere kandidaat hebben.
 		
 		Tenslotte stellen we alle luisterende componenten via \textit{candidates\$} op de hoogte. 
 	\subsubsection{checkVotedYet}
@@ -723,9 +724,9 @@ Merk op dat er voor veel van de private domein attributen (die te maken hebben m
 		});
 	}
 	\end{lstlisting}
-	In onze verkiezing is het uiteraard niet wenselijk dat een persoon meerdere malen kan stemmen, om dit tegen te gaan voorzagen we reeds een nodige check bij de \textit{vote} functie in de back-end. In de front-end willen we echter onnodig werk en de transactie kosten voor de gebruiker helemaal vermijden door het aanroepen van de stemfunctionaliteit op bepaalde momenten te verhinderen. 
+	In onze verkiezing is het uiteraard niet wenselijk dat een persoon meerdere malen kan stemmen. Om dit tegen te gaan, voorzagen we reeds een nodige check bij de vote-functie in de back-end. In de front-end willen we echter onnodig werk en transactiekosten voor de gebruiker vermijden door het aanroepen van de stemfunctionaliteit op bepaalde momenten te verhinderen. 
 	
-	Via de methode \textit{checkVotedYet()} kunnen we exact dat doen: we vragen het smart-contract simpelweg of de gebruiker in kwestie al gestemd heeft.
+	Via de methode \textit{checkVotedYet()} kunnen we exact dat doen: we vragen het smart contract eenvoudigweg of de gebruiker in kwestie al gestemd heeft.
 	\subsubsection{getVotes}
 	\lstset{language=JavaScriptSolidity} 
 	\begin{lstlisting}[numbers=none]
@@ -750,7 +751,7 @@ Merk op dat er voor veel van de private domein attributen (die te maken hebben m
 		this.getVotes().catch();
 	});
 	\end{lstlisting}
-	Wanneer een stem is uitgebracht willen we in onze implementatie direct het (tussentijdse) resultaat van de verkiezing zien. Gezien er ondertussen mogelijks andere kiezers hun stem uitbrengen dienen we de resultaten regelmatig te verversen. Tot dat doeleinde wordt de asynchrone functie \textit{getVotes()} gedefinieerd. Voor het regelmatige ophalen van de stemmen gebruiken we \textit{refreshVotes\$}, deze property bevat een \textit{observable timer}. De callback-functie zal na het aanroepen van \textit{subscribe(callback)} om de twee seconden uitgevoerd worden, we roepen er  \textit{getVotes()} in aan.
+	Zodra een stem is uitgebracht, willen we in onze implementatie het (tussentijdse) resultaat van de verkiezing zien. Gezien er ondertussen mogelijks andere kiezers hun stem hebben uitgebracht, dienen we de resultaten regelmatig te hernieuwen. Tot dat doeleinde wordt de asynchrone functie \textit{getVotes()} gedefinieerd. Voor het regelmatig ophalen van stemmen gebruiken we \textit{refreshVotes\$}, deze property bevat een \textit{observable timer}. De callback-functie zal na het aanroepen van \textit{subscribe(callback)} elke twee seconden worden uitgevoerd. We roepen er \textit{getVotes()} op.
 	\subsubsection{register}
 	\lstset{language=JavaScriptSolidity} 
 	\begin{lstlisting}[numbers=none]
@@ -788,11 +789,11 @@ Merk op dat er voor veel van de private domein attributen (die te maken hebben m
 		});
 	}
 	\end{lstlisting}
-		Voor gebruikers een stem mogen uitbrengen wensen we dat ze zich registreren als kiezer. Bij de registratie genereren kiezers een unieke stemsleutel met een cijfer dat alleen zij kennen. Deze sleutel wordt doorgegeven aan het smart-contract en daar opgeslagen. Wanneer gebruikers een stem moeten uitbrengen wordt hen gevraag om het geheime cijfer bekend te maken (commit-reveal pattern) in het smart-contract zal er vervolgens gecontroleerd worden of de stemsleutel kan gereproduceerd worden met het cijfer, is dit het geval dan weten we met zekerheid dat we met een legitieme kiezer te maken hebben, de stem van de kiezer wordt geregistreerd.
+		Vooraleer gebruikers een stem mogen uitbrengen, wensen we dat ze zich registreren als kiezer. Bij de registratie genereren kiezers een unieke stemsleutel met een cijfer dat alleen zij kennen. Deze sleutel wordt doorgegeven aan het smart contract en daar opgeslagen. Wanneer gebruikers een stem moeten uitbrengen, wordt hen gevraagd om het geheime cijfer bekend te maken (commit-reveal pattern). In het smart contract zal er vervolgens gecontroleerd worden of de stemsleutel kan gereproduceerd worden met dat cijfer. Is dit het geval, dan weten we met zekerheid dat we met een legitieme kiezer te maken hebben, de stem van de kiezer wordt geregistreerd.
 		
-		De methode begint met het initialiseren van de \textit{electionInstance}, vervolgens wordt \textit{getAccoutInfo()} aangeroepen. Wanneer \textit{getAccoutInfo()} voltooid is wordt de \textit{hasRegistered} op de \textit{electionInstance} aangeroepen, als de gebruiker in kwestie reeds geregistreerd is wordt er een error geworpen om de promise-keten te doorbreken. Indien de gebruiker nog niet geregistreerd was gaat de promise-keten gewoon verder. Er word een stemsleutel voor de gebruiker genereert. Dit gebeurt via het een random getal dat via de web3Provider gehashed wordt met een \textit{sha3} hash (de web3 \textit{sha3} is hetzelfde als de \textit{keccak256} hash in Solidtiy).
+		De methode begint met het initialiseren van de \textit{electionInstance}, vervolgens wordt \textit{getAccoutInfo()} aangeroepen. Wanneer \textit{getAccoutInfo()} voltooid is, wordt de \textit{hasRegistered} op de \textit{electionInstance} aangeroepen. Als de gebruiker in kwestie reeds geregistreerd is, wordt er een error geworpen om de promise-ketting te doorbreken. Indien de gebruiker nog niet geregistreerd was, gaat de promise-ketting gewoon verder. Er wordt een stemsleutel voor de gebruiker gegenereerd. Dit gebeurt via het een random getal dat door de \textit{web3Provider} gehashed wordt met een \textit{sha3-hash} (de web3 sha3-hash is dezelfde als de \textit{keccak256-hash} in Solidtiy).
 		
-		De stemsleutel wordt meegegeven als parameter in de \textit{register()} functie van die wordt opgeroepen op de \textit{electionInstance}.
+		De stemsleutel wordt meegegeven als parameter in \textit{register()}, de functie die wordt opgeroepen op de \textit{electionInstance}.
 	\subsubsection{vote}
 	\lstset{language=JavaScriptSolidity} 
 	\begin{lstlisting}[numbers=none]
@@ -831,17 +832,17 @@ Merk op dat er voor veel van de private domein attributen (die te maken hebben m
 	\end{lstlisting}
 	Wanneer kiezers hun stem uitbrengen zijn er een heleboel zaken die gecontroleerd dienen te worden. 
 	
-	Als eerste controleren we via \textit{checkVoted()} of het huidige account al eens gestemd heeft. Accounts die aan deze stap voldoen krijgen een melding en worden vervolgens direct naar de resultaten pagina gestuurd.
+	Als eerste controleren we via \textit{checkVoted()} of het huidige account al dan niet reeds gestemd heeft. Accounts die aan deze stap voldoen krijgen een melding en worden vervolgens direct naar de resultaten-pagina gestuurd.
 	
-	Via \textit{getAccountInfo()} wordt vervolgens de validiteit van het ingelogde account (correct ingelogd en geen lege portefeuille) gecontroleerd. accounts die niet aan deze controle voldoen worden geweerd. 
+	Via \textit{getAccountInfo()} wordt vervolgens de validiteit van het ingelogde account gecontroleerd (correct ingelogd en geen lege portefeuille). Accounts die niet aan deze controle voldoen worden geweerd. 
 	
-	Accounts die voor het eerste een stem mogen uitbrengen en over een geldig ingelogd account beschikken worden gecontroleerd op registratie. Niet geregistreerde accounts worden geweerd, geregistreerde accounts worden nu als kiezers gezien.
+	Accounts die voor het eerst een stem mogen uitbrengen en over een geldig en ingelogd account beschikken, worden gecontroleerd op registratie. Niet-geregistreerde accounts worden geweerd, geregistreerde accounts worden nu als kiezers gezien.
 	
-	Een kiezer is iemand die aan al de voorwaarden voldoet. Door deze persoon kan een stem uitgebracht worden via \textit{vote()}. Het geheime getal dat gebruikt werd om de stemsleutel te genereren tijdens het registreren (attribuut \textit{votingKey}) wordt nu samen met het id van de gekozen kandidaat als parameter meegegeven aan de \textit{vote()} functie van \textit{electionInstance}.
+	Een kiezer is iemand die aan alle voorwaarden voldoet. Deze persoon kan een stem uitbrengen via \textit{vote()}. Het geheime getal dat gebruikt werd om de stemsleutel te genereren tijdens het registreren (attribuut \textit{votingKey}), wordt nu samen met het id van de gekozen kandidaat als parameter meegegeven aan de \textit{vote()} functie van \textit{electionInstance}.
 	\subsection{Veranderingen in de state}
-	Attente lezers merkten waarschijnlijk verschillende statements zoals \textit{this.state = ElectionState.voted} en \textit{this.state\$.next(this.state)} op doorheen de code. Dit zijn wijzigingen aan de interne staat van de applicatie. We gebruiken \textit{this.state} om de interne staat om de lokale vooruitgang binnen het verkiezingsproces bij te houden, via \textit{this.state\$.next(this.state) verwittigen we alle luisteraars (inclusief de connector zelf) van een gemaakte verandering}
+	De attente lezer merkte  doorheen de code waarschijnlijk verschillende statements op, zoals \textit{this.state = ElectionState.voted} en \textit{this.state\$.next(this.state)}. Dit zijn wijzigingen aan de interne staat van de applicatie. We gebruiken \textit{this.state} om de lokale vooruitgang binnen het verkiezingsproces bij te houden, via \textit{this.state\$.next(this.state)} verwittigen we alle \textit{listeners} (inclusief de connector zelf) van de gemaakte verandering.
 	
-	De states delen het stemproces op in verschillende sequentiële stappen, we definiëren:
+	De statussen delen het stemproces op in verschillende sequentiële stappen, we definiëren:
 	\begin{lstlisting}[numbers=none]
 	export enum ElectionState {
 		notloggedin,
@@ -850,13 +851,13 @@ Merk op dat er voor veel van de private domein attributen (die te maken hebben m
 		verified  					 
 	}
 	\end{lstlisting}
-	De voornaamste reden waarvoor \textit{state} gebruikt wordt is om de vooruitgang binnen het stemproces visueel weer te geven doorheen de verschillende schermen in de applicatie. Concreet gebruiken we de veranderingen in state om de \textit{component routing} te besturen, bij iedere verandering van \textit{state} wordt de \textit{Angular Router} aangeroepen om naar een nieuw scherm te navigeren.
+	De voornaamste reden waarvoor \textit{state} gebruikt wordt, is om de vooruitgang binnen het stemproces visueel weer te geven doorheen de verschillende schermen in de applicatie. Concreet gebruiken we de veranderingen in \textit{state} om de \textit{component routing} te besturen: bij iedere verandering van \textit{state} wordt de \textit{Angular Router} aangeroepen om naar een nieuw scherm te navigeren.
 	
-	Normaal gezien is het uitvoeren van \textit{routing} iets wat alleen ter hoogte van de componenten gebeurt, maar in dit geval (voor de compleetheid en herbruikbaarheid van de code) lijkt het beter om dit binnen de \textit{EthereumConnectorService} te implementeren. 
+	Normaal gezien is het uitvoeren van \textit{routing} iets wat alleen ter hoogte van de componenten gebeurt, maar in dit geval (voor de volledigheid en herbruikbaarheid van de code) lijkt het beter om dit binnen de \textit{EthereumConnectorService} te implementeren. 
 	
-	Zodat de routing probleemloos zou werken buiten een component (zonder irregulier gedrag), dienen we gebruik van een wrapping van de code met \textit{ngZone.run()}.
+	Opdat de routing probleemloos zou werken buiten een component (zonder irregulier gedrag), dienen we gebruik te maken van een \textit{wrapping} van de code met \textit{ngZone.run()}.
 	
-	De code die zorgt voor automatische routing bij verandering van state is de volgende:
+	De code die zorgt voor automatische routing bij verandering van \textit{state} is de volgende:
 	\begin{lstlisting}[numbers=none]
 	this.state$.subscribe( state => {
 		let route: string;
@@ -874,9 +875,9 @@ Merk op dat er voor veel van de private domein attributen (die te maken hebben m
 		this.router.navigateByUrl(`/${route}`);
 	});
 	\end{lstlisting}
-	Voor iedere verandering in electionState hebben we een corresponderende route.
+	Voor iedere verandering in \textit{electionState} is er een corresponderende route.
 	
-	De routes (`login',`vote',`verify',`results') definiëren en injecteren we in \textit{app.module.ts}:
+	De routes \textit{(`login',`vote',`verify',`results')} definiëren en injecteren we in \textit{app.module.ts}:
 	\begin{lstlisting}[numbers=none]
 	const routes: Route[] = [
 		{path: "vote", component: VotingComponent},
@@ -896,11 +897,11 @@ Merk op dat er voor veel van de private domein attributen (die te maken hebben m
 	})
 	\end{lstlisting}
 	\subsection{Componenten}
-	Tot slot geven we een kort overzicht verschillende componenten die gebruikt worden in deze applicatie. Iedere component komt overeen met één scherm in de DApp en één stap in het verkiezingsproces. 
+	Tot slot geven we een kort overzicht van de verschillende componenten die gebruikt worden in deze applicatie. Iedere component stemt overeen met één scherm in de DApp en één stap in het verkiezingsproces. 
 	
-	Merk op dat de onderstaande html5 code, specifiek is geschreven binnen de context van het Angular Framework. Gebruikers die een zelf een front-end wensen te ontwikkelen via een ander framework of zonder framework, kunnen zich enkel op deze code baseren, niet letterlijk overnemen. 
+	Merk op dat de onderstaande HTML5-code specifiek is geschreven binnen de context van het Angular Framework. Gebruikers die een zelf een front-end wensen te ontwikkelen via een ander framework of zonder framework, kunnen zich enkel op deze code baseren, maar niet letterlijk overnemen. 
 	
-	De volledige implementatie is de te vinden op Github\footnote{https://github.com/Ocean97Li/bachelorproef/tree/master/poc/EthereumVote/frontend/src/app/components}.
+	De volledige implementatie is te vinden op Github\footnote{https://github.com/Ocean97Li/bachelorproef/tree/master/poc/EthereumVote/frontend/src/app/components}.
 	\newpage
 	\subsubsection{Login}
 	In \textit{app/components/login/login.html}
@@ -1032,28 +1033,27 @@ Merk op dat er voor veel van de private domein attributen (die te maken hebben m
 	\newpage
 	\section{Eindresultaat}
 	\subsection{Testen van Eindresultaat}
-	Wensen we de werking van de volledige applicatie te testen, dan dienen vooraf de volgende sequentiële stappen te nemen:
-	
+	Voordat we de werking van de volledige applicatie te testen, dienen we de onderstaande sequentiële stappen te ondernemen:
 	\begin{enumerate}
 		\item Opstarten van Ganache.
-		\item Het aanmaken van een nieuwe lokale blockchain instantie in Ganache.
-		\item Navigeren naar het backend project in de console.
-		\item Smart contracts deployen via console commando \textit{truffle migrate} (eventueel \textit{- -reset}).
-		\item Angular app opstarten.
+		\item Aanmaken van een nieuwe lokale blockchain-instantie in Ganache.
+		\item Navigeren naar het back-end project in de console.
+		\item Deployen van Smart contracts via console-commando \textit{truffle migrate} (eventueel \textit{- -reset}).
+		\item Opstarten van Angular app .
 		\item Inloggen op metamask.
-		\item Accounts importeren (Uit geheime sleutels uit Ganache importeren in Metamask).
+		\item Importeren van accounts (geheime sleutels uit Ganache importeren in Metamask).
 		\item Start manueel testen.
 	\end{enumerate}
-	Tenslotte kunnen we de applicatie testen door de volgende stappen te ondernemen.
+	Tenslotte kunnen we de applicatie testen als volgt:
 	\begin{enumerate}
-		\item Surfen naar de url waar de app op gehost wordt. (localhost:4200/deployed instantie).
-		\item Metamask: connecteren aan de blockchain via ingelogde account goedkeuren.
+		\item Surfen naar de url waarop de app gehost wordt. (localhost:4200/ deployed instantie).
+		\item Metamask: connecteren aan de blockchain via het ingelogde account.
 		\item Metamask: `Register' transactie goedkeuren.
-		\item DApp: Stem uitbrengen op het stemscherm.
+		\item DApp: stem uitbrengen op het stemscherm.
 		\item Metamask: `Vote' transactie goedkeuren.
-		\item DApp: Resultaten verkiezingen bekijken.
+		\item DApp: resultaten van de verkiezing bekijken.
 	\end{enumerate}
-	Figuren \ref{fig:screen_login1}, \ref{fig:screen_login2}, \ref{fig:screen_voting1}, \ref{fig:screen_voting2}  en \ref{fig:screen_voting3} geven de verschillende stappen van het stemproces via de EthereumVoting  app weer. Merk op: Alle interacties met de blockchain worden direct geïnitialiseerd door de gebruiker vanuit de browser, maar moeten vervolgens ook nog eens bevestigd worden via de Metamask plugin. De interacties gebeuren dus allemaal via een ingelogde Ethereum Wallet, wat het systeem volledig secuur maakt.
+	Figuren \ref{fig:screen_login1}, \ref{fig:screen_login2}, \ref{fig:screen_voting1}, \ref{fig:screen_voting2}  en \ref{fig:screen_voting3} geven de verschillende stappen van het stemproces via de EthereumVoting app weer. Merk op: alle interacties met de blockchain worden direct geïnitialiseerd door de gebruiker vanuit de browser, maar moeten vervolgens ook nog eens bevestigd worden via de Metamask-plugin. De interacties gebeuren dus allemaal via een ingelogde Ethereum-wallet, wat het systeem volledig secuur maakt.
 	\begin{figure}
 		\centering
 		\includegraphics[width=\linewidth/3]{img/screen_login.png}
@@ -1090,18 +1090,18 @@ Merk op dat er voor veel van de private domein attributen (die te maken hebben m
 		\label{fig:screen_voting3}
 	\end{figure}
 
-	Eenmaal de bovenstaande stappen zijn doorlopen is deze handleiding ten einde gekomen: we hebben met succes een werkend \textbf{blockchain gebaseerd stemsysteem} gebouwd op basis van Ethereum smart-contracts. En deze gedeployed op een lokale blockchain. De werking van de smart-contracts hebben we uitvoerig getest, via test files en via de Truffle-console. Vervolgens hebben we onze smart-contracts verbonden aan een webapplicatie gebouwd op het Angular javascript framework. De werking van de volledige DApp hebben we tenslotte in de browser bevestigd! 
+	Eenmaal de bovenstaande stappen zijn doorlopen is deze handleiding ten einde gekomen: we hebben met succes een werkend \textbf{blockchain-gebaseerd stemsysteem} gebouwd op basis van Ethereum smart contracts, en deze gedeployed op een lokale blockchain. De werking van de smart contracts hebben we uitvoerig getest, via test files en de Truffle-console. Vervolgens hebben we onze smart contracts verbonden aan een webapplicatie gebouwd met het Angular javascript framework. De werking van de volledige DApp hebben we tenslotte in de browser bevestigd! 
 	
 	\subsection{Evaluatie Eindresultaat}
-	Deze handleiding toont aan dat het ontwikkelen van een blockchain gebaseerd stemsystemen eenvoudiger is dan ooit. De vele tools en hulpmiddelen waarvan we vandaag gebruik kunnen maken, zorgen voor  lagen van abstracties en simplificaties die blockchain een ontwikkelomgeving maakt zoals alle andere.
+	Deze handleiding toont aan dat het ontwikkelen van een blockchain-gebaseerd stemsysteem eenvoudiger is dan ooit. De vele tools en hulpmiddelen waarvan we vandaag kunnen gebruik maken, zorgen voor lagen van abstractie en vereenvoudiging, die van blockchain een ontwikkelomgeving maken zoals alle andere.
 
-	 Het stemsysteem dat we via deze handleiding bekwamen is simpel en efficiënt. Het project is geschreven volgens de laatste standaarden en kan bijgevolg op alle moderne Ethereum-(test)netwerken draaien. Het is een perfect systeem voor kleinschalige verkiezingsscenario's: zaken zoals burgerinitiatieven, buurtcomités of raden van bestuur. EthereumVote biedt eend drastische vereenvoudiging in de organisatie en gebruiksvriendelijkheid van verkiezingen, organisatoren kunnen met enkele clicks een nieuwere verkiezing opzetten, gebruikers kunnen met nog minder clicks hun stem uitbrengen.
+	 Het stemsysteem dat we via deze handleiding hebben bekomen, is simpel en efficiënt. Het project is geschreven volgens de laatste standaarden en kan bijgevolg op alle moderne Ethereum-(test)netwerken draaien. Het is een perfect systeem voor kleinschalige verkiezingsscenario's: zaken zoals burgerinitiatieven, buurtcomités of raden van bestuur. EthereumVote biedt een drastische vereenvoudiging voor de organisatie en gebruiksvriendelijkheid van verkiezingen: organisatoren kunnen met enkele clicks een nieuwe verkiezing opzetten, gebruikers kunnen met nog minder clicks hun stem uitbrengen.
 	 
-	 Voor grotere verkiezingsscenario's zoals gemeentelijke, provinciale of nationale verkiezingen, is EthereumVote minder geschikt. De aard van de blockchain technologie werkt hier in zekere zin tegen ons. Iedere transactie, elke interactie tussen gebruiker en systeem is immers publiek zichtbaar. In veel verkiezingen is volledige anonimiteit echter noodzakelijk. Om volledige anonimiteit op een blockchain te bereiken moet men dus een manier hebben om geheimen te bewaren in een systeem waar alles wat opgeslagen wordt openbaar is. Er zijn systemen -zoals het OVNP (McCorry e.a., 2017)- die er in slagen dit te bereiken. Dergelijke oplossingen leunen echter op complexe cryptografie en zijn bijgevolg zeer inefficiënt en vaak te duur om in de context van een blockchain netwerk te draaien.
+	 Voor grotere verkiezingsscenario's zoals gemeentelijke, provinciale of nationale verkiezingen, is EthereumVote minder geschikt. De aard van de blockchain-technologie werkt hier in zekere zin tegen. Iedere transactie, elke interactie tussen gebruiker en systeem is immers publiek zichtbaar. In veel verkiezingen is volledige anonimiteit echter noodzakelijk. Om volledige anonimiteit op een blockchain te bereiken, moet men dus een manier vinden om geheimen te bewaren in een systeem waar alles wat opgeslagen wordt openbaar is. Er zijn systemen - zoals het OVNP (McCorry e.a., 2017) - die er in slagen dit te bereiken. Dergelijke oplossingen steunen echter op complexe cryptografie en zijn bijgevolg zeer inefficiënt en vaak te duur om in de context van een blockchain-netwerk te draaien.
 	
-	In plaats van cryptografie aan het project toe te voegen, stellen we met EthereumVote een alternatieve oplossing voor: we encrypteren niet, maar verzekeren dat de accounts die onze kiezers gebruiken strikt anoniem blijven. De identiteit (naam, voornaam, leeftijd of geboortedatum) van de kiezer mag nooit worden gelinkt aan het adres van zijn of haar account. We garanderen dit door zelf de accounts te distribueren vòòr de verkiezing van start gaat. De accounts worden op random wijze toegewezen aan de de in aanmerking komende kiezers. De accounts zijn daarvoor reeds bekend gemaakt aan het smart-contract in de vorm van een \textit{whitelist}: enkel en alleen de accounts die het smart-contract kent mogen aan de verkiezingen deelnemen. 
+	In de plaats van cryptografie aan het project toe te voegen, stellen we met EthereumVote een alternatieve oplossing voor: we encrypteren niet, maar verzekeren dat de accounts die onze kiezers gebruiken strikt anoniem blijven. De identiteit (naam, voornaam, leeftijd of geboortedatum) van de kiezer mag nooit worden gelinkt aan het adres van zijn of haar account. We garanderen dit door zelf de accounts te distribueren vòòr de verkiezing van start gaat. De accounts worden op random wijze toegewezen aan de in aanmerking komende kiezers. De accounts zijn daarvoor reeds bekend gemaakt aan het smart contract in de vorm van een \textit{whitelist}: enkel en alleen de accounts die door het smart contract gekend zijn mogen aan de verkiezingen deelnemen. 
 	
-	Het uitdelen/verkopen van de accounts is in dit geval wel iets wat een bepaalde vorm van \textit{centrale autoriteit} vergt. De organisator van de verkiezing krijgt in zekere zin ook extra macht, deze persoon of groep van personen kunnen kan via hun account immers bepalen wie er zal deelnemen aan de verkiezing. Deze  twee nadelen zijn echter leefbaar, bovendien worden ze te niet gedaan door de reeds genoemde voordelen die  men met EthereumVote verkrijgt.
+	Het uitdelen/verkopen van de accounts is in dit geval wel iets wat een bepaalde vorm van \textit{centrale autoriteit} vergt. De organisator van de verkiezing krijgt in zekere zin ook extra macht: deze persoon of groep van personen kan via het account immers bepalen wie er zal deelnemen aan de verkiezing. Deze  twee nadelen zijn echter aanvaardbaar, bovendien worden ze teniet gedaan door de reeds genoemde voordelen van EthereumVote.
 	
 	
 
